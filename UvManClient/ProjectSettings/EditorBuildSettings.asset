@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/UI/Lobby.unity
     guid: e1eb714bae6b44456a3f49e0100291b1
+  - enabled: 1
+    path: Assets/UI/SingleScreen.unity
+    guid: 78f4d805997654150817dc394274609c
   m_configObjects: {}
