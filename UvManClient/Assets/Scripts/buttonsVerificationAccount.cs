@@ -28,7 +28,7 @@ public class buttonsVerificationAccount : MonoBehaviour
         string codigoRecuperado = IFCodigoVerificacion.text;
         if (codigoRecuperado.Length == 10)
         {
-            Debug.Log(CuentaCliente.clienteDeCuenta.servicioDeCuenta.VerifyAccount(codigoRecuperado, cuentaAVerificar));
+            Debug.Log(CuentaCliente.clienteDeCuenta.servicioDeCuenta.VerificarCuenta(codigoRecuperado, cuentaAVerificar));
         }
         else
         {

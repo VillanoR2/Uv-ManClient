@@ -14,11 +14,11 @@
 [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ICuentaService")]
 public interface ICuentaService {
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentaService/CheckIn", ReplyAction="http://tempuri.org/ICuentaService/CheckInResponse")]
-    MessageService.Dominio.Enum.EnumEstadoRegistro CheckIn(LogicaDelNegocio.Modelo.CuentaModel newUser);
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentaService/Registrarse", ReplyAction="http://tempuri.org/ICuentaService/RegistrarseResponse")]
+    MessageService.Dominio.Enum.EnumEstadoRegistro Registrarse(LogicaDelNegocio.Modelo.CuentaModel CuentaNueva);
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentaService/VerifyAccount", ReplyAction="http://tempuri.org/ICuentaService/VerifyAccountResponse")]
-    MessageService.Dominio.Enum.EnumEstadoVerificarCuenta VerifyAccount(string code, LogicaDelNegocio.Modelo.CuentaModel cuenta);
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentaService/VerificarCuenta", ReplyAction="http://tempuri.org/ICuentaService/VerificarCuentaResponse")]
+    MessageService.Dominio.Enum.EnumEstadoVerificarCuenta VerificarCuenta(string CodigoDeVerificacion, LogicaDelNegocio.Modelo.CuentaModel CuentaAVerificar);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -48,12 +48,12 @@ public partial class CuentaServiceClient : System.ServiceModel.ClientBase<ICuent
             base(binding, remoteAddress) {
     }
     
-    public MessageService.Dominio.Enum.EnumEstadoRegistro CheckIn(LogicaDelNegocio.Modelo.CuentaModel newUser) {
-        return base.Channel.CheckIn(newUser);
+    public MessageService.Dominio.Enum.EnumEstadoRegistro Registrarse(LogicaDelNegocio.Modelo.CuentaModel CuentaNueva) {
+        return base.Channel.Registrarse(CuentaNueva);
     }
     
-    public MessageService.Dominio.Enum.EnumEstadoVerificarCuenta VerifyAccount(string code, LogicaDelNegocio.Modelo.CuentaModel cuenta) {
-        return base.Channel.VerifyAccount(code, cuenta);
+    public MessageService.Dominio.Enum.EnumEstadoVerificarCuenta VerificarCuenta(string CodigoDeVerificacion, LogicaDelNegocio.Modelo.CuentaModel CuentaAVerificar) {
+        return base.Channel.VerificarCuenta(CodigoDeVerificacion, CuentaAVerificar);
     }
 }
 

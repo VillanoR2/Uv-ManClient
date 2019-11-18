@@ -3,6 +3,9 @@ using System.ServiceModel;
 using System.Runtime.Serialization.Formatters.Binary;
 using System;
 using System.IO;
+using System.Net;
+using LogicaDelNegocio.Modelo;
+using System.Security.Principal;
 
 public class SessionCliente : MonoBehaviour, ISessionServiceCallback
 {
@@ -10,13 +13,24 @@ public class SessionCliente : MonoBehaviour, ISessionServiceCallback
     public SessionServiceClient servicioDeSesion;
     public string direccionIpDelServidor = "localhost";
     private String rutaDelArchivoDeConfiguracion;
+    private CuentaModel cuentaLogeada;
     public delegate void CambioDireccionIP();
     public event CambioDireccionIP ModificacionDeLaDireccion;
 
     private void InicializarServicioDeSesion()
     {
-        servicioDeSesion = new SessionServiceClient(new InstanceContext(this), new NetTcpBinding(SecurityMode.None), 
+        servicioDeSesion = new SessionServiceClient(new InstanceContext(this), new NetTcpBinding(SecurityMode.Transport), 
             new EndpointAddress("net.tcp://" + direccionIpDelServidor + ":7972/SessionService"));
+        
+    }
+
+    public void AsegurarLaInformacion(String usuario, String contrasena)
+    {
+        NetworkCredential credencialesDeUsuario = new NetworkCredential(usuario, contrasena);
+        servicioDeSesion.ClientCredentials.Windows.AllowedImpersonationLevel = TokenImpersonationLevel.Identification;
+
+        servicioDeSesion.ClientCredentials.Windows.AllowNtlm = false;
+        servicioDeSesion.ClientCredentials.Windows.ClientCredential = credencialesDeUsuario;
     }
 
     private void RecuperarIpDelServidor()

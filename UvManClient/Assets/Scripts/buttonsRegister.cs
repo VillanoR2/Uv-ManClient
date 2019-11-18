@@ -27,6 +27,10 @@ public class buttonsRegister : MonoBehaviour
                     return false;
                 }
             }
+            if(textoDelCampo.Length > 50)
+            {
+                return false;
+            }
             return true;
         }
         return false;
@@ -117,7 +121,7 @@ public class buttonsRegister : MonoBehaviour
         if (ValidarCamposCorrectos(nombreDeusuario, contrasena, confirmacion, correoElectronico))
         {
             CuentaModel cuentaARegistrar = CrearCuentaARegistrar();
-            EnumEstadoRegistro estadoDelRegistro = CuentaCliente.clienteDeCuenta.servicioDeCuenta.CheckIn(cuentaARegistrar);
+            EnumEstadoRegistro estadoDelRegistro = CuentaCliente.clienteDeCuenta.servicioDeCuenta.Registrarse(cuentaARegistrar);
             Debug.Log(estadoDelRegistro);
             switch (estadoDelRegistro)
             {
@@ -150,11 +154,9 @@ public class buttonsRegister : MonoBehaviour
     private CuentaModel CrearCuentaARegistrar()
     {
         CuentaModel cuentaARegistrar = new CuentaModel();
-        cuentaARegistrar.nombreUsuario = TFNombreUsuario.text;
-        cuentaARegistrar.contrasena = TFContrasena.text;
-        cuentaARegistrar.informacionDeUsuario = new UsuarioModel();
-        cuentaARegistrar.informacionDeUsuario.correo = TFCorreo.text;
-        cuentaARegistrar.informacionDeUsuario.edad = "18";
+        cuentaARegistrar.NombreUsuario = TFNombreUsuario.text;
+        cuentaARegistrar.Contrasena = TFContrasena.text;
+        cuentaARegistrar.CorreoElectronico = TFCorreo.text;
         return cuentaARegistrar;
     }
 }
