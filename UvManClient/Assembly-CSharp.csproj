@@ -69,6 +69,7 @@
      <Compile Include="Assets\Scripts\Globalizacion\ControladorJson.cs" />
      <Compile Include="Assets\Scripts\Globalizacion\Serializable.cs" />
      <Compile Include="Assets\Scripts\Globalizacion\TextoId.cs" />
+     <Compile Include="Assets\Scripts\SelectLanguage.cs" />
      <Compile Include="Assets\Scripts\Servicios\ServiceChat.cs" />
      <Compile Include="Assets\Scripts\Servicios\ServiceCuenta.cs" />
      <Compile Include="Assets\Scripts\Servicios\ServiceSession.cs" />

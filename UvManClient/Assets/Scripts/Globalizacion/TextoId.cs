@@ -21,7 +21,7 @@ public enum TextoId
     txtSaveChanges,
     phIpAdress,
     txtReturn,
-    lblLanguage,
+    txtLanguage,
     lblTitle,
     txtResend,
     txtValidation,

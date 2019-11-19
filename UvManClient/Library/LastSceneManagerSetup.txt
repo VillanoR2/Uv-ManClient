@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/UI/VerificacionScreen.unity
+- path: Assets/UI/OptionScreen.unity
   isLoaded: 1
   isActive: 1
