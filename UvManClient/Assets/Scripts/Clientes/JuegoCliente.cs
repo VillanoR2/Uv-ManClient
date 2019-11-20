@@ -3,6 +3,7 @@ using System.ServiceModel;
 using System.Collections.Generic;
 using LogicaDelNegocio.Modelo;
 using UnityEngine;
+using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel.Channels;
 
 public class JuegoCliente : MonoBehaviour, IGameServiceCallback
@@ -65,5 +66,11 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
     {
         Debug.Log(cuenta.NombreUsuario);
         CuentasEnSesion.Add(cuenta);
+    }
+
+    public void CuentaAbandoSala(CuentaModel cuenta)
+    {
+        Debug.Log(cuenta.NombreUsuario);
+        CuentasEnSesion.Remove(cuenta);
     }
 }

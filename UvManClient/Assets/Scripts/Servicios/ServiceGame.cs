@@ -38,6 +38,9 @@ public interface IGameServiceCallback {
     
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/NuevoCuentaEnLaSala")]
     void NuevoCuentaEnLaSala(LogicaDelNegocio.Modelo.CuentaModel cuenta);
+    
+    [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/CuentaAbandoSala")]
+    void CuentaAbandoSala(LogicaDelNegocio.Modelo.CuentaModel cuenta);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
