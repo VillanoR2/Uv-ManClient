@@ -5,5 +5,11 @@ using UnityEngine.UI;
 
 public class SelectLanguage : MonoBehaviour
 {
+    public Button USA_Flag;
+
+    public void EnglishLanguage(){
+        
+
+    }
     
 }

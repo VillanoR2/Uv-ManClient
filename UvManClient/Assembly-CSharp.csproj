@@ -53,6 +53,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Character\Link\Link_Movement.cs" />
      <Compile Include="Assets\Scripts\AdaptadorDeCamara.cs" />
      <Compile Include="Assets\Scripts\buttonPressStart.cs" />
      <Compile Include="Assets\Scripts\buttonsLobby.cs" />
