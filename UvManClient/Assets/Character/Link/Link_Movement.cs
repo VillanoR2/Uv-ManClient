@@ -7,9 +7,11 @@ public class Link_Movement : MonoBehaviour
    public float Speed = 4f;
    Vector2 mov;
    Animator Anim;
+   Rigidbody2D rb2D;
     void Start()
     {
         Anim = GetComponent<Animator>();
+        rb2D = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -27,6 +29,10 @@ public class Link_Movement : MonoBehaviour
         else{
             Anim.SetBool("Walking",false);
         }
+    }
+    void FixedUpdate()
+    {
+        rb2D.MovePosition(rb2D.position + mov * Speed * Time.deltaTime);
     }
 
 }
