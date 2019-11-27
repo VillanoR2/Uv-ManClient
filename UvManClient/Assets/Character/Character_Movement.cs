@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomberman_Movement : MonoBehaviour
+public class Character_Movement : MonoBehaviour
 {
-   public float Speed = 4f;
+    public float Speed = 4f;
    Vector2 mov;
    Animator Anim;
    Rigidbody2D rb2D;
@@ -14,7 +14,7 @@ public class Bomberman_Movement : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-   void Update()
+    void Update()
     {
         mov = new Vector2(
             Input.GetAxisRaw("Horizontal"), 
