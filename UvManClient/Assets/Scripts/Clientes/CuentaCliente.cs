@@ -9,7 +9,6 @@ public class CuentaCliente : MonoBehaviour
     public CuentaServiceClient servicioDeCuenta;
     public CuentaModel cuentaAVerificar;
 
-
     private void InicializarServicioDeCuenta()
     {
         servicioDeCuenta = new CuentaServiceClient(new NetTcpBinding(SecurityMode.None),

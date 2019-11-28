@@ -62,7 +62,9 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AdaptadorDeCamara.cs" />
     <Compile Include="Assets\Scripts\buttonPressStart.cs" />
-    <Compile Include="Assets\Scripts\buttonsLobby.cs" />
+    <Compile Include="Assets\Scripts\buttonsCreateLobby.cs" />
+    <Compile Include="Assets\Scripts\buttonsJoinLobby.cs" />
+    <Compile Include="Assets\Scripts\buttonsJoinPrivateLobby.cs" />
     <Compile Include="Assets\Scripts\buttonsLogin.cs" />
     <Compile Include="Assets\Scripts\buttonsMainMenu.cs" />
     <Compile Include="Assets\Scripts\buttonsOptions.cs" />
@@ -73,6 +75,8 @@
     <Compile Include="Assets\Scripts\Clientes\JuegoCliente.cs" />
     <Compile Include="Assets\Scripts\Clientes\SessionCliente.cs" />
     <Compile Include="Assets\Scripts\Cuenta.cs" />
+    <Compile Include="Assets\Scripts\LogicaDelChat.cs" />
+    <Compile Include="Assets\Scripts\LogicaDelLobby.cs" />
     <Compile Include="Assets\Scripts\Servicios\ServiceChat.cs" />
     <Compile Include="Assets\Scripts\Servicios\ServiceCuenta.cs" />
     <Compile Include="Assets\Scripts\Servicios\ServiceGame.cs" />
@@ -86,7 +90,7 @@
     <None Include="Assets\UI\Sprites\kenney_emotespack\Spritesheets\vector_style6.xml" />
     <None Include="Assets\UI\Sprites\gameicons-expansion\Game icons (base)\Spritesheet\sheet_white2x.xml" />
     <None Include="Assets\UI\Sprites\uipack-space\Spritesheet\uipackSpace_sheet.xml" />
-    <None Include="Assets\UI\Sprites\pixeluipack\Spritesheet\spritesheetInfo.txt" />
+    <None Include="Assets\UI\Sprites\kenney_emotespack\pixeluipack\Spritesheet\spritesheetInfo.txt" />
     <None Include="Assets\UI\Sprites\kenney_emotespack\Spritesheets\pixel_style4.xml" />
     <None Include="Assets\UI\Fonts\press_start_2p\FONTLOG.txt" />
     <None Include="Assets\UI\Sprites\gameicons-expansion\Spritesheet\sheet_colored1x.xml" />
@@ -107,7 +111,7 @@
     <None Include="Assets\UI\Sprites\kenney_emotespack\Spritesheets\pixel_style1.xml" />
     <None Include="Assets\UI\Sprites\kenney_emotespack\Spritesheets\pixel_style7.xml" />
     <None Include="Assets\UI\Sprites\uipack-space\license.txt" />
-    <None Include="Assets\UI\Sprites\pixeluipack\License.txt" />
+    <None Include="Assets\UI\Sprites\kenney_emotespack\pixeluipack\License.txt" />
     <None Include="Assets\UI\Sprites\gameicons-expansion\Spritesheet\sheet_white1x.xml" />
     <None Include="Assets\UI\Sprites\UIpack\Spritesheet\yellowSheet.xml" />
     <None Include="Assets\UI\Sprites\UIpack\Spritesheet\blueSheet.xml" />

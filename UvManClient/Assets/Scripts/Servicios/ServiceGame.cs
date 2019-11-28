@@ -25,6 +25,15 @@ public interface IGameService {
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/VerificarSiEstoyEnSala", ReplyAction="http://tempuri.org/IGameService/VerificarSiEstoyEnSalaResponse")]
     bool VerificarSiEstoyEnSala(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/ObtenerCuentasEnMiSala", ReplyAction="http://tempuri.org/IGameService/ObtenerCuentasEnMiSalaResponse")]
+    LogicaDelNegocio.Modelo.CuentaModel[] ObtenerCuentasEnMiSala(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/RecuperarIdDeMiSala", ReplyAction="http://tempuri.org/IGameService/RecuperarIdDeMiSalaResponse")]
+    string RecuperarIdDeMiSala(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/MiSalaEsPublica", ReplyAction="http://tempuri.org/IGameService/MiSalaEsPublicaResponse")]
+    bool MiSalaEsPublica(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -41,6 +50,9 @@ public interface IGameServiceCallback {
     
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/CuentaAbandoSala")]
     void CuentaAbandoSala(LogicaDelNegocio.Modelo.CuentaModel cuenta);
+    
+    [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/RefrescarCuentasEnSala")]
+    void RefrescarCuentasEnSala(LogicaDelNegocio.Modelo.CuentaModel[] CuentasEnMiSala);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -86,8 +98,44 @@ public partial class GameServiceClient : System.ServiceModel.DuplexClientBase<IG
     public bool VerificarSiEstoyEnSala(LogicaDelNegocio.Modelo.CuentaModel Cuenta) {
         return base.Channel.VerificarSiEstoyEnSala(Cuenta);
     }
+    
+    public LogicaDelNegocio.Modelo.CuentaModel[] ObtenerCuentasEnMiSala(LogicaDelNegocio.Modelo.CuentaModel Cuenta) {
+        return base.Channel.ObtenerCuentasEnMiSala(Cuenta);
+    }
+    
+    public string RecuperarIdDeMiSala(LogicaDelNegocio.Modelo.CuentaModel Cuenta) {
+        return base.Channel.RecuperarIdDeMiSala(Cuenta);
+    }
+    
+    public bool MiSalaEsPublica(LogicaDelNegocio.Modelo.CuentaModel Cuenta) {
+        return base.Channel.MiSalaEsPublica(Cuenta);
+    }
 }
 
+namespace LogicaDelNegocio.Modelo.Enum {
+    using System.Runtime.Serialization;
+    
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnumTiposDeJugadores", Namespace="http://schemas.datacontract.org/2004/07/LogicaDelNegocio.Modelo.Enum")]
+    public enum EnumTiposDeJugadores : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Corredor = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PrimerPerseguidor = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        SegundoPerseguior = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        TercerPerseguidor = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        CuartoPerseguidor = 4,
+    }
+}
 namespace GameService.Dominio.Enum {
     using System.Runtime.Serialization;
     

@@ -67,6 +67,10 @@ public class buttonsLogin : MonoBehaviour
         SceneManager.LoadScene("RegisterScreen");
     }
 
+    public void ButtonOptions()
+    {
+        SceneManager.LoadScene("OptionScreen");
+    }
     private void InicioDeSesionCorrecto(CuentaModel cuentaIniciarSesion)
     {
         Cuenta.cuentaLogeada.cuenta = cuentaIniciarSesion;
@@ -83,13 +87,10 @@ public class buttonsLogin : MonoBehaviour
     {
         String nombre = usuario.text;
         String password = contrasena.text;
-        if (nombre != "" && nombre != "")
+        if (nombre != "" && password != "")
         {
             return true;
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 }
