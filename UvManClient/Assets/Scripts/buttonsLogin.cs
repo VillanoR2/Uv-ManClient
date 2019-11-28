@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using System.ServiceModel;
-using System.Data;
 using System;
-using System.Runtime.Serialization;
 using LogicaDelNegocio.Modelo;
 using SessionService.Dominio.Enum;
 
@@ -21,41 +18,47 @@ public class buttonsLogin : MonoBehaviour
         CuentaModel cuentaParaIniciarSesion = new CuentaModel();
         String nombre = usuario.text;
         String password = contrasena.text;
-        cuentaParaIniciarSesion.nombreUsuario = nombre;
-        cuentaParaIniciarSesion.contrasena = password;
+        cuentaParaIniciarSesion.NombreUsuario = nombre;
+        cuentaParaIniciarSesion.Contrasena = password;
         return cuentaParaIniciarSesion; 
     }
 
     public void ButtonLogIn()
     {
-        try
+        // try
         {
             SessionServiceClient clienteSesion = SessionCliente.clienteDeSesion.servicioDeSesion;
-
-            CuentaModel cuentaIniciarSesion = RecuperarDatosDeLogin();
-            EnumEstadoInicioSesion estadoDeInicioDeSesion = clienteSesion.IniciarSesion(cuentaIniciarSesion);
-            Debug.Log(estadoDeInicioDeSesion);
-            switch (estadoDeInicioDeSesion)
+            if (CamposDeLogeoNoVacios())
             {
-                case EnumEstadoInicioSesion.Correcto:
-                    InicioDeSesionCorrecto(cuentaIniciarSesion);
-                    break;
-                case EnumEstadoInicioSesion.CredencialesInvalidas:
-                    //Mostrar mensaje credenciales invalidas
-                    break;
-                case EnumEstadoInicioSesion.CuentaYaLogeada:
-                    //Mostrar mensaje cuenta ya logeada
-                    break;
-                case EnumEstadoInicioSesion.ErrorBD:
-                    break;
-                case EnumEstadoInicioSesion.CuentaNoVerificada:
-                    CuentaNoVerificada(cuentaIniciarSesion);
-                    break;
+                CuentaModel cuentaIniciarSesion = RecuperarDatosDeLogin();
+                SessionCliente.clienteDeSesion.AsegurarLaInformacion(cuentaIniciarSesion.NombreUsuario, cuentaIniciarSesion.Contrasena);
+                
+                EnumEstadoInicioSesion estadoDeInicioDeSesion = clienteSesion.IniciarSesion(cuentaIniciarSesion);
+                Debug.Log(estadoDeInicioDeSesion);
+                switch (estadoDeInicioDeSesion)
+                {
+                    case EnumEstadoInicioSesion.Correcto:
+                        InicioDeSesionCorrecto(cuentaIniciarSesion);
+                        break;
+                    case EnumEstadoInicioSesion.CredencialesInvalidas:
+                        //Mostrar mensaje credenciales invalidas
+                        break;
+                    case EnumEstadoInicioSesion.CuentaYaLogeada:
+                        //Mostrar mensaje cuenta ya logeada
+                        break;
+                    case EnumEstadoInicioSesion.ErrorBD:
+                        break;
+                    case EnumEstadoInicioSesion.CuentaNoVerificada:
+                        CuentaNoVerificada(cuentaIniciarSesion);
+                        break;
+                }
             }
-        }
-        catch (Exception ex)
-        {
-            Debug.Log(ex.GetType());
+            
+            //}
+            //catch (Exception ex)
+            //{
+            //    Debug.Log(ex.GetType());
+            //}
         }
     }
 
@@ -74,5 +77,19 @@ public class buttonsLogin : MonoBehaviour
     {
         CuentaCliente.clienteDeCuenta.cuentaAVerificar = cuentaARegistrar;
         SceneManager.LoadScene("VerificacionScreen");
+    }
+
+    private Boolean CamposDeLogeoNoVacios()
+    {
+        String nombre = usuario.text;
+        String password = contrasena.text;
+        if (nombre != "" && nombre != "")
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

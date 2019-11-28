@@ -15,10 +15,10 @@
 public interface ISessionService {
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISessionService/IniciarSesion", ReplyAction="http://tempuri.org/ISessionService/IniciarSesionResponse")]
-    SessionService.Dominio.Enum.EnumEstadoInicioSesion IniciarSesion(LogicaDelNegocio.Modelo.CuentaModel cuenta);
+    SessionService.Dominio.Enum.EnumEstadoInicioSesion IniciarSesion(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
     
     [System.ServiceModel.OperationContractAttribute(IsTerminating=true, Action="http://tempuri.org/ISessionService/CerrarSesion", ReplyAction="http://tempuri.org/ISessionService/CerrarSesionResponse")]
-    void CerrarSesion(LogicaDelNegocio.Modelo.CuentaModel cuenta);
+    void CerrarSesion(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -56,12 +56,12 @@ public partial class SessionServiceClient : System.ServiceModel.DuplexClientBase
             base(callbackInstance, binding, remoteAddress) {
     }
     
-    public SessionService.Dominio.Enum.EnumEstadoInicioSesion IniciarSesion(LogicaDelNegocio.Modelo.CuentaModel cuenta) {
-        return base.Channel.IniciarSesion(cuenta);
+    public SessionService.Dominio.Enum.EnumEstadoInicioSesion IniciarSesion(LogicaDelNegocio.Modelo.CuentaModel Cuenta) {
+        return base.Channel.IniciarSesion(Cuenta);
     }
     
-    public void CerrarSesion(LogicaDelNegocio.Modelo.CuentaModel cuenta) {
-        base.Channel.CerrarSesion(cuenta);
+    public void CerrarSesion(LogicaDelNegocio.Modelo.CuentaModel Cuenta) {
+        base.Channel.CerrarSesion(Cuenta);
     }
 }
 namespace LogicaDelNegocio.Modelo {
@@ -75,15 +75,17 @@ namespace LogicaDelNegocio.Modelo {
         
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private string codigoVerificacionField;
+        private string CodigoVerificacionField;
         
-        private string contrasenaField;
+        private string ContrasenaField;
         
-        private LogicaDelNegocio.Modelo.UsuarioModel informacionDeUsuarioField;
+        private string CorreoElectronicoField;
         
-        private string nombreUsuarioField;
+        private LogicaDelNegocio.Modelo.JugadorModel JugadorField;
         
-        private bool verificadoField;
+        private string NombreUsuarioField;
+        
+        private bool VerificadoField;
         
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -95,68 +97,80 @@ namespace LogicaDelNegocio.Modelo {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string codigoVerificacion {
+        public string CodigoVerificacion {
             get {
-                return this.codigoVerificacionField;
+                return this.CodigoVerificacionField;
             }
             set {
-                this.codigoVerificacionField = value;
+                this.CodigoVerificacionField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string contrasena {
+        public string Contrasena {
             get {
-                return this.contrasenaField;
+                return this.ContrasenaField;
             }
             set {
-                this.contrasenaField = value;
+                this.ContrasenaField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public LogicaDelNegocio.Modelo.UsuarioModel informacionDeUsuario {
+        public string CorreoElectronico {
             get {
-                return this.informacionDeUsuarioField;
+                return this.CorreoElectronicoField;
             }
             set {
-                this.informacionDeUsuarioField = value;
+                this.CorreoElectronicoField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string nombreUsuario {
+        public LogicaDelNegocio.Modelo.JugadorModel Jugador {
             get {
-                return this.nombreUsuarioField;
+                return this.JugadorField;
             }
             set {
-                this.nombreUsuarioField = value;
+                this.JugadorField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool verificado {
+        public string NombreUsuario {
             get {
-                return this.verificadoField;
+                return this.NombreUsuarioField;
             }
             set {
-                this.verificadoField = value;
+                this.NombreUsuarioField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Verificado {
+            get {
+                return this.VerificadoField;
+            }
+            set {
+                this.VerificadoField = value;
             }
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="UsuarioModel", Namespace="http://schemas.datacontract.org/2004/07/LogicaDelNegocio.Modelo")]
-    public partial class UsuarioModel : object, System.Runtime.Serialization.IExtensibleDataObject {
+    [System.Runtime.Serialization.DataContractAttribute(Name="JugadorModel", Namespace="http://schemas.datacontract.org/2004/07/LogicaDelNegocio.Modelo")]
+    public partial class JugadorModel : object, System.Runtime.Serialization.IExtensibleDataObject {
         
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private LogicaDelNegocio.Modelo.AvanceModel avanceDeUsuarioField;
+        private LogicaDelNegocio.Modelo.CorredorAdquiridoModel[] CorredoresAdquiridosField;
         
-        private string correoField;
+        private int MejorPuntacionField;
         
-        private string edadField;
+        private LogicaDelNegocio.Modelo.SeguidorAdquiridoModel[] SeguidoresAdquiridosField;
+        
+        private int UvCoinsField;
         
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -168,48 +182,60 @@ namespace LogicaDelNegocio.Modelo {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public LogicaDelNegocio.Modelo.AvanceModel avanceDeUsuario {
+        public LogicaDelNegocio.Modelo.CorredorAdquiridoModel[] CorredoresAdquiridos {
             get {
-                return this.avanceDeUsuarioField;
+                return this.CorredoresAdquiridosField;
             }
             set {
-                this.avanceDeUsuarioField = value;
+                this.CorredoresAdquiridosField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string correo {
+        public int MejorPuntacion {
             get {
-                return this.correoField;
+                return this.MejorPuntacionField;
             }
             set {
-                this.correoField = value;
+                this.MejorPuntacionField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string edad {
+        public LogicaDelNegocio.Modelo.SeguidorAdquiridoModel[] SeguidoresAdquiridos {
             get {
-                return this.edadField;
+                return this.SeguidoresAdquiridosField;
             }
             set {
-                this.edadField = value;
+                this.SeguidoresAdquiridosField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UvCoins {
+            get {
+                return this.UvCoinsField;
+            }
+            set {
+                this.UvCoinsField = value;
             }
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="AvanceModel", Namespace="http://schemas.datacontract.org/2004/07/LogicaDelNegocio.Modelo")]
-    public partial class AvanceModel : object, System.Runtime.Serialization.IExtensibleDataObject {
+    [System.Runtime.Serialization.DataContractAttribute(Name="CorredorAdquiridoModel", Namespace="http://schemas.datacontract.org/2004/07/LogicaDelNegocio.Modelo")]
+    public partial class CorredorAdquiridoModel : object, System.Runtime.Serialization.IExtensibleDataObject {
         
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private LogicaDelNegocio.Modelo.PersonajeCorredorModel[] corredoresAdquiridosField;
+        private string NombreField;
         
-        private int mejorPuntuacionField;
+        private string PoderField;
         
-        private int uvCoinsField;
+        private int PrecioField;
+        
+        private double VelocidadField;
         
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -221,50 +247,56 @@ namespace LogicaDelNegocio.Modelo {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public LogicaDelNegocio.Modelo.PersonajeCorredorModel[] corredoresAdquiridos {
+        public string Nombre {
             get {
-                return this.corredoresAdquiridosField;
+                return this.NombreField;
             }
             set {
-                this.corredoresAdquiridosField = value;
+                this.NombreField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int mejorPuntuacion {
+        public string Poder {
             get {
-                return this.mejorPuntuacionField;
+                return this.PoderField;
             }
             set {
-                this.mejorPuntuacionField = value;
+                this.PoderField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int uvCoins {
+        public int Precio {
             get {
-                return this.uvCoinsField;
+                return this.PrecioField;
             }
             set {
-                this.uvCoinsField = value;
+                this.PrecioField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Velocidad {
+            get {
+                return this.VelocidadField;
+            }
+            set {
+                this.VelocidadField = value;
             }
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PersonajeCorredorModel", Namespace="http://schemas.datacontract.org/2004/07/LogicaDelNegocio.Modelo")]
-    public partial class PersonajeCorredorModel : object, System.Runtime.Serialization.IExtensibleDataObject {
+    [System.Runtime.Serialization.DataContractAttribute(Name="SeguidorAdquiridoModel", Namespace="http://schemas.datacontract.org/2004/07/LogicaDelNegocio.Modelo")]
+    public partial class SeguidorAdquiridoModel : object, System.Runtime.Serialization.IExtensibleDataObject {
         
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private string nombreField;
+        private string NombreField;
         
-        private string poderField;
-        
-        private int precioField;
-        
-        private double velocidadField;
+        private int PrecioField;
         
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -276,42 +308,22 @@ namespace LogicaDelNegocio.Modelo {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string nombre {
+        public string Nombre {
             get {
-                return this.nombreField;
+                return this.NombreField;
             }
             set {
-                this.nombreField = value;
+                this.NombreField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string poder {
+        public int Precio {
             get {
-                return this.poderField;
+                return this.PrecioField;
             }
             set {
-                this.poderField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int precio {
-            get {
-                return this.precioField;
-            }
-            set {
-                this.precioField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double velocidad {
-            get {
-                return this.velocidadField;
-            }
-            set {
-                this.velocidadField = value;
+                this.PrecioField = value;
             }
         }
     }

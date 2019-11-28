@@ -38,6 +38,7 @@ public class buttonsLobby : MonoBehaviour
     public void ButtonReturn()
     {
         clienteDeChat.servicioDeChat.Desconectar(cuenta);
+        
         SceneManager.LoadScene("MainScreen");
     }
 
@@ -59,9 +60,9 @@ public class buttonsLobby : MonoBehaviour
     private Message RecuperarMesajeParaEnviar()
     {
         Message mensaje = new Message();
-        mensaje.horaEnvio = DateTime.Now;
-        mensaje.remitente = cuenta;
-        mensaje.mensaje = IFMensajeAEnviar.text;
+        mensaje.HoraEnvio = DateTime.Now;
+        mensaje.Remitente = cuenta;
+        mensaje.Mensaje = IFMensajeAEnviar.text;
         return mensaje;
     }
 }

@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/UI/SingleScreen.unity
+=======
+- path: Assets/UI/LoginScreen.unity
+>>>>>>> master
   isLoaded: 1
   isActive: 1

@@ -16,6 +16,12 @@ public class ChatCliente : MonoBehaviour, IChatServiceCallback
         direccionIpDelServidor = SessionCliente.clienteDeSesion.direccionIpDelServidor;
     }
 
+    public void ReiniciarServicio()
+    {
+        RecuperarIpDelServidor();
+        InicializarClienteDeChat();
+    }
+
     private void InicializarClienteDeChat()
     {
         servicioDeChat = new ChatServiceClient(new InstanceContext(this) ,
@@ -26,7 +32,7 @@ public class ChatCliente : MonoBehaviour, IChatServiceCallback
 
     public void Abandonar(CuentaModel cuenta)
     {
-        mensajes += "### El usuario " + cuenta.nombreUsuario + " ha abandonado la partida ###\n";
+        mensajes += "### El usuario " + cuenta.NombreUsuario + " ha abandonado la partida ###\n";
     }
 
     public void EstaEscribiendoCallback(string cuenta)
@@ -36,7 +42,7 @@ public class ChatCliente : MonoBehaviour, IChatServiceCallback
 
     public void RecibirMensaje(Message mensaje)
     {
-        mensajes += (mensaje.remitente.nombreUsuario + " >> " + mensaje.mensaje + ": " + mensaje.horaEnvio.ToShortTimeString() + "\n");
+        mensajes += (mensaje.Remitente.NombreUsuario + " >> " + mensaje.Mensaje + ": " + mensaje.HoraEnvio.ToShortTimeString() + "\n");
     }
 
     public void RefrescarCuentasConectadas(CuentaModel[] cuentasConectadas)
@@ -46,7 +52,7 @@ public class ChatCliente : MonoBehaviour, IChatServiceCallback
 
     public void Unirse(CuentaModel cuenta)
     {
-        mensajes += "### El usuario " + cuenta.nombreUsuario + " se ha unido a la partida ###\n";
+        mensajes += "### El usuario " + cuenta.NombreUsuario + " se ha unido a la partida ###\n";
     }
 
     private void Awake()

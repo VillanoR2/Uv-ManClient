@@ -24,9 +24,13 @@ public class buttonsMainMenu : MonoBehaviour
     }
     public void Multiplayer()
     {
+        ChatCliente.clienteDeChat.ReiniciarServicio();
         ChatServiceClient clienteDeChat = ChatCliente.clienteDeChat.servicioDeChat;
+        GameServiceClient clienteDelJuego = JuegoCliente.ClienteDelJuego.ServicioDeJuego;
         if(cuenta != null)
         {
+            Boolean unirseASala = clienteDelJuego.UnirseASala(cuenta);
+            Debug.Log(unirseASala);
             Boolean estadodelaConexion = clienteDeChat.Conectar(cuenta);
             Debug.Log(estadodelaConexion);
             if (estadodelaConexion){

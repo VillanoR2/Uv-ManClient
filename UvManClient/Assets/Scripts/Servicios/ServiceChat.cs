@@ -15,38 +15,38 @@
 public interface IChatService {
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/Conectar", ReplyAction="http://tempuri.org/IChatService/ConectarResponse")]
-    bool Conectar(LogicaDelNegocio.Modelo.CuentaModel cuenta);
+    bool Conectar(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/ObtenerCuentasConectadas", ReplyAction="http://tempuri.org/IChatService/ObtenerCuentasConectadasResponse")]
     LogicaDelNegocio.Modelo.CuentaModel[] ObtenerCuentasConectadas();
     
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/EnviarMensaje")]
-    void EnviarMensaje(GameChatService.Dominio.Message mensaje);
+    void EnviarMensaje(GameChatService.Dominio.Message Mensaje);
     
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/EstaEscribiendo")]
-    void EstaEscribiendo(string cuenta);
+    void EstaEscribiendo(string Cuenta);
     
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, IsTerminating=true, Action="http://tempuri.org/IChatService/Desconectar")]
-    void Desconectar(LogicaDelNegocio.Modelo.CuentaModel cuenta);
+    void Desconectar(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 public interface IChatServiceCallback {
     
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/RefrescarCuentasConectadas")]
-    void RefrescarCuentasConectadas(LogicaDelNegocio.Modelo.CuentaModel[] cuentasConectadas);
+    void RefrescarCuentasConectadas(LogicaDelNegocio.Modelo.CuentaModel[] CuentasConectadas);
     
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/RecibirMensaje")]
-    void RecibirMensaje(GameChatService.Dominio.Message mensaje);
+    void RecibirMensaje(GameChatService.Dominio.Message Mensaje);
     
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/EstaEscribiendoCallback")]
-    void EstaEscribiendoCallback(string cuenta);
+    void EstaEscribiendoCallback(string Cuenta);
     
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/Unirse")]
-    void Unirse(LogicaDelNegocio.Modelo.CuentaModel cuenta);
+    void Unirse(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
     
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/Abandonar")]
-    void Abandonar(LogicaDelNegocio.Modelo.CuentaModel cuenta);
+    void Abandonar(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -77,91 +77,26 @@ public partial class ChatServiceClient : System.ServiceModel.DuplexClientBase<IC
             base(callbackInstance, binding, remoteAddress) {
     }
     
-    public bool Conectar(LogicaDelNegocio.Modelo.CuentaModel cuenta) {
-        return base.Channel.Conectar(cuenta);
+    public bool Conectar(LogicaDelNegocio.Modelo.CuentaModel Cuenta) {
+        return base.Channel.Conectar(Cuenta);
     }
     
     public LogicaDelNegocio.Modelo.CuentaModel[] ObtenerCuentasConectadas() {
         return base.Channel.ObtenerCuentasConectadas();
     }
     
-    public void EnviarMensaje(GameChatService.Dominio.Message mensaje) {
-        base.Channel.EnviarMensaje(mensaje);
+    public void EnviarMensaje(GameChatService.Dominio.Message Mensaje) {
+        base.Channel.EnviarMensaje(Mensaje);
     }
     
-    public void EstaEscribiendo(string cuenta) {
-        base.Channel.EstaEscribiendo(cuenta);
+    public void EstaEscribiendo(string Cuenta) {
+        base.Channel.EstaEscribiendo(Cuenta);
     }
     
-    public void Desconectar(LogicaDelNegocio.Modelo.CuentaModel cuenta) {
-        base.Channel.Desconectar(cuenta);
+    public void Desconectar(LogicaDelNegocio.Modelo.CuentaModel Cuenta) {
+        base.Channel.Desconectar(Cuenta);
     }
 }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="PersonajeCorredorModel", Namespace="http://schemas.datacontract.org/2004/07/LogicaDelNegocio.Modelo")]
-    public partial class PersonajeCorredorModel : object, System.Runtime.Serialization.IExtensibleDataObject {
-        
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        private string nombreField;
-        
-        private string poderField;
-        
-        private int precioField;
-        
-        private double velocidadField;
-        
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string nombre {
-            get {
-                return this.nombreField;
-            }
-            set {
-                this.nombreField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string poder {
-            get {
-                return this.poderField;
-            }
-            set {
-                this.poderField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int precio {
-            get {
-                return this.precioField;
-            }
-            set {
-                this.precioField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double velocidad {
-            get {
-                return this.velocidadField;
-            }
-            set {
-                this.velocidadField = value;
-            }
-        }
-    }
 
 namespace GameChatService.Dominio {
     using System.Runtime.Serialization;
@@ -174,11 +109,11 @@ namespace GameChatService.Dominio {
         
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private System.DateTime horaEnvioField;
+        private System.DateTime HoraEnvioField;
         
-        private string mensajeField;
+        private string MensajeField;
         
-        private LogicaDelNegocio.Modelo.CuentaModel remitenteField;
+        private LogicaDelNegocio.Modelo.CuentaModel RemitenteField;
         
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -190,32 +125,32 @@ namespace GameChatService.Dominio {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime horaEnvio {
+        public System.DateTime HoraEnvio {
             get {
-                return this.horaEnvioField;
+                return this.HoraEnvioField;
             }
             set {
-                this.horaEnvioField = value;
+                this.HoraEnvioField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string mensaje {
+        public string Mensaje {
             get {
-                return this.mensajeField;
+                return this.MensajeField;
             }
             set {
-                this.mensajeField = value;
+                this.MensajeField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public LogicaDelNegocio.Modelo.CuentaModel remitente {
+        public LogicaDelNegocio.Modelo.CuentaModel Remitente {
             get {
-                return this.remitenteField;
+                return this.RemitenteField;
             }
             set {
-                this.remitenteField = value;
+                this.RemitenteField = value;
             }
         }
     }
