@@ -1,0 +1,95 @@
+{
+    "textos": [
+        {
+            "id": "txtStartar",
+            "contenido": "Press Start"
+        },
+        {
+            "id": "txtLogin",
+            "contenido": "Log In"
+        },
+        {
+            "id": "txtRegister",
+            "contenido": "Register"
+        },
+        {
+            "id": "phPasassword",
+            "contenido": "Enter password"
+        },
+        {
+            "id": "phUsername",
+            "contenido": " Enter username"
+        },
+        {
+            "id": "lblRegister",
+            "contenido": "Register"
+        },
+        {
+            "id": "lblPassword",
+            "contenido": "Password"
+        },
+        {
+            "id": "lblConfirmPassword",
+            "contenido": "Confirm Password"
+        },
+        {
+            "id": "lblEmail",
+            "contenido": "Email"
+        },
+        {
+            "id": "txtMultiplayer",
+            "contenido": "Multiplayer"
+        },
+        {
+            "id": "txtOptions",
+            "contenido": "Options"
+        },
+        {
+            "id": "txtQuit",
+            "contenido": "Quit"
+        },
+        {
+            "id": "txtNewGame",
+            "contenido": "New Gameame"
+        },
+        {
+            "id": "lblIpAdress",
+            "contenido": " Ip Adress"
+        },
+        {
+            "id": "txtSaveChanges",
+            "contenido": "Save Changes"
+        },
+        {
+            "id": "phIpAdress",
+            "contenido": "Enter Ip Adress"
+        },
+        {
+            "id": "txtReturn",
+            "contenido": "Return"
+        },
+        {
+            "id": "lblLanguage",
+            "contenido": "Select Language"
+        },
+        {
+            "id": "lblTitle",
+            "contenido": "Verification Account"
+        },
+        {
+            "id": "txtResend",
+            "contenido": "Resend"
+        },
+        {
+            "id": "txtValidation",
+            "contenido": "Accept"
+        },
+        {
+            "id": "phVerificationCode",
+            "contenido": "Enter Code"
+        },
+        {
+            "id": "lblMessageResend",
+            "contenido": "If the code is not in your inbox, press the forward button"
+        }]
+}

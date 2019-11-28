@@ -8,6 +8,8 @@ public class buttonsOptions : MonoBehaviour
 {
     public InputField IFDireccionIp;
     string direccionIP;
+    public GameObject Panel;
+    int counter = 0;
 
     private void RecuperarDireccionIP()
     {
@@ -31,4 +33,17 @@ public class buttonsOptions : MonoBehaviour
         RecuperarDireccionIP();
         IFDireccionIp.text = direccionIP;
     }
+
+    public void ShowPanel()
+    { 
+        counter++;
+        if(counter % 2 == 1 ){
+            Panel.gameObject.SetActive(true);
+        }
+        else{
+            Panel.gameObject.SetActive(false);
+        }
+
+    }
+    
 }

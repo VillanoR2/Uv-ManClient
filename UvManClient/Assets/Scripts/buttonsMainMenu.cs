@@ -18,8 +18,11 @@ public class buttonsMainMenu : MonoBehaviour
     {
         cuenta = Cuenta.cuentaLogeada.cuenta;
     }
-
-    public void NewGame()
+    
+    public void NewGame(){
+        SceneManager.LoadScene("SingleScreen");
+    }
+    public void Multiplayer()
     {
         ChatServiceClient clienteDeChat = ChatCliente.clienteDeChat.servicioDeChat;
         if(cuenta != null)
