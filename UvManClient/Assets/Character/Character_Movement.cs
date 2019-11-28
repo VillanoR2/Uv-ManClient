@@ -8,6 +8,7 @@ public class Character_Movement : MonoBehaviour
    Vector2 mov;
    Animator Anim;
    Rigidbody2D rb2D;
+
     void Start()
     {
         Anim = GetComponent<Animator>();

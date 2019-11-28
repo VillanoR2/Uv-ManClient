@@ -54,7 +54,9 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Character\Character_Movement.cs" />
-     <Compile Include="Assets\Maps\Objects\UvCoinLogic.cs" />
+     <Compile Include="Assets\Maps\MainCamera.cs" />
+     <Compile Include="Assets\Maps\Objects\Coin\UvCoinLogic.cs" />
+     <Compile Include="Assets\Maps\Objects\Warp\Warp.cs" />
      <Compile Include="Assets\Scripts\AdaptadorDeCamara.cs" />
      <Compile Include="Assets\Scripts\buttonPressStart.cs" />
      <Compile Include="Assets\Scripts\buttonsLobby.cs" />
