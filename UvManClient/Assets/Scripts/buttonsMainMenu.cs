@@ -15,7 +15,7 @@ public class buttonsMainMenu : MonoBehaviour
     }
 
     private void RecuperarCuentaLogeada()
-    {
+    { 
         cuenta = Cuenta.cuentaLogeada.cuenta;
     }
     
@@ -24,23 +24,7 @@ public class buttonsMainMenu : MonoBehaviour
     }
     public void Multiplayer()
     {
-        ChatCliente.clienteDeChat.ReiniciarServicio();
-        ChatServiceClient clienteDeChat = ChatCliente.clienteDeChat.servicioDeChat;
-        GameServiceClient clienteDelJuego = JuegoCliente.ClienteDelJuego.ServicioDeJuego;
-        if(cuenta != null)
-        {
-            Boolean unirseASala = clienteDelJuego.UnirseASala(cuenta);
-            Debug.Log(unirseASala);
-            Boolean estadodelaConexion = clienteDeChat.Conectar(cuenta);
-            Debug.Log(estadodelaConexion);
-            if (estadodelaConexion){
-                SceneManager.LoadScene("Lobby");
-            }
-        }
-        else
-        {
-            //Aqui poner mensaje de no se puede acceder al servicio de chat
-        }
+        SceneManager.LoadScene("JoinLobby");
     }
 
     public void Quit()

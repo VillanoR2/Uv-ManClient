@@ -71,15 +71,8 @@ public class buttonsRegister : MonoBehaviour
             {
                 return true;
             }
-            else
-            {
-                return false;
-            }
         }
-        else
-        {
-            return false;
-        }
+        return false;
     }
 
     private Boolean ValidarCamposCorrectos(String nombreDeUsuario, String contrasena, String confirmacion, String correo)
@@ -128,9 +121,12 @@ public class buttonsRegister : MonoBehaviour
                 case EnumEstadoRegistro.RegistroCorrecto:
                     RegistroExitoso(cuentaARegistrar);
                     break;
+                case EnumEstadoRegistro.UsuarioExistente:
+                    break;
+                case EnumEstadoRegistro.ErrorEnBaseDatos:
+                    break;
             }
         }
-
     }
 
     private void RegistroExitoso(CuentaModel cuentaRegistrada)
@@ -158,5 +154,10 @@ public class buttonsRegister : MonoBehaviour
         cuentaARegistrar.Contrasena = TFContrasena.text;
         cuentaARegistrar.CorreoElectronico = TFCorreo.text;
         return cuentaARegistrar;
+    }
+
+    public void RegresarAlLogin()
+    {
+        SceneManager.LoadScene("LoginScreen");
     }
 }

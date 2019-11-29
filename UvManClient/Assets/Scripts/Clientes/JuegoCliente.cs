@@ -5,6 +5,7 @@ using LogicaDelNegocio.Modelo;
 using UnityEngine;
 using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel.Channels;
+using UnityEngine.Serialization;
 
 public class JuegoCliente : MonoBehaviour, IGameServiceCallback
 {
@@ -12,13 +13,28 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
     private string DireccionIpDelServidor;
     public GameServiceClient ServicioDeJuego;
     public CuentaModel CuentaEnSesion;
-    private List<CuentaModel> CuentasEnSesion = new List<CuentaModel>();
+    public readonly List<CuentaModel> CuentasEnSesion = new List<CuentaModel>();
+    public String IdDeMiSala;
+    public Boolean MiSalaEsPublica;
+    public delegate void ModificacionRoles();
 
+    public event ModificacionRoles SeActualizaronRoles;
+    public void SolcitarDetallesSala()
+    {
+        MiSalaEsPublica = ServicioDeJuego.MiSalaEsPublica(CuentaEnSesion);
+        IdDeMiSala =ServicioDeJuego.RecuperarIdDeMiSala(CuentaEnSesion);
+        RefrescarCuentasEnSala(ServicioDeJuego.ObtenerCuentasEnMiSala(CuentaEnSesion));
+    }
     private void RecuperarIpDelServidor()
     {
         DireccionIpDelServidor = SessionCliente.clienteDeSesion.direccionIpDelServidor;
     }
 
+    private void RecuperarCuentaEnSession()
+    {
+        CuentaEnSesion = Cuenta.cuentaLogeada.cuenta;
+    }
+    
     private void Awake()
     {
         if (ClienteDelJuego == null)
@@ -44,8 +60,7 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
         ServicioDeJuego = new GameServiceClient(new InstanceContext(this), 
             new NetTcpBinding(SecurityMode.None), new EndpointAddress("net.tcp://" + DireccionIpDelServidor + ":8292/GameService"));
     }
-
-
+    
     private void ActualizarIpDelServidor()
     {
         RecuperarIpDelServidor();
@@ -64,13 +79,30 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
 
     public void NuevoCuentaEnLaSala(CuentaModel cuenta)
     {
-        Debug.Log(cuenta.NombreUsuario);
         CuentasEnSesion.Add(cuenta);
+        SeActualizaronRoles?.Invoke();
     }
 
+    //Puede que ya no lo necesite
     public void CuentaAbandoSala(CuentaModel cuenta)
     {
-        Debug.Log(cuenta.NombreUsuario);
         CuentasEnSesion.Remove(cuenta);
+    }
+
+    public void RefrescarCuentasEnSala(CuentaModel[] CuentasEnMiSala)
+    {
+        CuentasEnSesion.Clear();
+        foreach (CuentaModel Cuenta in CuentasEnMiSala)
+        {
+            CuentasEnSesion.Add(Cuenta);
+        }
+        SeActualizaronRoles?.Invoke();
+    }
+
+    public void ReinciarClienteDeJuego()
+    {
+        RecuperarIpDelServidor();
+        InicializarServicioDeCuenta();
+        RecuperarCuentaEnSession();
     }
 }
