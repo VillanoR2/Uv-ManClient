@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Character\Character_Movement.cs" />
+     <Compile Include="Assets\Character\Creeper\Perseguidor_wayPoints.cs" />
      <Compile Include="Assets\Maps\MainCamera.cs" />
      <Compile Include="Assets\Maps\Objects\Coin\UvCoinLogic.cs" />
      <Compile Include="Assets\Maps\Objects\Warp\Warp.cs" />

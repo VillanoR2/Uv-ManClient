@@ -6,7 +6,7 @@ public class UvCoinLogic : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D co)
     {
-        if (co.name == "Link_Player")
+        if (co.tag == "Player")
         {
             Destroy(gameObject);
         }
