@@ -5,7 +5,6 @@ using UnityEngine;
 public class MainCamera : MonoBehaviour
 {
     Transform target;
-    float tLX, tLY, bRX, bRY;
 
     void Awake()
     {
@@ -15,19 +14,14 @@ public class MainCamera : MonoBehaviour
     void Update()
     {
         transform.position = new Vector3(
-            Mathf.Clamp(target.position.x,tLX,bRX),
-            Mathf.Clamp(target.position.y,bRY,tLY),
+            target.position.x,
+            target.position.y,
             transform.position.z
             );
+
+        if(target == null){
+            Debug.Log("Player ha muerto");
+        }
     }
 
-    public void setBound(GameObject map){
-        float cameraSize = Camera.main.orthographicSize;
-        
-        tLX = map.transform.position.x + cameraSize;
-        tLY = map.transform.position.y - cameraSize;
-        bRX = map.transform.position.x + 500 - cameraSize;
-        bRY = map.transform.position.y - 354 + cameraSize; 
-
-    }
 }
