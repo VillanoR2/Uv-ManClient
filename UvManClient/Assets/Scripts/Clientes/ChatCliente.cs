@@ -18,8 +18,11 @@ public class ChatCliente : MonoBehaviour, IChatServiceCallback
 
     public void ReiniciarServicio()
     {
-        RecuperarIpDelServidor();
-        InicializarClienteDeChat();
+        if(servicioDeChat.State == CommunicationState.Closed)
+        {
+            RecuperarIpDelServidor();
+            InicializarClienteDeChat();
+        }
     }
 
     private void InicializarClienteDeChat()
@@ -45,6 +48,7 @@ public class ChatCliente : MonoBehaviour, IChatServiceCallback
         mensajes += (mensaje.Remitente.NombreUsuario + " >> " + mensaje.Mensaje + ": " + mensaje.HoraEnvio.ToShortTimeString() + "\n");
     }
 
+    //Quitar
     public void RefrescarCuentasConectadas(CuentaModel[] cuentasConectadas)
     {
         
@@ -71,7 +75,6 @@ public class ChatCliente : MonoBehaviour, IChatServiceCallback
     // Start is called before the first frame update
     void Start()
     {
-        SessionCliente.clienteDeSesion.ModificacionDeLaDireccion += ActualizarIpDelServidor;
         RecuperarIpDelServidor();
         InicializarClienteDeChat();
     }
@@ -81,9 +84,4 @@ public class ChatCliente : MonoBehaviour, IChatServiceCallback
         servicioDeChat.EnviarMensaje(mensajeAEnviar);
     }
 
-    private void ActualizarIpDelServidor()
-    {
-        RecuperarIpDelServidor();
-        InicializarClienteDeChat();
-    }
 }

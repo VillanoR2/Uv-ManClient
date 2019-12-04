@@ -30,11 +30,11 @@ public class buttonsLogin : MonoBehaviour
             SessionServiceClient clienteSesion = SessionCliente.clienteDeSesion.servicioDeSesion;
             if (CamposDeLogeoNoVacios())
             {
+                SessionCliente.clienteDeSesion.ReiniciarServicio();
                 CuentaModel cuentaIniciarSesion = RecuperarDatosDeLogin();
                 SessionCliente.clienteDeSesion.AsegurarLaInformacion(cuentaIniciarSesion.NombreUsuario, cuentaIniciarSesion.Contrasena);
                 
-                EnumEstadoInicioSesion estadoDeInicioDeSesion = clienteSesion.IniciarSesion(cuentaIniciarSesion);
-                Debug.Log(estadoDeInicioDeSesion);
+                EnumEstadoInicioSesion estadoDeInicioDeSesion = clienteSesion.IniciarSesion(cuentaIniciarSesion);;
                 switch (estadoDeInicioDeSesion)
                 {
                     case EnumEstadoInicioSesion.Correcto:

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class buttonsJoinLobby : MonoBehaviour
 {
-    private JuegoCliente ClienteDelJuego = JuegoCliente.ClienteDelJuego;
+    private JuegoCliente ClienteDelJuego;
     private CuentaModel CuentaLogeada;
     
     private void RecuperarCuentaLogeada()
@@ -15,6 +15,7 @@ public class buttonsJoinLobby : MonoBehaviour
     
     public void UnirseASala()
     {
+        ObtenerRecursosParaUso();
         if(CuentaLogeada != null)
         {
             Boolean seuniAlServicioDeJuego = UnirseAlServicioDeJuego();
@@ -41,16 +42,16 @@ public class buttonsJoinLobby : MonoBehaviour
 
     private Boolean UnirseAlServicioDeChat()
     {
-        Boolean SeUnioCorrectamenteAlChat = false;
+        Boolean SeUnioCorrectamenteAlChat;
         ChatServiceClient clienteDeChat = ChatCliente.clienteDeChat.servicioDeChat;
         ChatCliente.clienteDeChat.ReiniciarServicio();
-        ClienteDelJuego.ReinciarClienteDeJuego();
         SeUnioCorrectamenteAlChat = clienteDeChat.Conectar(CuentaLogeada); 
         return SeUnioCorrectamenteAlChat;
     }
 
     private Boolean UnirseAlServicioDeJuego()
     {
+        ClienteDelJuego.ReinciarClienteDeJuego();
         return ClienteDelJuego.ServicioDeJuego.UnirseASala(CuentaLogeada);
     }
     
@@ -59,10 +60,10 @@ public class buttonsJoinLobby : MonoBehaviour
         SceneManager.LoadScene("MainScreen");
     }
     
-    // Start is called before the first frame update
-    void Start()
+    private void ObtenerRecursosParaUso()
     {
         RecuperarCuentaLogeada();
+        ClienteDelJuego = JuegoCliente.ClienteDelJuego;
     }
 
     public void UnirseASalaConId()

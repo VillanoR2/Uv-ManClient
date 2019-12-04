@@ -1,14 +1,25 @@
 ﻿using System;
-using System.ServiceModel;
 using System.Collections.Generic;
 using LogicaDelNegocio.Modelo;
 using UnityEngine;
-using System.Security.Cryptography.X509Certificates;
-using System.ServiceModel.Channels;
-using UnityEngine.Serialization;
+using System.Threading;
+using GameService.Dominio;
+using System.ServiceModel;
+using GameService.Dominio.Enum;
+using System.Net.Sockets;
 
 public class JuegoCliente : MonoBehaviour, IGameServiceCallback
 {
+    private UdpReciver RecibidorDePaquetesUDP;
+    private Thread HiloDeEscuchaPaquetesUDP;
+
+    public delegate void DatosDelMovimientoDeJugador(MovimientoJugador movimientoJugador);
+    public delegate void DatosDeInicioDeLaPartida(InicioPartida inicioPartida);
+    public delegate void DatosDeLaMuerteDeJugador(MuerteJugador muerteJugador);
+    public event DatosDelMovimientoDeJugador SeMovioUnJugador;
+    public event DatosDeInicioDeLaPartida IniciaLaPartida;
+    public event DatosDeLaMuerteDeJugador SeMurioUnJugador;
+
     public static JuegoCliente ClienteDelJuego;
     private string DireccionIpDelServidor;
     public GameServiceClient ServicioDeJuego;
@@ -16,15 +27,19 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
     public readonly List<CuentaModel> CuentasEnSesion = new List<CuentaModel>();
     public String IdDeMiSala;
     public Boolean MiSalaEsPublica;
-    public delegate void ModificacionRoles();
 
-    public event ModificacionRoles SeActualizaronRoles;
+    public delegate void NotificacionEvento();
+
+    public event NotificacionEvento SeActualizaronRoles;
+    public event NotificacionEvento SeLlenoLaSala;
+
     public void SolcitarDetallesSala()
     {
         MiSalaEsPublica = ServicioDeJuego.MiSalaEsPublica(CuentaEnSesion);
-        IdDeMiSala =ServicioDeJuego.RecuperarIdDeMiSala(CuentaEnSesion);
+        IdDeMiSala = ServicioDeJuego.RecuperarIdDeMiSala(CuentaEnSesion);
         RefrescarCuentasEnSala(ServicioDeJuego.ObtenerCuentasEnMiSala(CuentaEnSesion));
     }
+
     private void RecuperarIpDelServidor()
     {
         DireccionIpDelServidor = SessionCliente.clienteDeSesion.direccionIpDelServidor;
@@ -34,7 +49,7 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
     {
         CuentaEnSesion = Cuenta.cuentaLogeada.cuenta;
     }
-    
+
     private void Awake()
     {
         if (ClienteDelJuego == null)
@@ -50,23 +65,42 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
 
     void Start()
     {
-        SessionCliente.clienteDeSesion.ModificacionDeLaDireccion += ActualizarIpDelServidor;
+        RecuperarCuentaEnSession();
         RecuperarIpDelServidor();
-        InicializarServicioDeCuenta();
+        InicializarServicioDeJuego();
+        CrearHiloDeEscuchaUDP();
     }
 
-    private void InicializarServicioDeCuenta()
+    private void CrearHiloDeEscuchaUDP()
+    {
+        try
+        {
+            RecibidorDePaquetesUDP = new UdpReciver(DireccionIpDelServidor);
+            RecibidorDePaquetesUDP.EventoRecibido += RecibirEventoEnElJuego;
+            HiloDeEscuchaPaquetesUDP = new Thread(RecibidorDePaquetesUDP.RecibirDatos);
+            HiloDeEscuchaPaquetesUDP.Start();
+        }
+        catch (SocketException)
+        {
+            Debug.Log("No se puede iniciar el servicio de escuha UDP");
+            HiloDeEscuchaPaquetesUDP?.Abort();
+        }        
+    }
+
+    private void TerminarHiloDeEscuchaUDP()
+    {
+        RecibidorDePaquetesUDP.LiberarRecursos();
+        HiloDeEscuchaPaquetesUDP.Abort();
+        HiloDeEscuchaPaquetesUDP = null;
+    }
+
+
+private void InicializarServicioDeJuego()
     {
         ServicioDeJuego = new GameServiceClient(new InstanceContext(this), 
             new NetTcpBinding(SecurityMode.None), new EndpointAddress("net.tcp://" + DireccionIpDelServidor + ":8292/GameService"));
     }
-    
-    private void ActualizarIpDelServidor()
-    {
-        RecuperarIpDelServidor();
-        InicializarServicioDeCuenta();
-    }
-
+   
     public void TerminarPartida()
     {
         throw new NotImplementedException();
@@ -74,7 +108,7 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
 
     public void SalaLlena()
     {
-        throw new NotImplementedException();
+        SeLlenoLaSala?.Invoke();
     }
 
     public void NuevoCuentaEnLaSala(CuentaModel cuenta)
@@ -101,8 +135,49 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
 
     public void ReinciarClienteDeJuego()
     {
-        RecuperarIpDelServidor();
-        InicializarServicioDeCuenta();
-        RecuperarCuentaEnSession();
+        if(ServicioDeJuego.State == CommunicationState.Closed)
+        {
+            RecuperarIpDelServidor();
+            InicializarServicioDeJuego();
+            RecuperarCuentaEnSession();
+        }
     }
+    
+    private void RecibirEventoEnElJuego(EventoEnJuego eventoEnJuego)
+    {
+        if (eventoEnJuego.IdSala == IdDeMiSala)
+        {
+            switch (eventoEnJuego.TipoDeEvento)
+            {
+                case EnumTipoDeEventoEnJuego.CambiarPantalla:
+                    IniciaLaPartida?.Invoke(eventoEnJuego.DatosInicioDePartida);
+                    break;
+                case EnumTipoDeEventoEnJuego.IniciarPartida:
+                    IniciaLaPartida?.Invoke(eventoEnJuego.DatosInicioDePartida);
+                    break;
+                case EnumTipoDeEventoEnJuego.MuerteJugador:
+                    if (eventoEnJuego.CuentaRemitente != CuentaEnSesion.NombreUsuario)
+                    {
+                        SeMurioUnJugador?.Invoke(eventoEnJuego.DatosMuerteDeUnJugador);
+                    }
+                    break;
+                case EnumTipoDeEventoEnJuego.MovimientoJugador:
+                    if (eventoEnJuego.CuentaRemitente != CuentaEnSesion.NombreUsuario)
+                    {
+                        SeMovioUnJugador?.Invoke(eventoEnJuego.DatosDelMovimiento);
+                    }
+                    break;
+            }
+        }
+    }
+    
+    public void EnviarMovimiento(float x, float y, float movimientoX, float movimientoY)
+    {
+        EventoEnJuego eventoEnJuego = new EventoEnJuego();
+        eventoEnJuego.EventoEnJuegoMovimientoJugador(CuentaEnSesion.NombreUsuario, IdDeMiSala ,CuentaEnSesion.NombreUsuario,
+            x, y, movimientoX, movimientoY);
+        UdpSender enviadorDePaquetesUDP = new UdpSender(DireccionIpDelServidor);
+        enviadorDePaquetesUDP.EnviarPaquete(eventoEnJuego);
+    }
+
 }

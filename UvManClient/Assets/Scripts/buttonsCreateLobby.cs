@@ -7,19 +7,21 @@ using UnityEngine.UI;
 
 public class buttonsCreateLobby : MonoBehaviour
 {
-    private JuegoCliente ClienteDelJuego = JuegoCliente.ClienteDelJuego;
+    private JuegoCliente ClienteDelJuego;
     private CuentaModel CuentaLogeada;
     public InputField txtBoxIdSala;
     public Toggle toggleEsSalaPrivada;
     
-    // Start is called before the first frame update
-    void Start()
+    
+    private void InicializarServicio()
     {
+        ClienteDelJuego = JuegoCliente.ClienteDelJuego;
         RecuperarCuentaLogeada();
     }
 
     public void CrearSala()
     {
+        InicializarServicio();
         if (VerificarIdValido())
         {
             String IdDeLaSala = txtBoxIdSala.text;
@@ -54,15 +56,15 @@ public class buttonsCreateLobby : MonoBehaviour
     private Boolean UnirseAlServicioDeChat()
     {
         Boolean SeUnioCorrectamenteAlChat;
-        ChatServiceClient clienteDeChat = ChatCliente.clienteDeChat.servicioDeChat;
-        ClienteDelJuego.ReinciarClienteDeJuego();
         ChatCliente.clienteDeChat.ReiniciarServicio();
+        ChatServiceClient clienteDeChat = ChatCliente.clienteDeChat.servicioDeChat;
         SeUnioCorrectamenteAlChat = clienteDeChat.Conectar(CuentaLogeada); 
         return SeUnioCorrectamenteAlChat;
     }
     
     private EnumEstadoCrearSalaConId UnirseAlServicioDeJuego(String id, Boolean esPrivada)
     {
+        ClienteDelJuego.ReinciarClienteDeJuego();
         return ClienteDelJuego.ServicioDeJuego.CrearSala(id, !esPrivada, CuentaLogeada);
     }
     

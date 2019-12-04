@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
+using GameService.Dominio;
 using LogicaDelNegocio.Modelo;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,40 +13,41 @@ public class LogicaDelLobby : MonoBehaviour
     private JuegoCliente ClienteDelJuego = JuegoCliente.ClienteDelJuego;
     private String IdDeLaSala;
     private Boolean EsSalaPublica;
-    private List<RawImage> ListaDeImagenesDeJugadores = new List<RawImage>();
+    private List<Image> ListaDeImagenesDeJugadores = new List<Image>();
     private List<Text> ListaDetextoDeJugadores = new List<Text>();
 
     public Sprite MiImagen;
     
-    public Text TextValorIdDeLaSala;
-    public Text TexValorTipoDeSala;
-    public RawImage ImageJugador1;
-    public Text TextJugador1;
-    public RawImage ImageJugador2;
-    public Text TextJugador2;
-    public RawImage ImageJugador3;
-    public Text TextJugador3;
-    public RawImage ImageJugador4;
-    public Text TextJugador4;
-    public RawImage ImageJugador5;
-    public Text TextJugador5;
+    public Text txtIdSala;
+    public Text txtTipoSala;
+    public Text txtCantidadJugadores;
+    public Image imageJugador1;
+    public Text txtJugador1;
+    public Image imageJugador2;
+    public Text txtJugador2;
+    public Image imageJugador3;
+    public Text txtJugador3;
+    public Image imageJugador4;
+    public Text txtJugador4;
+    public Image imageJugador5;
+    public Text txtJugador5;
 
     private void InicializarListaDeImaganes()
     {
-        ListaDeImagenesDeJugadores.Add(ImageJugador1);
-        ListaDeImagenesDeJugadores.Add(ImageJugador2);
-        ListaDeImagenesDeJugadores.Add(ImageJugador3);
-        ListaDeImagenesDeJugadores.Add(ImageJugador4);
-        ListaDeImagenesDeJugadores.Add(ImageJugador5);
+        ListaDeImagenesDeJugadores.Add(imageJugador1);
+        ListaDeImagenesDeJugadores.Add(imageJugador2);
+        ListaDeImagenesDeJugadores.Add(imageJugador3);
+        ListaDeImagenesDeJugadores.Add(imageJugador4);
+        ListaDeImagenesDeJugadores.Add(imageJugador5);
     }
 
     private void InicializarListaDeTextos()
     {
-        ListaDetextoDeJugadores.Add(TextJugador1);
-        ListaDetextoDeJugadores.Add(TextJugador2);
-        ListaDetextoDeJugadores.Add(TextJugador3);
-        ListaDetextoDeJugadores.Add(TextJugador4);
-        ListaDetextoDeJugadores.Add(TextJugador5);
+        ListaDetextoDeJugadores.Add(txtJugador1);
+        ListaDetextoDeJugadores.Add(txtJugador2);
+        ListaDetextoDeJugadores.Add(txtJugador3);
+        ListaDetextoDeJugadores.Add(txtJugador4);
+        ListaDetextoDeJugadores.Add(txtJugador5);
     }
     
     private void RecuperarInformacionDeSala()
@@ -63,10 +66,10 @@ public class LogicaDelLobby : MonoBehaviour
         {
             TipoDeSala = "Privada";
         }
-        TexValorTipoDeSala.text = TipoDeSala;
-        TextValorIdDeLaSala.text = IdDeLaSala;
+        txtTipoSala.text = TipoDeSala;
+        txtIdSala.text = IdDeLaSala;
     }
-    private void EsconderJugador(RawImage ImagenADesactivar, Text TextoADesactivar)
+    private void EsconderJugador(Image ImagenADesactivar, Text TextoADesactivar)
     {
         ImagenADesactivar.gameObject.SetActive(false);
         TextoADesactivar.gameObject.SetActive(false);
@@ -74,11 +77,11 @@ public class LogicaDelLobby : MonoBehaviour
     
     private void EsconderJugadoresEnSesion()
     {
-        EsconderJugador(ImageJugador1, TextJugador1);
-        EsconderJugador(ImageJugador2, TextJugador2);
-        EsconderJugador(ImageJugador3, TextJugador3);
-        EsconderJugador(ImageJugador4, TextJugador4);
-        EsconderJugador(ImageJugador5, TextJugador5);
+        EsconderJugador(imageJugador1, txtJugador1);
+        EsconderJugador(imageJugador2, txtJugador2);
+        EsconderJugador(imageJugador3, txtJugador3);
+        EsconderJugador(imageJugador4, txtJugador4);
+        EsconderJugador(imageJugador5, txtJugador5);
     }
     
     // Start is called before the first frame update
@@ -90,32 +93,30 @@ public class LogicaDelLobby : MonoBehaviour
         InicializarListaDeImaganes();
         InicializarListaDeTextos();
         ActualizarInformacionDeLosJugeadoresEnSala();
-        ClienteDelJuego.SeActualizaronRoles += ActualizarInformacionDeLosJugeadoresEnSala;
+        ActualizarTextoCantidadDeJugadores();
+        SuscribirseAEventosClienteJuego();
     }
 
-    private void ActualizarInformacionDelJugador(RawImage ImagenDelJugador, Text TextDelJudador, CuentaModel Cuenta)
+    private void SuscribirseAEventosClienteJuego()
+    {
+        ClienteDelJuego.SeActualizaronRoles += ActualizarInformacionDeLosJugeadoresEnSala;
+        ClienteDelJuego.SeActualizaronRoles += ActualizarTextoCantidadDeJugadores;
+        ClienteDelJuego.SeLlenoLaSala += SeLlenoLaSala;
+        //ClienteDelJuego.IniciaLaPartida += IniciaLaPartida;
+    }
+
+    private void ActualizarInformacionDelJugador(Image ImagenDelJugador, Text TextDelJudador, CuentaModel Cuenta)
     {
         ImagenDelJugador.gameObject.SetActive(true);
-        Texture TexturaDelJugador = RecuperarTexturaDelJugador(null);
         if (TextDelJudador != null)
         {
-            ImagenDelJugador.texture = MiImagen.texture;
+            ImagenDelJugador.sprite = CharacterManager.ManejadorDePersonajes.ObtenerSpriteDePersonaje(Cuenta.Jugador);
         }
+
         TextDelJudador.gameObject.SetActive(true);
         TextDelJudador.text = Cuenta.NombreUsuario;
     }
 
-    private Texture BuscarTextura(String nombre)
-    {
-        return null;
-    }
-    
-    private Texture RecuperarTexturaDelJugador(JugadorModel Jugador)
-    {
-        Texture textura = BuscarTextura("blue-button00");
-        return textura;
-    }
-    
     private void ActualizarInformacionDeLosJugeadoresEnSala()
     {
         for (int i = 0; i < ClienteDelJuego.CuentasEnSesion.Count; i++)
@@ -124,4 +125,55 @@ public class LogicaDelLobby : MonoBehaviour
                 ClienteDelJuego.CuentasEnSesion[i]);
         }
     }
+
+    private void ActualizarTextoCantidadDeJugadores()
+    {
+        String textoAMostrar = String.Format("Esperando jugadores ({0}/5)...", ClienteDelJuego.CuentasEnSesion.Count);
+        txtCantidadJugadores.text = textoAMostrar;
+    }
+
+    private void SeLlenoLaSala()
+    {
+        CambiarTextoAEsperandoAIniciar();
+        IniciarTemporizador();
+    }
+
+    private void CambiarTextoAEsperandoAIniciar()
+    {
+        txtCantidadJugadores.text = "La partida empezara en breve";
+    }
+    
+    private void IniciarTemporizador()
+    {
+        Timer temporizador = new Timer(5000);
+        temporizador.Elapsed += CambiarAMultijugador;
+        temporizador.AutoReset = false;
+        temporizador.Enabled = true;
+        temporizador.Start();
+    }
+    
+    private void CambiarAMultijugador(object source, ElapsedEventArgs e)
+    {
+        CambiarAPantallaMultijugador();
+    }
+
+    //private void IniciaLaPartida(InicioPartida datosDeInicioDePartida)
+    //{
+    //    if (datosDeInicioDePartida.CambiarPantallaMultijugador)
+    //    {
+    //        CambiarAPantallaMultijugador();
+    //    }
+    //}
+
+    public void SoloPruebas()
+    {
+        CambiarAPantallaMultijugador();
+    }
+
+    private void CambiarAPantallaMultijugador()
+    {
+        SceneManager.LoadScene("MultiplayerScreen");
+    }
+
+
 }

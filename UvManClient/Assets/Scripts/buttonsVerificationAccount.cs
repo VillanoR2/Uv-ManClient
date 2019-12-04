@@ -1,6 +1,5 @@
 ﻿using LogicaDelNegocio.Modelo;
-using System.Collections;
-using System.Collections.Generic;
+using MessageService.Dominio.Enum;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -28,7 +27,9 @@ public class buttonsVerificationAccount : MonoBehaviour
         string codigoRecuperado = IFCodigoVerificacion.text;
         if (codigoRecuperado.Length == 10)
         {
-            Debug.Log(CuentaCliente.clienteDeCuenta.servicioDeCuenta.VerificarCuenta(codigoRecuperado, cuentaAVerificar));
+            CuentaCliente.clienteDeCuenta.ReiniciarServicio();
+            EnumEstadoVerificarCuenta SeVerificoCorrectamente = 
+                CuentaCliente.clienteDeCuenta.servicioDeCuenta.VerificarCuenta(codigoRecuperado, cuentaAVerificar);
         }
         else
         {

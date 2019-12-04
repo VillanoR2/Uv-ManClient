@@ -11,7 +11,7 @@ public class SessionCliente : MonoBehaviour, ISessionServiceCallback
 {
     public static SessionCliente clienteDeSesion;
     public SessionServiceClient servicioDeSesion;
-    public string direccionIpDelServidor = "localhost";
+    public string direccionIpDelServidor = "127.0.0.1";
     private String rutaDelArchivoDeConfiguracion;
     private CuentaModel cuentaLogeada;
     public delegate void CambioDireccionIP();
@@ -60,6 +60,14 @@ public class SessionCliente : MonoBehaviour, ISessionServiceCallback
     public bool EstaVivo()
     {
         return true;
+    }
+
+    public void ReiniciarServicio()
+    {
+        if(servicioDeSesion.State == CommunicationState.Closed)
+        {
+            InicializarServicioDeSesion();
+        }
     }
 
     public Boolean Guardar()

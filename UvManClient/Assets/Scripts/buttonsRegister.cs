@@ -1,8 +1,6 @@
 ﻿using LogicaDelNegocio.Modelo;
 using MessageService.Dominio.Enum;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -114,6 +112,7 @@ public class buttonsRegister : MonoBehaviour
         if (ValidarCamposCorrectos(nombreDeusuario, contrasena, confirmacion, correoElectronico))
         {
             CuentaModel cuentaARegistrar = CrearCuentaARegistrar();
+            CuentaCliente.clienteDeCuenta.ReiniciarServicio();
             EnumEstadoRegistro estadoDelRegistro = CuentaCliente.clienteDeCuenta.servicioDeCuenta.Registrarse(cuentaARegistrar);
             Debug.Log(estadoDelRegistro);
             switch (estadoDelRegistro)

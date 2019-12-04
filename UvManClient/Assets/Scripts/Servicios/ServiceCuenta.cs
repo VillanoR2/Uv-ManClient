@@ -56,7 +56,6 @@ public partial class CuentaServiceClient : System.ServiceModel.ClientBase<ICuent
         return base.Channel.VerificarCuenta(CodigoDeVerificacion, CuentaAVerificar);
     }
 }
-
 namespace MessageService.Dominio.Enum {
     using System.Runtime.Serialization;
     

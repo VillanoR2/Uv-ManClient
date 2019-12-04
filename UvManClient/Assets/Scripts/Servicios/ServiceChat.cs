@@ -24,7 +24,7 @@ public interface IChatService {
     void EnviarMensaje(GameChatService.Dominio.Message Mensaje);
     
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/EstaEscribiendo")]
-    void EstaEscribiendo(string Cuenta);
+    void EstaEscribiendo(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
     
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, IsTerminating=true, Action="http://tempuri.org/IChatService/Desconectar")]
     void Desconectar(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
@@ -89,7 +89,7 @@ public partial class ChatServiceClient : System.ServiceModel.DuplexClientBase<IC
         base.Channel.EnviarMensaje(Mensaje);
     }
     
-    public void EstaEscribiendo(string Cuenta) {
+    public void EstaEscribiendo(LogicaDelNegocio.Modelo.CuentaModel Cuenta) {
         base.Channel.EstaEscribiendo(Cuenta);
     }
     
@@ -97,7 +97,6 @@ public partial class ChatServiceClient : System.ServiceModel.DuplexClientBase<IC
         base.Channel.Desconectar(Cuenta);
     }
 }
-
 namespace GameChatService.Dominio {
     using System.Runtime.Serialization;
     

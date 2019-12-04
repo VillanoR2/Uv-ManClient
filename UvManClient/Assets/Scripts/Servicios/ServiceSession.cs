@@ -164,9 +164,15 @@ namespace LogicaDelNegocio.Modelo {
         
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
+        private LogicaDelNegocio.Modelo.CorredorAdquiridoModel CorredorSeleccionadoField;
+        
         private LogicaDelNegocio.Modelo.CorredorAdquiridoModel[] CorredoresAdquiridosField;
         
         private int MejorPuntacionField;
+        
+        private AccesoDatos.PerseguidorAdquirido PerseguidorSeleccionadoField;
+        
+        private GameService.Dominio.Enum.EnumTipoDeJugador RolDelJugadorField;
         
         private LogicaDelNegocio.Modelo.SeguidorAdquiridoModel[] SeguidoresAdquiridosField;
         
@@ -178,6 +184,16 @@ namespace LogicaDelNegocio.Modelo {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public LogicaDelNegocio.Modelo.CorredorAdquiridoModel CorredorSeleccionado {
+            get {
+                return this.CorredorSeleccionadoField;
+            }
+            set {
+                this.CorredorSeleccionadoField = value;
             }
         }
         
@@ -198,6 +214,26 @@ namespace LogicaDelNegocio.Modelo {
             }
             set {
                 this.MejorPuntacionField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AccesoDatos.PerseguidorAdquirido PerseguidorSeleccionado {
+            get {
+                return this.PerseguidorSeleccionadoField;
+            }
+            set {
+                this.PerseguidorSeleccionadoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public GameService.Dominio.Enum.EnumTipoDeJugador RolDelJugador {
+            get {
+                return this.RolDelJugadorField;
+            }
+            set {
+                this.RolDelJugadorField = value;
             }
         }
         
@@ -326,6 +362,378 @@ namespace LogicaDelNegocio.Modelo {
                 this.PrecioField = value;
             }
         }
+    }
+}
+namespace AccesoDatos {
+    using System.Runtime.Serialization;
+    
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PerseguidorAdquirido", Namespace="http://schemas.datacontract.org/2004/07/AccesoDatos")]
+    public partial class PerseguidorAdquirido : object, System.Runtime.Serialization.IExtensibleDataObject {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdField;
+        
+        private AccesoDatos.Jugador JugadorField;
+        
+        private int JugadorIdField;
+        
+        private string NombreField;
+        
+        private int PrecioField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                this.IdField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AccesoDatos.Jugador Jugador {
+            get {
+                return this.JugadorField;
+            }
+            set {
+                this.JugadorField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int JugadorId {
+            get {
+                return this.JugadorIdField;
+            }
+            set {
+                this.JugadorIdField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                this.NombreField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Precio {
+            get {
+                return this.PrecioField;
+            }
+            set {
+                this.PrecioField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Jugador", Namespace="http://schemas.datacontract.org/2004/07/AccesoDatos")]
+    public partial class Jugador : object, System.Runtime.Serialization.IExtensibleDataObject {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private AccesoDatos.CorredorAdquirido[] CorredoresAdquiridosField;
+        
+        private AccesoDatos.Cuenta CuentaField;
+        
+        private int IdField;
+        
+        private int MejorPuntacionField;
+        
+        private AccesoDatos.PerseguidorAdquirido[] PerseguidorAdquiridoField;
+        
+        private int UvCoinsField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AccesoDatos.CorredorAdquirido[] CorredoresAdquiridos {
+            get {
+                return this.CorredoresAdquiridosField;
+            }
+            set {
+                this.CorredoresAdquiridosField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AccesoDatos.Cuenta Cuenta {
+            get {
+                return this.CuentaField;
+            }
+            set {
+                this.CuentaField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                this.IdField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MejorPuntacion {
+            get {
+                return this.MejorPuntacionField;
+            }
+            set {
+                this.MejorPuntacionField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AccesoDatos.PerseguidorAdquirido[] PerseguidorAdquirido {
+            get {
+                return this.PerseguidorAdquiridoField;
+            }
+            set {
+                this.PerseguidorAdquiridoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int UvCoins {
+            get {
+                return this.UvCoinsField;
+            }
+            set {
+                this.UvCoinsField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Cuenta", Namespace="http://schemas.datacontract.org/2004/07/AccesoDatos")]
+    public partial class Cuenta : object, System.Runtime.Serialization.IExtensibleDataObject {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private string CodigoVerificacionField;
+        
+        private string CorreoElectronicoField;
+        
+        private string PasswordField;
+        
+        private string UsuarioField;
+        
+        private AccesoDatos.Jugador Usuario1Field;
+        
+        private bool ValidaField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CodigoVerificacion {
+            get {
+                return this.CodigoVerificacionField;
+            }
+            set {
+                this.CodigoVerificacionField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CorreoElectronico {
+            get {
+                return this.CorreoElectronicoField;
+            }
+            set {
+                this.CorreoElectronicoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                this.PasswordField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Usuario {
+            get {
+                return this.UsuarioField;
+            }
+            set {
+                this.UsuarioField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AccesoDatos.Jugador Usuario1 {
+            get {
+                return this.Usuario1Field;
+            }
+            set {
+                this.Usuario1Field = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Valida {
+            get {
+                return this.ValidaField;
+            }
+            set {
+                this.ValidaField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CorredorAdquirido", Namespace="http://schemas.datacontract.org/2004/07/AccesoDatos")]
+    public partial class CorredorAdquirido : object, System.Runtime.Serialization.IExtensibleDataObject {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private int IdField;
+        
+        private AccesoDatos.Jugador JugadorField;
+        
+        private int JugadorIdField;
+        
+        private string NombreField;
+        
+        private string PoderField;
+        
+        private int PrecioField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                this.IdField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public AccesoDatos.Jugador Jugador {
+            get {
+                return this.JugadorField;
+            }
+            set {
+                this.JugadorField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int JugadorId {
+            get {
+                return this.JugadorIdField;
+            }
+            set {
+                this.JugadorIdField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                this.NombreField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Poder {
+            get {
+                return this.PoderField;
+            }
+            set {
+                this.PoderField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Precio {
+            get {
+                return this.PrecioField;
+            }
+            set {
+                this.PrecioField = value;
+            }
+        }
+    }
+}
+namespace GameService.Dominio.Enum {
+    using System.Runtime.Serialization;
+    
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EnumTipoDeJugador", Namespace="http://schemas.datacontract.org/2004/07/GameService.Dominio.Enum")]
+    public enum EnumTipoDeJugador : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Corredor = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Perseguidor1 = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Perseguidor2 = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Perseguidor3 = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        Perseguidor4 = 4,
     }
 }
 namespace SessionService.Dominio.Enum {

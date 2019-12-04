@@ -9,18 +9,20 @@ using UnityEngine.UI;
 
 public class buttonsJoinPrivateLobby : MonoBehaviour
 {
-    private JuegoCliente ClienteDelJuego = JuegoCliente.ClienteDelJuego;
+    private JuegoCliente ClienteDelJuego;
     private CuentaModel CuentaLogeada;
     public InputField txtBoxIdSala;
     
-    // Start is called before the first frame update
-    void Start()
+    
+    private void InicializarServicio()
     {
+        ClienteDelJuego = JuegoCliente.ClienteDelJuego;
         RecuperarCuentaLogeada();
     }
 
     public void UnirseASalaPrivada()
     {
+        InicializarServicio();
         if (VerificarIdValido())
         {
             String IdDeLaSala = txtBoxIdSala.text;
@@ -58,7 +60,6 @@ public class buttonsJoinPrivateLobby : MonoBehaviour
     {
         Boolean SeUnioCorrectamenteAlChat;
         ChatServiceClient clienteDeChat = ChatCliente.clienteDeChat.servicioDeChat;
-        ClienteDelJuego.ReinciarClienteDeJuego();
         ChatCliente.clienteDeChat.ReiniciarServicio();
         SeUnioCorrectamenteAlChat = clienteDeChat.Conectar(CuentaLogeada); 
         return SeUnioCorrectamenteAlChat;
@@ -66,6 +67,7 @@ public class buttonsJoinPrivateLobby : MonoBehaviour
     
     private EnumEstadoDeUnirseASala UnirseAlServicioDeJuego(String id)
     {
+        ClienteDelJuego.ReinciarClienteDeJuego();
         return ClienteDelJuego.ServicioDeJuego.UnirseASalaPrivada(id, CuentaLogeada);
     }
     
@@ -77,11 +79,5 @@ public class buttonsJoinPrivateLobby : MonoBehaviour
     private Boolean VerificarIdValido()
     {
         return txtBoxIdSala.text != "";
-    }
-    
-        // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

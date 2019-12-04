@@ -46,4 +46,12 @@ public class CuentaCliente : MonoBehaviour
         InicializarServicioDeCuenta();
     }
 
+    public void ReiniciarServicio()
+    {
+        if(servicioDeCuenta.State == CommunicationState.Closed)
+        {
+            InicializarServicioDeCuenta();
+        }
+    }
+
 }

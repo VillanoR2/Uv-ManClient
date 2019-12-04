@@ -8,6 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Net.Sockets;
+using UnityEngine;
 
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -112,63 +114,118 @@ public partial class GameServiceClient : System.ServiceModel.DuplexClientBase<IG
     }
 }
 
-namespace LogicaDelNegocio.Modelo.Enum {
-    using System.Runtime.Serialization;
-    
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnumTiposDeJugadores", Namespace="http://schemas.datacontract.org/2004/07/LogicaDelNegocio.Modelo.Enum")]
-    public enum EnumTiposDeJugadores : int {
+namespace GameService.Dominio
+{
+    public class UdpReciver
+    {
+        private string DireccionIpDelServidor;
+        private readonly int PUERTO = 8296;
+        private readonly int PUERTO2 = 8297;
+        private System.Net.Sockets.UdpClient ClienteUDP;
         
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        Corredor = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        PrimerPerseguidor = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        SegundoPerseguior = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        TercerPerseguidor = 3,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        CuartoPerseguidor = 4,
-    }
-}
-namespace GameService.Dominio.Enum {
-    using System.Runtime.Serialization;
-    
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnumEstadoDeUnirseASala", Namespace="http://schemas.datacontract.org/2004/07/GameService.Dominio.Enum")]
-    public enum EnumEstadoDeUnirseASala : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        UnidoCorrectamente = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        SalaInexistente = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        SalaLlena = -1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        NoSeEncuentraEnSesion = -2,
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnumEstadoCrearSalaConId", Namespace="http://schemas.datacontract.org/2004/07/GameService.Dominio.Enum")]
-    public enum EnumEstadoCrearSalaConId : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        CreadaCorrectamente = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        IdYaExistente = -1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        NoSeEncuentraEnSesion = -2,
-    }
-}
+        public delegate void RecibirEventoEnJuego(EventoEnJuego eventoEnJuego);
+        public event RecibirEventoEnJuego EventoRecibido;
 
+        public UdpReciver(string direccionIpDelServidor)
+        {
+            DireccionIpDelServidor = direccionIpDelServidor;
+        }
+        
+        public static EventoEnJuego Deserializar(byte[] byteArray)
+        {
+            if (byteArray == null)
+            {
+                return null;
+            }
+            using (System.IO.MemoryStream StreamDeMemoria = new System.IO.MemoryStream(byteArray))
+            {
+                System.Runtime.Serialization.Formatters.Binary.BinaryFormatter FormateadorBinario =
+                    new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                StreamDeMemoria.Position = 0;
+                EventoEnJuego eventoEnJuego = (EventoEnJuego)FormateadorBinario.Deserialize(StreamDeMemoria);
+                return eventoEnJuego;
+            }
+        }
+        
+        public void RecibirDatos()
+        {
+            try
+            {
+                ClienteUDP = new System.Net.Sockets.UdpClient(PUERTO);
+            }
+            catch (SocketException)
+            {
+                ClienteUDP = new UdpClient(PUERTO2);   
+            }
+            //try
+            //{
+                while (true)
+                {
+                    System.Net.IPEndPoint anyIP = 
+                        new System.Net.IPEndPoint(System.Net.IPAddress.Any, 0);
+                    byte[] data = ClienteUDP.Receive(ref anyIP);
+                    if (data != null && data.Length > 0 )
+                    {
+                        EventoEnJuego eventoEnJuego = Deserializar(data);
+                        EventoRecibido?.Invoke(eventoEnJuego);   
+                    }
+                }
+            //}
+            //catch (System.Exception err)
+            //{
+            //    System.Diagnostics.Debug.Write(err.Message);
+            //}
+        }
+
+        public void LiberarRecursos()
+        {
+            ClienteUDP.Dispose();
+        }
+    }
+
+    
+    public class UdpSender
+    {
+        private readonly int PUERTO = 8090;
+        private readonly int PUERTO2 = 8091;
+        private System.Net.IPEndPoint IpEnviarPaquete;
+        private System.Net.IPEndPoint IpEnviarPaquete2;
+        private System.Net.Sockets.UdpClient ClienteUDP;
+
+        public UdpSender(string direccionIp)
+        {
+            if(direccionIp == "localhost")
+            {
+                direccionIp = "127.0.0.1";
+            }
+            IpEnviarPaquete = new System.Net.IPEndPoint(System.Net.IPAddress.Parse(direccionIp), PUERTO);
+            IpEnviarPaquete2 = new System.Net.IPEndPoint(System.Net.IPAddress.Parse(direccionIp), PUERTO2);
+        }
+        
+        private static byte[] SerializarAArregloDeBytes(EventoEnJuego eventoEnJuego)
+        {
+            if (eventoEnJuego == null)
+            {
+                return null;
+            }
+            using (System.IO.MemoryStream StreamDeMemoria = new System.IO.MemoryStream())
+            {
+                System.Runtime.Serialization.DataContractSerializer Serializador = 
+                    new System.Runtime.Serialization.DataContractSerializer(typeof(EventoEnJuego));
+                Serializador.WriteObject(StreamDeMemoria, eventoEnJuego);
+                return StreamDeMemoria.ToArray();
+            }
+        }
+
+        public void EnviarPaquete(EventoEnJuego eventoEnJuego)
+        {
+            ClienteUDP = new System.Net.Sockets.UdpClient();
+            if (eventoEnJuego != null)
+            {
+                byte[] datos = SerializarAArregloDeBytes(eventoEnJuego);
+                ClienteUDP.Send(datos, datos.Length, IpEnviarPaquete);
+                ClienteUDP.Send(datos, datos.Length, IpEnviarPaquete2);
+            }
+        }
+    }
+}
