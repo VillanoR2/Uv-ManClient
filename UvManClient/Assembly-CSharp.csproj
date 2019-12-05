@@ -65,6 +65,7 @@
     <Compile Include="Assets\Character\CharacterMovementOnline.cs" />
     <Compile Include="Assets\Maps\Objects\UvCoinLogic.cs" />
     <Compile Include="Assets\Scripts\AdaptadorDeCamara.cs" />
+    <Compile Include="Assets\Scripts\Alerta.cs" />
     <Compile Include="Assets\Scripts\buttonPressStart.cs" />
     <Compile Include="Assets\Scripts\buttonsCreateLobby.cs" />
     <Compile Include="Assets\Scripts\buttonsJoinLobby.cs" />

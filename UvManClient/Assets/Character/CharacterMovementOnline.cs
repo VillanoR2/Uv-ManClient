@@ -1,14 +1,19 @@
-﻿using System.Collections;
+﻿using GameService.Dominio.Enum;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterMovementOnline : MonoBehaviour
 {
+    public int VidasDisponibles;
     public float Speed = 4f;
     Vector2 mov;
     Animator Anim;
     Rigidbody2D rb2D;
     Vector2 Posicion;
+    public Vector2 PosicionInicial;
+    public EnumTipoDeJugador RolDelJugador;
+
 
     void Start()
     {
@@ -44,6 +49,14 @@ public class CharacterMovementOnline : MonoBehaviour
 
         rb2D.position = Posicion;
         mov = Vector2.zero;
+    }
+
+    public void ColocarseEnLaPosicionInicial()
+    {
+        if(PosicionInicial != null)
+        {
+            mov = PosicionInicial;
+        }
     }
 
 }

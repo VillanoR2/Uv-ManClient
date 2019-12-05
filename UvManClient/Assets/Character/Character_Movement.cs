@@ -1,10 +1,17 @@
-﻿using UnityEngine;
+﻿using GameService.Dominio.Enum;
+using UnityEngine;
 
 public class Character_Movement : MonoBehaviour
 {
+    private int CantidadDeUvCoinsRecolectadas;
+    private int TotalDeUvCoins;
+
     public delegate void PosicionJugador(float x, float y, float movimientoX, float movimientoY);
     public event PosicionJugador MeMovi;
-
+    public EnumTipoDeJugador RolDelJugador;
+    public Vector2 PosicionInicial;
+    public int VidasDisponibles;
+    public int PuntacionTotal;
     public float Speed = 4f;
     Vector2 mov;
     Animator Anim;
@@ -16,6 +23,7 @@ public class Character_Movement : MonoBehaviour
         Anim = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
         InicializarAnimacionHaciaAbajo();
+        CantidadDeUvCoinsRecolectadas = 0;
     }
 
     private void InicializarAnimacionHaciaAbajo()
@@ -53,5 +61,24 @@ public class Character_Movement : MonoBehaviour
         {
             MeMovi?.Invoke(rb2D.position.x, rb2D.position.y, mov.x, mov.y);
         }
+    }
+
+    public void DescontarVida()
+    {
+        VidasDisponibles -= 1;
+        ColocarseEnLaPosicionInicial();
+    }
+
+    public void ColocarseEnLaPosicionInicial()
+    {
+        if (PosicionInicial != null)
+        {
+            mov = PosicionInicial;
+        }
+    }
+
+    public void SincronizarCantidadDeVidas(int cantidad)
+    {
+        VidasDisponibles = cantidad;
     }
 }
