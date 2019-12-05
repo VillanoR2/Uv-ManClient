@@ -74,6 +74,7 @@
      <Compile Include="Assets\Scripts\Globalizacion\ControladorJson.cs" />
      <Compile Include="Assets\Scripts\Globalizacion\Serializable.cs" />
      <Compile Include="Assets\Scripts\Globalizacion\TextoId.cs" />
+     <Compile Include="Assets\Scripts\LifeManager.cs" />
      <Compile Include="Assets\Scripts\NotificationCenter.cs" />
      <Compile Include="Assets\Scripts\Puntuacion.cs" />
      <Compile Include="Assets\Scripts\SelectLanguage.cs" />

@@ -39,6 +39,11 @@ public class buttonsMainMenu : MonoBehaviour
         }
     }
 
+    public void Option(){
+         SceneManager.LoadScene("OptionScreen");
+
+    }
+
     public void Quit()
     {
         SessionCliente.clienteDeSesion.servicioDeSesion.CerrarSesion(cuenta);

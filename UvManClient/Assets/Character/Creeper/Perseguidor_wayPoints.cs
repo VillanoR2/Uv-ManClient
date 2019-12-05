@@ -11,18 +11,27 @@ public class Perseguidor_wayPoints : MonoBehaviour
     public float visionRadius;
     public float attackRadius;
     Vector3 actualPosition;
+    Vector3 target;
     GameObject player;
     Animator anim;
     Rigidbody2D rb2D;
 
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        actualPosition = waypoints[cur].position;
+        actualPosition = transform.position;
         anim = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
     }
     void FixedUpdate()
+    {
+        //PointPatrol();
+            
+        TargetFollow();
+    }
+
+    void PointPatrol()
     {
         Vector2 mov = waypoints[cur].position - transform.position;
         anim.SetFloat("MovX", mov.x);
@@ -31,10 +40,18 @@ public class Perseguidor_wayPoints : MonoBehaviour
 
         if (transform.position != waypoints[cur].position)
         {
-            Vector2 p = Vector2.MoveTowards(transform.position, waypoints[cur].position, speed);
+            Vector2 p = Vector2.MoveTowards(transform.position, waypoints[cur].position,speed);
             rb2D.MovePosition(p);
+        }
+        else
+        {
+            cur = (cur + 1) % waypoints.Length;
+        }
 
-            Vector3 target = actualPosition;
+    }
+    void TargetFollow()
+    {
+            target = actualPosition;
 
             RaycastHit2D hit = Physics2D.Raycast(transform.position,
             player.transform.position - transform.transform.position,
@@ -49,6 +66,7 @@ public class Perseguidor_wayPoints : MonoBehaviour
             {
                 if (hit.collider.tag == "Player")
                 {
+                    Debug.Log("Te veo...");
                     target = player.transform.position;
                 }
             }
@@ -58,13 +76,15 @@ public class Perseguidor_wayPoints : MonoBehaviour
 
             if (target != actualPosition && distance < attackRadius)
             {
+                Debug.Log("Te ataco");
                 anim.SetFloat("MovX", dir.x);
                 anim.SetFloat("MovY", dir.y);
                 anim.Play("Creeper_Walk", -1, 0);
             }
             else
             {
-                rb2D.MovePosition(transform.position + dir * speed * Time.deltaTime);
+                Debug.Log("Te sigo...");
+                rb2D.MovePosition(transform.position + dir * speed);
                 anim.speed = 1;
                 anim.SetFloat("MovX", dir.x);
                 anim.SetFloat("MovY", dir.y);
@@ -78,27 +98,13 @@ public class Perseguidor_wayPoints : MonoBehaviour
             }
 
             Debug.DrawLine(transform.position, target, Color.green);
-        }
-        else
-        {
-            cur = (cur + 1) % waypoints.Length;
-        }
-
     }
-
-    void OnTriggerEnter2D(Collider2D co)
-    {
-        if (co.tag == "Player")
-        {
-
-            Destroy(co.gameObject);
-        }
-    }
+    
 
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, attackRadius);
         Gizmos.DrawWireSphere(transform.position, visionRadius);
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
 }

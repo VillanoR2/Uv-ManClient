@@ -8,11 +8,13 @@ public class Character_Movement : MonoBehaviour
    Vector2 mov;
    Animator Anim;
    Rigidbody2D rb2D;
+   AudioSource audioS;
 
     void Start()
     {
         Anim = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
+        audioS = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -34,5 +36,14 @@ public class Character_Movement : MonoBehaviour
     void FixedUpdate()
     {
         rb2D.MovePosition(rb2D.position + mov * Speed * Time.deltaTime);
+    }
+
+    void OnTriggerEnter2D(Collider2D collider){
+        if(collider.gameObject.tag == "Enemy"){
+            Anim.SetBool("Die", true);
+            audioS.Play();
+            Speed = 0;
+    
+        }
     }
 }
