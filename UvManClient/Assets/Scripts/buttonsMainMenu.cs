@@ -27,6 +27,11 @@ public class buttonsMainMenu : MonoBehaviour
         SceneManager.LoadScene("JoinLobby");
     }
 
+    public void Option(){
+         SceneManager.LoadScene("OptionScreen");
+
+    }
+
     public void Quit()
     {
         SessionCliente.clienteDeSesion.servicioDeSesion.CerrarSesion(cuenta);
