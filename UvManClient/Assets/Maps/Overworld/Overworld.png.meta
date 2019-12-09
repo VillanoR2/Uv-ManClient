@@ -33364,7 +33364,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 9, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -36980,7 +36980,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 9, y: 0, z: 0, w: 2}
       outline:
       - - {x: -8, y: 8}
         - {x: -8, y: -1}
@@ -36988,7 +36988,11 @@ TextureImporter:
         - {x: 0, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
-      physicsShape: []
+      physicsShape:
+      - - {x: 1, y: 6}
+        - {x: 1, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 6}
       tessellationDetail: 0
       bones: []
       spriteID: 0a394aa58e1544cc1a0702ac990df579
@@ -37886,7 +37890,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 9, y: 1, z: 0, w: 2}
       outline:
       - - {x: 0, y: 8}
         - {x: 0, y: -8}
@@ -38790,7 +38794,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 9, y: 1, z: 0, w: 0}
       outline:
       - - {x: 0, y: 8}
         - {x: 0, y: -8}
@@ -38808,8 +38812,8 @@ TextureImporter:
       name: Overworld_1796
       rect:
         serializedVersion: 2
-        x: 688
-        y: 336
+        x: 784
+        y: 223
         width: 16
         height: 16
       alignment: 0
@@ -39688,13 +39692,13 @@ TextureImporter:
       name: Overworld_1840
       rect:
         serializedVersion: 2
-        x: 672
+        x: 681
         y: 320
-        width: 16
+        width: 7
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 0, w: 2}
       outline:
       - - {x: 0, y: 8}
         - {x: 0, y: -8}
@@ -49242,7 +49246,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 2, y: 1, z: 0, w: 2}
       outline:
       - - {x: -6, y: 6}
         - {x: -6, y: -8}
@@ -49266,7 +49270,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 1, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -53866,7 +53870,7 @@ TextureImporter:
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 2, y: 3, z: 2, w: 2}
       outline: []
       physicsShape: []
       tessellationDetail: 0
