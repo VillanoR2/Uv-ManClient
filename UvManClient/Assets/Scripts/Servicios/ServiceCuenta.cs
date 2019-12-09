@@ -19,6 +19,9 @@ public interface ICuentaService {
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentaService/VerificarCuenta", ReplyAction="http://tempuri.org/ICuentaService/VerificarCuentaResponse")]
     MessageService.Dominio.Enum.EnumEstadoVerificarCuenta VerificarCuenta(string CodigoDeVerificacion, LogicaDelNegocio.Modelo.CuentaModel CuentaAVerificar);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICuentaService/ReEnviarCorreoVerificacion", ReplyAction="http://tempuri.org/ICuentaService/ReEnviarCorreoVerificacionResponse")]
+    void ReEnviarCorreoVerificacion(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -54,6 +57,10 @@ public partial class CuentaServiceClient : System.ServiceModel.ClientBase<ICuent
     
     public MessageService.Dominio.Enum.EnumEstadoVerificarCuenta VerificarCuenta(string CodigoDeVerificacion, LogicaDelNegocio.Modelo.CuentaModel CuentaAVerificar) {
         return base.Channel.VerificarCuenta(CodigoDeVerificacion, CuentaAVerificar);
+    }
+    
+    public void ReEnviarCorreoVerificacion(LogicaDelNegocio.Modelo.CuentaModel Cuenta) {
+        base.Channel.ReEnviarCorreoVerificacion(Cuenta);
     }
 }
 namespace MessageService.Dominio.Enum {

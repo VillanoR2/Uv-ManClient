@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using GameService.Dominio.Enum;
 using LogicaDelNegocio.Modelo;
+using LogicaDelNegocio.Modelo.Enum;
 using UnityEngine;
 
 public class CharacterManager : MonoBehaviour

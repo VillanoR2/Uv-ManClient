@@ -87,6 +87,7 @@ public class LogicaDelLobby : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SuscribirseAEventosClienteJuego();
         EsconderJugadoresEnSesion();
         RecuperarInformacionDeSala();
         InicializarTextosDeInformacionSala();
@@ -94,7 +95,7 @@ public class LogicaDelLobby : MonoBehaviour
         InicializarListaDeTextos();
         ActualizarInformacionDeLosJugeadoresEnSala();
         ActualizarTextoCantidadDeJugadores();
-        SuscribirseAEventosClienteJuego();
+        PreguntarSalaLlena();
     }
 
     private void SuscribirseAEventosClienteJuego()
@@ -103,6 +104,11 @@ public class LogicaDelLobby : MonoBehaviour
         ClienteDelJuego.SeActualizaronRoles += ActualizarTextoCantidadDeJugadores;
         ClienteDelJuego.SeLlenoLaSala += SeLlenoLaSala;
         //ClienteDelJuego.IniciaLaPartida += IniciaLaPartida;
+    }
+
+    private void PreguntarSalaLlena()
+    {
+        ClienteDelJuego.EstaLlenaLaSala();
     }
 
     private void ActualizarInformacionDelJugador(Image ImagenDelJugador, Text TextDelJudador, CuentaModel Cuenta)
@@ -119,23 +125,23 @@ public class LogicaDelLobby : MonoBehaviour
 
     private void ActualizarInformacionDeLosJugeadoresEnSala()
     {
-        for (int i = 0; i < ClienteDelJuego.CuentasEnSesion.Count; i++)
+        for (int i = 0; i < ClienteDelJuego.CuentasEnLaSala.Count; i++)
         {
             ActualizarInformacionDelJugador(ListaDeImagenesDeJugadores[i], ListaDetextoDeJugadores[i],
-                ClienteDelJuego.CuentasEnSesion[i]);
+                ClienteDelJuego.CuentasEnLaSala[i]);
         }
     }
 
     private void ActualizarTextoCantidadDeJugadores()
     {
-        String textoAMostrar = String.Format("Esperando jugadores ({0}/5)...", ClienteDelJuego.CuentasEnSesion.Count);
+        String textoAMostrar = String.Format("Esperando jugadores ({0}/5)...", ClienteDelJuego.CuentasEnLaSala.Count);
         txtCantidadJugadores.text = textoAMostrar;
     }
 
     private void SeLlenoLaSala()
     {
-        CambiarTextoAEsperandoAIniciar();
         IniciarTemporizador();
+        CambiarTextoAEsperandoAIniciar();
     }
 
     private void CambiarTextoAEsperandoAIniciar()

@@ -1,45 +1,63 @@
 ﻿using Assets.Scripts.Util;
 using GameService.Dominio;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Timers;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ManejoDeCanvas : MonoBehaviour
 {
     private Canvas cInicioPartida;
-    private bool EstaElJuegoEnInicio;
+    private bool EstaElJuegoPausado;
     private JuegoCliente ClienteDelJuego = JuegoCliente.ClienteDelJuego;
     private Cronometro CronometroInicioDePartida;
     private Text txtCuentaRegresiva;
     private int SegundosParaInicioDePartida;
+    private string TextoEnCanvas;
 
     void InicializarCanvasInicioPartida()
     {
-        EstaElJuegoEnInicio = true;
+        EstaElJuegoPausado = true;
         cInicioPartida = GetComponent<Canvas>();
         cInicioPartida.enabled = true;
-        SegundosParaInicioDePartida = 5;
+        SegundosParaInicioDePartida = 10;
         Time.timeScale = 0;
-        RealizarConteo();
+        //RealizarConteo();
     }
 
     private void SuscribirseAEventosDelJuego()
     {
-        ClienteDelJuego.IniciaLaPartida += RealizarAccionDeInicio;
+        ClienteDelJuego.IniciaLaPartida += RealizarAccionDeInicioDeJuego;
+        ClienteDelJuego.PrepararNuevoNivel += RealizarAccionDeInicioDeNivel;
+        ClienteDelJuego.NuevoNivel += RealizarAccionInicioNivel;
     }
 
-    private void RealizarAccionDeInicio(InicioPartida iniciaPartida)
+    private void RealizarAccionDeInicioDeNivel()
+    {
+        SegundosParaInicioDePartida = 5;
+        EstaElJuegoPausado = true;
+    }
+
+    private void RealizarAccionInicioNivel(InicioPartida DatosDeInicioDePartida)
+    {
+        if (DatosDeInicioDePartida.IniciarNivel)
+        {
+            DesactivarPausa();
+        }
+        else if(DatosDeInicioDePartida.IniciarCuentaRegresivaInicioNivel)
+        {
+            RealizarConteo();
+        }
+    }
+
+    private void RealizarAccionDeInicioDeJuego(InicioPartida iniciaPartida)
     {
         if (iniciaPartida.IniciarPartida)
         {
-            if (EstaElJuegoEnInicio)
+            if (EstaElJuegoPausado)
             {
                 DesactivarPausa();
             }
-        }else if (iniciaPartida.CambiarPantallaMultijugador)
+        }else if (iniciaPartida.IniciarCuentaRegresivaInicioPartida)
         {
             RealizarConteo();
         }
@@ -47,7 +65,7 @@ public class ManejoDeCanvas : MonoBehaviour
 
     private void DesactivarPausa()
     {
-        EstaElJuegoEnInicio = false;
+        EstaElJuegoPausado = false;
     }
 
     private void RealizarConteo()
@@ -60,13 +78,14 @@ public class ManejoDeCanvas : MonoBehaviour
 
     void Start()
     {
+        SuscribirseAEventosDelJuego();
         txtCuentaRegresiva = GetComponentInChildren<Text>();
         InicializarCanvasInicioPartida();
     }
 
     private void VerificarSiEstaActivaLaPantallaDeEspera()
     {
-        if (EstaElJuegoEnInicio)
+        if (EstaElJuegoPausado)
         {
             cInicioPartida.enabled = true;
         }
@@ -79,14 +98,14 @@ public class ManejoDeCanvas : MonoBehaviour
 
     private void ActualizarTextoCuentaRegresiva()
     {
-        txtCuentaRegresiva.text = String.Format("El juego comenzara en {0}...", SegundosParaInicioDePartida);
+        TextoEnCanvas = String.Format("El juego comenzara en {0}...", SegundosParaInicioDePartida);
     }
 
     // Update is called once per frame
     void Update()
     {
         VerificarSiEstaActivaLaPantallaDeEspera();
-        ActualizarTextoCuentaRegresiva();
+        txtCuentaRegresiva.text = TextoEnCanvas;
     }
 
     private void ActualizarSegundosContador()

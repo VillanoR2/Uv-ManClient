@@ -1,6 +1,7 @@
 ﻿using GameService.Dominio;
 using GameService.Dominio.Enum;
 using LogicaDelNegocio.Modelo;
+using LogicaDelNegocio.Modelo.Enum;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,25 +11,29 @@ public class LogicaDelMultiplayer : MonoBehaviour
     private CharacterManager ManejadorDePersonajes = CharacterManager.ManejadorDePersonajes;
     private JuegoCliente ClienteDelJuego = JuegoCliente.ClienteDelJuego;
     public Character_Movement JugadorActual;
-    public GameObject Corredor;
-    public GameObject Perseguidor1;
-    public GameObject Perseguidor2;
-    public GameObject Perseguidor3;
-    public GameObject Perseguidor4;
+    public GameObject PrefabUvCoins;
+    private GameObject UvCoins;
+    private GameObject Corredor;
+    private GameObject Perseguidor1;
+    private GameObject Perseguidor2;
+    private GameObject Perseguidor3;
+    private GameObject Perseguidor4;
+    
     private int CANTIDAD_VIDAS_CORREDOR = 5;
     private int CANTIDAD_VIDAS_PERSEGUIDOR = 3;
 
     private Dictionary<CuentaModel, GameObject> Jugadores = new Dictionary<CuentaModel, GameObject>();
     private Dictionary<CuentaModel, CharacterMovementOnline> ScriptsDeMovimiento = new Dictionary<CuentaModel, CharacterMovementOnline>();
-    private readonly Vector2 POSICION_CORREDOR = new Vector2(-7f,3.5f);
-    private readonly Vector2 POSICION_PERSEGUIDOR1 = new Vector2(-0.5f,-8.5f);
-    private readonly Vector2 POSICION_PERSEGUIDOR2 = new Vector2(12.5f,-8.5f);
-    private readonly Vector2 POSICION_PERSEGUIDOR3 = new Vector2(23.5f,-16.5f);
-    private readonly Vector2 POSICION_PERSEGUIDOR4 = new Vector2(-11.5f,11.5f);
+    private readonly Vector2 POSICION_CORREDOR = new Vector2(-7f, 3.5f);
+    private readonly Vector2 POSICION_PERSEGUIDOR1 = new Vector2(-0.5f, -8.5f);
+    private readonly Vector2 POSICION_PERSEGUIDOR2 = new Vector2(12.5f, -8.5f);
+    private readonly Vector2 POSICION_PERSEGUIDOR3 = new Vector2(23.5f, -16.5f);
+    private readonly Vector2 POSICION_PERSEGUIDOR4 = new Vector2(-11.5f, 11.5f);
 
 
     void Start()
-    {   
+    {
+        ColocarUvCoinsEnMapa();
         InicializarPersonajesEnElMapa();
         SuscribirseAEventosDeJuego();
     }
@@ -37,14 +42,15 @@ public class LogicaDelMultiplayer : MonoBehaviour
     {
         ClienteDelJuego.SeMurioUnJugador += MatarJugador;
         ClienteDelJuego.SeMovioUnJugador += MoverJugador;
+        ClienteDelJuego.PrepararNuevoNivel += ReiniciarNivel;
     }
 
     private CuentaModel ObtenerCuentaDeNombreDeUsuario(string cuenta)
     {
         CuentaModel CuentaAMover = null;
-        foreach(CuentaModel cuentaEnElDiccionario in Jugadores.Keys)
+        foreach (CuentaModel cuentaEnElDiccionario in Jugadores.Keys)
         {
-            if(cuentaEnElDiccionario.NombreUsuario == cuenta)
+            if (cuentaEnElDiccionario.NombreUsuario == cuenta)
             {
                 CuentaAMover = cuentaEnElDiccionario;
                 break;
@@ -56,7 +62,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
     private void MoverJugador(MovimientoJugador movimientoJugador)
     {
         CuentaModel cuentaAMover = ObtenerCuentaDeNombreDeUsuario(movimientoJugador.Usuario);
-        if(cuentaAMover != null)
+        if (cuentaAMover != null)
         {
             ScriptsDeMovimiento[cuentaAMover].RealizarMovimiento(movimientoJugador.PosicionX,
                 movimientoJugador.PosicionY, movimientoJugador.MovimientoX, movimientoJugador.MovimentoY);
@@ -66,9 +72,9 @@ public class LogicaDelMultiplayer : MonoBehaviour
     private CuentaModel ObtenerCuentaDelDiccionario(CuentaModel cuentaABuscar)
     {
         CuentaModel cuenta = null;
-        foreach(CuentaModel cuentaEnElDiccionario in Jugadores.Keys)
+        foreach (CuentaModel cuentaEnElDiccionario in Jugadores.Keys)
         {
-            if(cuentaABuscar.NombreUsuario == cuentaEnElDiccionario.NombreUsuario)
+            if (cuentaABuscar.NombreUsuario == cuentaEnElDiccionario.NombreUsuario)
             {
                 cuenta = cuentaEnElDiccionario;
                 break;
@@ -84,63 +90,92 @@ public class LogicaDelMultiplayer : MonoBehaviour
 
     private void InicializarPersonajesEnElMapa()
     {
-        foreach(CuentaModel cuentaEnJuego in ClienteDelJuego.CuentasEnSesion)
+        foreach (CuentaModel cuentaEnJuego in ClienteDelJuego.CuentasEnLaSala)
         {
             GameObject PrefabAInstanciar = ManejadorDePersonajes.ObtenerPrefabDePersonaje(cuentaEnJuego.Jugador);
-            bool esElJugadorPrincipal = EsElJugadorPrincipal(cuentaEnJuego);
             GameObject InstanciaDelObjecto = null;
             CharacterMovementOnline ScriptDeMovimiento = null;
-            Vector2 PosicionInicial = new Vector2(0,0);
+            Vector2 PosicionInicial = new Vector2(0, 0);
             EnumTipoDeJugador TipoDeJugador = EnumTipoDeJugador.Corredor;
+            int CantidadDeVidas = CANTIDAD_VIDAS_PERSEGUIDOR;
+            bool EsElJugadorActual = EsElJugadorPrincipal(cuentaEnJuego);
+            string tag = "Perseguidor";
             switch (cuentaEnJuego.Jugador.RolDelJugador)
             {
-                case EnumTipoDeJugador.Corredor:    
-                    InstanciaDelObjecto = ColocarPersonajeEnElMapa(PrefabAInstanciar, POSICION_CORREDOR, esElJugadorPrincipal);
+                case EnumTipoDeJugador.Corredor:
+                    InstanciaDelObjecto = ColocarPersonajeEnElMapa(PrefabAInstanciar, POSICION_CORREDOR, EsElJugadorActual);
                     PosicionInicial = POSICION_CORREDOR;
                     TipoDeJugador = EnumTipoDeJugador.Corredor;
+                    CantidadDeVidas = CANTIDAD_VIDAS_CORREDOR;
+                    tag = "Corredor";
                     break;
                 case EnumTipoDeJugador.Perseguidor1:
-                    InstanciaDelObjecto = ColocarPersonajeEnElMapa(PrefabAInstanciar, POSICION_PERSEGUIDOR1, esElJugadorPrincipal);
+                    InstanciaDelObjecto = ColocarPersonajeEnElMapa(PrefabAInstanciar, POSICION_PERSEGUIDOR1, EsElJugadorActual);
                     PosicionInicial = POSICION_PERSEGUIDOR1;
                     TipoDeJugador = EnumTipoDeJugador.Perseguidor1;
                     break;
                 case EnumTipoDeJugador.Perseguidor2:
-                    InstanciaDelObjecto = ColocarPersonajeEnElMapa(PrefabAInstanciar, POSICION_PERSEGUIDOR2, esElJugadorPrincipal);
+                    InstanciaDelObjecto = ColocarPersonajeEnElMapa(PrefabAInstanciar, POSICION_PERSEGUIDOR2, EsElJugadorActual);
                     PosicionInicial = POSICION_PERSEGUIDOR2;
                     TipoDeJugador = EnumTipoDeJugador.Perseguidor2;
                     break;
                 case EnumTipoDeJugador.Perseguidor3:
-                    InstanciaDelObjecto = ColocarPersonajeEnElMapa(PrefabAInstanciar, POSICION_PERSEGUIDOR3, esElJugadorPrincipal);
+                    InstanciaDelObjecto = ColocarPersonajeEnElMapa(PrefabAInstanciar, POSICION_PERSEGUIDOR3, EsElJugadorActual);
                     PosicionInicial = POSICION_PERSEGUIDOR3;
                     TipoDeJugador = EnumTipoDeJugador.Perseguidor3;
                     break;
                 case EnumTipoDeJugador.Perseguidor4:
-                    InstanciaDelObjecto = ColocarPersonajeEnElMapa(PrefabAInstanciar, POSICION_PERSEGUIDOR4, esElJugadorPrincipal);
+                    InstanciaDelObjecto = ColocarPersonajeEnElMapa(PrefabAInstanciar, POSICION_PERSEGUIDOR4, EsElJugadorActual);
                     PosicionInicial = POSICION_PERSEGUIDOR4;
                     TipoDeJugador = EnumTipoDeJugador.Perseguidor4;
                     break;
             }
-            if (esElJugadorPrincipal)
+            if (EsElJugadorActual)
             {
+                InstanciaDelObjecto.GetComponent<CharacterMovementOnline>().EstaActivoElScript = false;
+                InstanciaDelObjecto.GetComponent<CharacterMovementOnline>().enabled = false;
                 JugadorActual = InstanciaDelObjecto.GetComponent<Character_Movement>();
+                JugadorActual.enabled = true;
+                JugadorActual.EstaActivoElScript = true;
                 JugadorActual.RolDelJugador = TipoDeJugador;
                 JugadorActual.PosicionInicial = PosicionInicial;
-                InstanciaDelObjecto.GetComponent<Character_Movement>().MeMovi += EnviarCoordenadas;
+                JugadorActual.VidasDisponibles = CantidadDeVidas;
+                JugadorActual.EsElJuegadorActual = EsElJugadorActual;
+                JugadorActual.EstaActivoTiempoDeMatar = true;
+                JugadorActual.MeMovi += EnviarCoordenadas;
+                JugadorActual.MateAJugador += NotificarMateAUnJugador;
+                JugadorActual.RecolectoTodasLasMonedas += IniciarNuevoNivel;
             }
             else
             {
+                InstanciaDelObjecto.GetComponent<Character_Movement>().EstaActivoElScript = false;
+                InstanciaDelObjecto.GetComponent<Character_Movement>().enabled = false;
                 ScriptDeMovimiento = InstanciaDelObjecto.GetComponent<CharacterMovementOnline>();
+                ScriptDeMovimiento.enabled = true;
+                ScriptDeMovimiento.EstaActivoElScript = true;
                 ScriptDeMovimiento.PosicionInicial = PosicionInicial;
                 ScriptDeMovimiento.RolDelJugador = TipoDeJugador;
+                ScriptDeMovimiento.VidasDisponibles = CantidadDeVidas;
             }
+            InstanciaDelObjecto.tag = tag;
             ScriptsDeMovimiento.Add(cuentaEnJuego, ScriptDeMovimiento);
             Jugadores.Add(cuentaEnJuego, InstanciaDelObjecto);
         }
     }
 
+    private void ColocarUvCoinsEnMapa()
+    {
+        UvCoins = Instantiate(PrefabUvCoins);
+    }
+
+    private void IniciarNuevoNivel()
+    {
+        ClienteDelJuego.NotificarInicioPartida();
+    }
+
     private bool EsElJugadorPrincipal(CuentaModel cuenta)
     {
-        return ClienteDelJuego.CuentaEnSesion.NombreUsuario == cuenta.NombreUsuario; 
+        return ClienteDelJuego.CuentaEnSesion.NombreUsuario == cuenta.NombreUsuario;
     }
 
     private GameObject ColocarPersonajeEnElMapa(GameObject PrefabAInstanciar, Vector2 Posicion, bool EsELJugadorActual)
@@ -158,7 +193,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
             PrefabAInstanciar.GetComponent<CharacterMovementOnline>().enabled = true;
         }
         PrefabAInstanciar.SetActive(true);
-        return Instantiate(PrefabAInstanciar, Posicion, transform.rotation);   
+        return Instantiate(PrefabAInstanciar, Posicion, transform.rotation);
     }
 
     /// <summary>
@@ -183,15 +218,18 @@ public class LogicaDelMultiplayer : MonoBehaviour
     private bool LosPerseguidoresAunTienenVidas()
     {
         bool CuentanConVidas = false;
-        foreach(CharacterMovementOnline movimientoDelJugador in ScriptsDeMovimiento.Values)
+        foreach (CharacterMovementOnline movimientoDelJugador in ScriptsDeMovimiento.Values)
         {
-            if((movimientoDelJugador.RolDelJugador > 0) && (movimientoDelJugador.VidasDisponibles > 0))
+            if(movimientoDelJugador != null)
             {
-                CuentanConVidas = true;
-                break;
+                if ((movimientoDelJugador.RolDelJugador > 0) && (movimientoDelJugador.VidasDisponibles > 0))
+                {
+                    CuentanConVidas = true;
+                    break;
+                }
             }
         }
-        if((JugadorActual.RolDelJugador > 0) && (JugadorActual.VidasDisponibles > 0))
+        if ((JugadorActual.RolDelJugador > 0) && (JugadorActual.VidasDisponibles > 0))
         {
             CuentanConVidas = true;
         }
@@ -206,12 +244,11 @@ public class LogicaDelMultiplayer : MonoBehaviour
     {
         if (EsElJugadorPrincipal(CuentaADescontarVidas))
         {
-            JugadorActual.DescontarVida();
-            JugadorActual.SincronizarCantidadDeVidas(CantidadDeVidas);
+            JugadorActual.DescontarVida(CantidadDeVidas);
         }
         else
         {
-            ScriptsDeMovimiento[CuentaADescontarVidas].VidasDisponibles -= 1;
+            ScriptsDeMovimiento[CuentaADescontarVidas].DescontarVida(CantidadDeVidas);
         }
     }
 
@@ -222,7 +259,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
     {
         if (!LosPerseguidoresAunTienenVidas())
         {
-            TerminarPartida();
+            //TerminarPartida();
         }
     }
 
@@ -232,9 +269,9 @@ public class LogicaDelMultiplayer : MonoBehaviour
     /// </summary>
     private void TerminarPartida()
     {
-        if(JugadorActual.RolDelJugador == EnumTipoDeJugador.Corredor)
+        if (JugadorActual.RolDelJugador == EnumTipoDeJugador.Corredor)
         {
-            //ClienteDelJuego.TerminarPartida(JugadorActual);
+            ClienteDelJuego.TerminarPartida(JugadorActual);
         }
         SceneManager.LoadScene("MenuScreen");
     }
@@ -259,12 +296,25 @@ public class LogicaDelMultiplayer : MonoBehaviour
     /// Oculta del juego el Personaje al que pertenece la cuenta
     /// </summary>
     /// <param name="CuentaADesactivar"></param>
-    private void DesactivarJugadorEnLinea(CuentaModel CuentaADesactivar)
+    //private void DesactivarJugadorEnLinea(CuentaModel CuentaADesactivar)
+    //{
+    //    CuentaModel CuentaEnDiciconario = ObtenerCuentaDelDiccionario(CuentaADesactivar);
+    //    if (CuentaADesactivar != null)
+    //    {
+    //        Jugadores[CuentaEnDiciconario].SetActive(false);
+    //    }
+    //}
+
+    /// <summary>
+    /// Muestra en el juego al Personaje al que pertenece la cuenta
+    /// </summary>
+    /// <param name="CuentaActivar"></param>
+    private void ActivarJugadorEnLinea(CuentaModel CuentaActivar)
     {
-        CuentaModel CuentaEnDiciconario = ObtenerCuentaDelDiccionario(CuentaADesactivar);
-        if(CuentaADesactivar != null)
+        CuentaModel CuentaEnDiciconario = ObtenerCuentaDelDiccionario(CuentaActivar);
+        if (CuentaActivar != null)
         {
-            Jugadores[CuentaEnDiciconario].SetActive(false);
+            Jugadores[CuentaEnDiciconario].SetActive(true);
         }
     }
 
@@ -287,7 +337,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
         CuentaModel CuentaADestruir = ObtenerCuentaDelDiccionario(JugadorADestruir);
         if (CuentaADestruir != null)
         {
-            if(ScriptsDeMovimiento[CuentaADestruir].RolDelJugador == EnumTipoDeJugador.Corredor)
+            if (ScriptsDeMovimiento[CuentaADestruir].RolDelJugador == EnumTipoDeJugador.Corredor)
             {
                 TerminarPartida();
             }
@@ -302,12 +352,85 @@ public class LogicaDelMultiplayer : MonoBehaviour
     /// <summary>
     /// Coloca al GameObject que pertenece del jugador actual en la posicion Inicial y establece la camara individual
     /// </summary>
-    private void ReiniciarJugadorActual()
+    private void ActivarJugadorActual()
     {
         GameObject PersonajeActual = JugadorActual.gameObject;
         JugadorActual.ColocarseEnLaPosicionInicial();
         PersonajeActual.GetComponentInChildren<Camera>().enabled = true;
         PersonajeActual.SetActive(true);
+    }
+
+    private void ReiniciarNivel()
+    {
+        ReiniciarUvCoins();
+        ReiniciarVidasPerseguidores();
+        ReiniciarJugadoresEnLinea();
+        ActivarJugadorActual();
+    }
+
+
+    /// <summary>
+    /// Reinicia la vida de los personajes que su rol sea Persuidor y
+    /// coloca a todos los jugadores en la posicion inicial
+    /// </summary>
+    private void ReiniciarVidasPerseguidores()
+    {
+        foreach (CharacterMovementOnline Personaje in ScriptsDeMovimiento.Values)
+        {
+            Personaje.ColocarseEnLaPosicionInicial();
+            if (Personaje.RolDelJugador > 0)
+            {
+                Personaje.VidasDisponibles = CANTIDAD_VIDAS_PERSEGUIDOR;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Coloca en el mapa a los jugadores en linea
+    /// </summary>
+    private void ReiniciarJugadoresEnLinea()
+    {
+        foreach(CuentaModel cuenta in Jugadores.Keys)
+        {
+            ActivarJugadorEnLinea(cuenta);
+        }
+    }
+
+    private void ReiniciarUvCoins()
+    {
+        Destroy(UvCoins);
+        UvCoins = Instantiate(PrefabUvCoins);
+    }
+
+    /// <summary>
+    /// Notifica al cliente del juego que mate a un jugador
+    /// </summary>
+    /// <param name="RolDelJugadorMatado">El Rol del jugador matado</param>
+    private void NotificarMateAUnJugador(EnumTipoDeJugador RolDelJugadorMatado, int NumeroVidas)
+    {
+        CuentaModel CuentaMuerto = BuscarCuentaPorRol(RolDelJugadorMatado);
+        if(CuentaMuerto != null)
+        {
+            ClienteDelJuego.NotificarMuerteJugador(CuentaMuerto.NombreUsuario, NumeroVidas);
+        }
+    }
+
+    /// <summary>
+    /// Busca la cuenta que tenga el rol en la lista de cuentas en la sa
+    /// </summary>
+    /// <param name="RolDelJugador">El rol del jugador matado</param>
+    /// <returns>La cuenta que tiene ese rol en la sala</returns>
+    private CuentaModel BuscarCuentaPorRol(EnumTipoDeJugador RolDelJugador)
+    {
+        CuentaModel CuentaDelRol = null;
+        foreach(CuentaModel CuentaEnLaSala in ClienteDelJuego.CuentasEnLaSala)
+        {
+            if(CuentaEnLaSala.Jugador.RolDelJugador == RolDelJugador)
+            {
+                CuentaDelRol = CuentaEnLaSala;
+            }
+        }
+        return CuentaDelRol;
     }
 }
 

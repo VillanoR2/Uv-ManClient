@@ -92,14 +92,14 @@ GameObject:
   m_Component:
   - component: {fileID: 9055150103379513192}
   - component: {fileID: 9055150103379513193}
-  - component: {fileID: 9055150103379513198}
   - component: {fileID: 9055150103379513199}
   - component: {fileID: 9055150103379513196}
   - component: {fileID: 9055150103379513197}
-  - component: {fileID: 7064043310135481795}
+  - component: {fileID: 7480001042963270436}
+  - component: {fileID: 499668574977667952}
   m_Layer: 0
   m_Name: Bomberman_Player
-  m_TagString: Untagged
+  m_TagString: Perseguidor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -167,19 +167,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9055150103379513198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9055150103379513186}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325d1e129b4e9402ba22df89d0839814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 4
 --- !u!95 &9055150103379513199
 Animator:
   serializedVersion: 3
@@ -236,7 +223,7 @@ CapsuleCollider2D:
   m_Offset: {x: -0.014824347, y: -0.2601481}
   m_Size: {x: 0.5817174, y: 0.67407507}
   m_Direction: 0
---- !u!114 &7064043310135481795
+--- !u!114 &7480001042963270436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -248,4 +235,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa5bc1e2bae5d044a8351f0236c7616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VidasDisponibles: 0
+  PuntacionTotal: 0
+  CantidadDeUvCoinsRecolectadas: 0
+  EstaActivoTiempoDeMatar: 1
+  RolDelJugador: 0
+  PosicionInicial: {x: 0, y: 0}
+  Speed: 4
+--- !u!114 &499668574977667952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9055150103379513186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 325d1e129b4e9402ba22df89d0839814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EsElJuegadorActual: 0
+  VidasDisponibles: 0
+  PuntacionTotal: 0
+  CantidadDeUvCoinsRecolectadas: 0
+  EstaActivoTiempoDeMatar: 1
+  RolDelJugador: 0
+  PosicionInicial: {x: 0, y: 0}
   Speed: 4

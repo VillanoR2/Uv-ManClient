@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5834204546607180327}
   m_Layer: 0
   m_Name: Link_Player
-  m_TagString: Untagged
+  m_TagString: Perseguidor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,6 +153,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325d1e129b4e9402ba22df89d0839814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EsElJuegadorActual: 0
+  VidasDisponibles: 0
+  PuntacionTotal: 0
+  CantidadDeUvCoinsRecolectadas: 0
+  EstaActivoTiempoDeMatar: 0
+  RolDelJugador: 0
+  PosicionInicial: {x: 0, y: 0}
   Speed: 4
 --- !u!114 &5834204546607180327
 MonoBehaviour:
@@ -166,7 +173,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa5bc1e2bae5d044a8351f0236c7616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  VidasDisponibles: 0
   Speed: 4
+  PosicionInicial: {x: 0, y: 0}
+  RolDelJugador: 0
 --- !u!1 &8026629430574747187
 GameObject:
   m_ObjectHideFlags: 0

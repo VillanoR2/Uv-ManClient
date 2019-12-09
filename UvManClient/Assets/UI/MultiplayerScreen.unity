@@ -164,7 +164,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 29
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -613,13 +613,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b19d56b911e1a564f9cf5090ea1eb395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Corredor: {fileID: 8026629430240811923, guid: 33f3652f1f7ee4193aec1f4013ecab36,
-    type: 3}
-  Perseguidor1: {fileID: 9055150103379513186, guid: e4972fc0f325a4801aacb837d382c09e,
-    type: 3}
-  Perseguidor2: {fileID: 4152201142134344069, guid: c934d649c93b0428b9496359c27fd4f3,
-    type: 3}
-  Perseguidor3: {fileID: 4152201142134344069, guid: c934d649c93b0428b9496359c27fd4f3,
-    type: 3}
-  Perseguidor4: {fileID: 4152201142134344069, guid: c934d649c93b0428b9496359c27fd4f3,
+  JugadorActual: {fileID: 0}
+  PrefabUvCoins: {fileID: 7692395189681488122, guid: ccb1644f85108d0459041db9aa94fd71,
     type: 3}
