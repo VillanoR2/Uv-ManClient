@@ -1,25 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainCamera : MonoBehaviour
 {
-    Transform target;
-
+    Transform Target;
     void Awake()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        Target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()
     {
         transform.position = new Vector3(
-            target.position.x,
-            target.position.y,
+            Target.position.x,
+            Target.position.y,
             transform.position.z
             );
 
-        if(target == null){
+        if (Target == null)
+        {
             Debug.Log("Player ha muerto");
         }
     }

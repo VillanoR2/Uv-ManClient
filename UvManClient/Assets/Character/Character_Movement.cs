@@ -4,50 +4,79 @@ using UnityEngine;
 
 public class Character_Movement : MonoBehaviour
 {
-    private int perderVida = 1;
+    private int PerderVida = 1;
     public float Speed = 4f;
-    Vector2 mov;
-    Animator Anim;
-    Rigidbody2D rb2D;
-    AudioSource audioS;
+    Vector2 Movement;
+    Animator Animator;
+    Rigidbody2D RigidBody2D;
+    AudioSource AudioSource;
+    public GameObject Spawn;
 
     void Start()
     {
-        Anim = GetComponent<Animator>();
-        rb2D = GetComponent<Rigidbody2D>();
-        audioS = GetComponent<AudioSource>();
+        Animator = GetComponent<Animator>();
+        RigidBody2D = GetComponent<Rigidbody2D>();
+        AudioSource = GetComponent<AudioSource>();
+        NotificationCenter.DefaultCenter().AddObserver(this, "PerderVidaTiempo");
     }
 
     void Update()
     {
-        mov = new Vector2(
+        Movement = new Vector2(
             Input.GetAxisRaw("Horizontal"),
             Input.GetAxisRaw("Vertical"));
 
-        if (mov != Vector2.zero)
+        if (Movement != Vector2.zero)
         {
-            Anim.SetFloat("MovX", mov.x);
-            Anim.SetFloat("MovY", mov.y);
-            Anim.SetBool("Walking", true);
+            Animator.SetFloat("MovX", Movement.x);
+            Animator.SetFloat("MovY", Movement.y);
+            Animator.SetBool("Walking", true);
         }
         else
         {
-            Anim.SetBool("Walking", false);
+            Animator.SetBool("Walking", false);
         }
     }
     void FixedUpdate()
     {
-        rb2D.MovePosition(rb2D.position + mov * Speed * Time.deltaTime);
+        RigidBody2D.MovePosition(RigidBody2D.position + Movement * Speed * Time.deltaTime);
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
+    void OnTriggerEnter2D(Collider2D Collider)
     {
-        if (collider.gameObject.tag == "Enemy")
+        if (Collider.gameObject.tag == "Enemy")
         {
-            Anim.SetBool("Die", true);
-            audioS.Play();
-            Speed = 0;
-            NotificationCenter.DefaultCenter().PostNotification(this, "PerderVida", perderVida);
+            Animator.SetBool("Die", true);
+            AudioSource.Play();
+            NotificationCenter.DefaultCenter().PostNotification(this, "PerderVida", PerderVida);
+            Speed = 0f;
+            Invoke("Respawn", 3.0f);
+
         }
     }
+
+    public void PerderVidaTiempo(Notification Notification)
+    {
+        float Tiempo = (float)Notification.data;
+        if(Tiempo <= 0){
+        Animator.SetBool("Die", true);
+        AudioSource.Play();
+        NotificationCenter.DefaultCenter().PostNotification(this, "PerderVida", PerderVida);
+        Speed = 0f;
+        Invoke("Respawn", 3.0f);
+        }else{
+            Debug.Log("El tiempo no llego a Cero.");
+        }
+
+    }
+
+    void Respawn()
+    {
+        gameObject.SetActive(false);
+        transform.position = Spawn.transform.position;
+        gameObject.SetActive(true);
+        Speed = 4f;
+    }
+
+
 }

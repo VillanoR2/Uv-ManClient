@@ -54,12 +54,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Character\Character_Movement.cs" />
-     <Compile Include="Assets\Character\Creeper\Perseguidor_wayPoints.cs" />
+     <Compile Include="Assets\Character\Perseguidor_wayPoints.cs" />
      <Compile Include="Assets\Maps\MainCamera.cs" />
      <Compile Include="Assets\Maps\Objects\Coin\UvCoinLogic.cs" />
      <Compile Include="Assets\Maps\Objects\PickAxe\pickAxLogic.cs" />
      <Compile Include="Assets\Maps\Objects\Warp\Warp.cs" />
-     <Compile Include="Assets\Scripts\AdaptadorDeCamara.cs" />
      <Compile Include="Assets\Scripts\buttonPressStart.cs" />
      <Compile Include="Assets\Scripts\buttonsLobby.cs" />
      <Compile Include="Assets\Scripts\buttonsLogin.cs" />
@@ -71,6 +70,7 @@
      <Compile Include="Assets\Scripts\Clientes\CuentaCliente.cs" />
      <Compile Include="Assets\Scripts\Clientes\SessionCliente.cs" />
      <Compile Include="Assets\Scripts\Cuenta.cs" />
+     <Compile Include="Assets\Scripts\GameOverScript.cs" />
      <Compile Include="Assets\Scripts\Globalizacion\AsignadorTexto.cs" />
      <Compile Include="Assets\Scripts\Globalizacion\ControladorJson.cs" />
      <Compile Include="Assets\Scripts\Globalizacion\Serializable.cs" />
@@ -82,6 +82,7 @@
      <Compile Include="Assets\Scripts\Servicios\ServiceChat.cs" />
      <Compile Include="Assets\Scripts\Servicios\ServiceCuenta.cs" />
      <Compile Include="Assets\Scripts\Servicios\ServiceSession.cs" />
+     <Compile Include="Assets\Scripts\Timer.cs" />
      <None Include="Assets\UI\Sprites\gameicons-expansion\Spritesheet\sheet_black2x.xml" />
      <None Include="Assets\UI\Sprites\kenney_emotespack\Spritesheets\vector_style3.xml" />
      <None Include="Assets\UI\Sprites\kenney_emotespack\Spritesheets\pixel_style6.xml" />
