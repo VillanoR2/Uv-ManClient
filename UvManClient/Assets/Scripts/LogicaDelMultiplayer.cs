@@ -109,7 +109,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
             }
             if (esElJugadorPrincipal)
             {
-                InstanciaDelObjecto.GetComponent<Character_Movement>().MeMovi += EnviarCoordenadas;
+                //InstanciaDelObjecto.GetComponent<Character_Movement>().MeMovi += EnviarCoordenadas;
             }
             else
             {
