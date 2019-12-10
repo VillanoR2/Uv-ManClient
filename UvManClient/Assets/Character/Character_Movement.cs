@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Character_Movement : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Character_Movement : MonoBehaviour
     Rigidbody2D RigidBody2D;
     AudioSource AudioSource;
     public GameObject Spawn;
+    int TotalCoins = 140;
 
     void Start()
     {
@@ -48,10 +50,16 @@ public class Character_Movement : MonoBehaviour
         {
             Animator.SetBool("Die", true);
             AudioSource.Play();
+            gameObject.GetComponent<Collider2D>().enabled = false;
             NotificationCenter.DefaultCenter().PostNotification(this, "PerderVida", PerderVida);
             Speed = 0f;
-            Invoke("Respawn", 3.0f);
-
+            Invoke("Respawn", 4.0f);
+        }else if(Collider.gameObject.tag == "Coin"){
+            TotalCoins -= 1;
+            Debug.Log("UVCoin: " + TotalCoins);
+            if(TotalCoins == 0){
+                SceneManager.LoadScene("GameOverScene");
+            }
         }
     }
 
@@ -63,7 +71,8 @@ public class Character_Movement : MonoBehaviour
         AudioSource.Play();
         NotificationCenter.DefaultCenter().PostNotification(this, "PerderVida", PerderVida);
         Speed = 0f;
-        Invoke("Respawn", 3.0f);
+        
+        Invoke("Respawn", 2.0f);
         }else{
             Debug.Log("El tiempo no llego a Cero.");
         }
@@ -72,11 +81,10 @@ public class Character_Movement : MonoBehaviour
 
     void Respawn()
     {
-        gameObject.SetActive(false);
+        Animator.SetBool("Die",false);
         transform.position = Spawn.transform.position;
-        gameObject.SetActive(true);
+       gameObject.GetComponent<Collider2D>().enabled = true;
         Speed = 4f;
     }
-
 
 }

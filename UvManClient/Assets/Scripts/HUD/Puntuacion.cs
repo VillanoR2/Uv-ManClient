@@ -5,12 +5,13 @@ using UnityEngine.UI;
 
 public class Puntuacion : MonoBehaviour
 {
-    private int PuntuacionActual = 0;
+    int PuntuacionActual = 0;
     public Text Marcador;
     void Start()
     {
         NotificationCenter.DefaultCenter().AddObserver(this,"IncrementarPuntos");
-        ActualizarMarcador();      
+        ActualizarMarcador();  
+        DontDestroyOnLoad(GameObject.Find("AlmacenPuntaje"));    
     }
 
     void IncrementarPuntos(Notification Notification){
@@ -21,9 +22,8 @@ public class Puntuacion : MonoBehaviour
 
     void ActualizarMarcador(){
         Marcador.text = "Puntaje: " + PuntuacionActual.ToString();
+        GameObject.Find("AlmacenPuntaje").GetComponent<Text>().text = PuntuacionActual.ToString();
+        
     }
 
-    void Update(){
-
-    }
 }

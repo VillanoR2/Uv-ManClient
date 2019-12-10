@@ -15,6 +15,8 @@ public class buttonsLogin : MonoBehaviour
     public InputField contrasena;
     public CuentaModel cuentaLogeada;
 
+    public GameObject ExceptionObject;
+
 
     private CuentaModel RecuperarDatosDeLogin()
     {

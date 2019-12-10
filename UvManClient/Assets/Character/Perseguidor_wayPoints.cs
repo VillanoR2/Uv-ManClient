@@ -15,7 +15,7 @@ public class Perseguidor_wayPoints : MonoBehaviour
     GameObject Player;
     Animator Animator;
     Rigidbody2D RigidBody2D;
-    public GameObject Spawn;
+    public GameObject SpawnEnemy;
 
     void Start()
     {
@@ -76,12 +76,11 @@ public class Perseguidor_wayPoints : MonoBehaviour
             Animator.SetFloat("MovX", Direction.x);
             Animator.SetFloat("MovY", Direction.y);
             Animator.SetBool("Walking", false);
-            Invoke("Respawn", 0.4f);
 
         }
         else if (Target != ActualPosition && (Distance > AttackRadius && Distance < VisionRadius))
         {
-            Speed = 0.08f;
+            Speed = 0.07f;
             RigidBody2D.MovePosition(transform.position + Direction * Speed);
             Animator.speed = 1;
             Animator.SetFloat("MovX", Direction.x);
@@ -98,11 +97,24 @@ public class Perseguidor_wayPoints : MonoBehaviour
 
     void Respawn()
     {
-        Vector2 MovementPosition = Vector2.MoveTowards(transform.position, Spawn.transform.position, Speed);
+        gameObject.SetActive(true);
+        ActualPosition = SpawnEnemy.transform.position;
+
+        Vector2 MovementPosition = Vector2.MoveTowards(transform.position, SpawnEnemy.transform.position, Speed);
         RigidBody2D.MovePosition(MovementPosition);
 
-        if(transform.position == Spawn.transform.position){
+        if(transform.position == SpawnEnemy.transform.position){
             TargetFollow();
+        }
+    }
+
+        void OnTriggerEnter2D(Collider2D Collider)
+    {
+        if (Collider.gameObject.tag == "Player")
+        {
+            gameObject.SetActive(false);
+            Invoke("Respawn", 3.0f);
+
         }
     }
 

@@ -168,6 +168,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  Speed: 0.078
-  VisionRadius: 7.37
-  AttackRadius: 0.26
+  Speed: 0.075
+  VisionRadius: 3
+  AttackRadius: 0.3
+  SpawnEnemy: {fileID: 0}

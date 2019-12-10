@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class pickAxLogic : MonoBehaviour
 {
-	public int puntosGanados = 100;
+	public int puntosGanados = 500;
     public AudioClip Sound;
     public float volumeSound = 1f;
     

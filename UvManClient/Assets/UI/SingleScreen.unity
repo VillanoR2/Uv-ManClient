@@ -124,6 +124,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (78)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -192,6 +197,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (70)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -262,6 +272,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (37)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -330,6 +345,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (69)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -400,6 +420,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (95)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -463,6 +488,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 56177618}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &57350818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 57350819}
+  m_Layer: 0
+  m_Name: Waypoint (13)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &57350819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 57350818}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 22.86, y: 18.21, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 26
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &74368369 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7336451777597305937, guid: 98ac71262fc424bbfa85a0701df1824c,
@@ -486,6 +541,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -562,6 +622,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (118)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -637,6 +702,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (89)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -705,6 +775,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (107)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -781,6 +856,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (58)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -856,6 +936,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (48)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -924,6 +1009,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -1094,6 +1184,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (124)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1175,7 +1270,7 @@ GameObject:
   m_Layer: 0
   m_Name: Perseguidor_WayPoint (4)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1204,6 +1299,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -1268,6 +1368,185 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 272476896}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &279620940
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2117143157}
+    m_Modifications:
+    - target: {fileID: 2810455026428104557, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_Name
+      value: Creeper (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.98883796
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.size
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 1823062294}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1928612739}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 708354703}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 1056334662}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 1065339044}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[5]
+      value: 
+      objectReference: {fileID: 2092566275}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[6]
+      value: 
+      objectReference: {fileID: 1041509187}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[7]
+      value: 
+      objectReference: {fileID: 1138966581}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[8]
+      value: 
+      objectReference: {fileID: 909865058}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[9]
+      value: 
+      objectReference: {fileID: 1851152173}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[10]
+      value: 
+      objectReference: {fileID: 417258577}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[11]
+      value: 
+      objectReference: {fileID: 1702658670}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[12]
+      value: 
+      objectReference: {fileID: 899435341}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[13]
+      value: 
+      objectReference: {fileID: 57350819}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[14]
+      value: 
+      objectReference: {fileID: 2088524753}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[15]
+      value: 
+      objectReference: {fileID: 1914040102}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: SpawnEnemy
+      value: 
+      objectReference: {fileID: 2032237569}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[16]
+      value: 
+      objectReference: {fileID: 628910731}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[17]
+      value: 
+      objectReference: {fileID: 496809102}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[18]
+      value: 
+      objectReference: {fileID: 1493720099}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[19]
+      value: 
+      objectReference: {fileID: 1823062294}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1646ea048ff5f4ba892e10c9940623df, type: 3}
 --- !u!1001 &286591236
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1279,6 +1558,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -1355,6 +1639,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (117)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1429,6 +1718,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (128)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -1511,6 +1805,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1585,6 +1884,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (109)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -1661,6 +1965,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (131)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1735,6 +2044,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (81)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -1811,6 +2125,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (93)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1885,6 +2204,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (94)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -1961,6 +2285,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2036,6 +2365,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7336451777992227247}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &411127935 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+    type: 3}
+  m_PrefabInstance: {fileID: 279620940}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &413075009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2047,6 +2382,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -2105,6 +2445,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60, type: 3}
+--- !u!1 &417258576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 417258577}
+  m_Layer: 0
+  m_Name: Waypoint (10)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &417258577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417258576}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 35.04, y: 16.27, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &419012329 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
@@ -2123,7 +2493,7 @@ GameObject:
   m_Layer: 0
   m_Name: Perseguidor_WayPoint (2)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2152,6 +2522,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (49)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -2240,6 +2615,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (80)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2308,6 +2688,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (41)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -2455,6 +2840,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (72)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2512,6 +2902,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60, type: 3}
+--- !u!1 &496809101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 496809102}
+  m_Layer: 0
+  m_Name: Waypoint (17)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &496809102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 496809101}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.95, y: 0.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 30
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &497261501
 GameObject:
   m_ObjectHideFlags: 0
@@ -2762,6 +3182,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (98)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2837,6 +3262,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (82)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2905,6 +3335,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (71)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -2987,6 +3422,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (121)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3050,6 +3490,160 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 590041085}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &590089284
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2117143157}
+    m_Modifications:
+    - target: {fileID: 2810455026428104557, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_Name
+      value: Creeper (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.59
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -5.8721666
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.98883796
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 830458993}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 1328541316}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 419382748}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 1408118277}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 252650753}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[5]
+      value: 
+      objectReference: {fileID: 726110938}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[6]
+      value: 
+      objectReference: {fileID: 1815608624}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[7]
+      value: 
+      objectReference: {fileID: 1007035514}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[8]
+      value: 
+      objectReference: {fileID: 952460870}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[9]
+      value: 
+      objectReference: {fileID: 1998200836}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[10]
+      value: 
+      objectReference: {fileID: 1782980544}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[11]
+      value: 
+      objectReference: {fileID: 1706342280}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[12]
+      value: 
+      objectReference: {fileID: 1091609792}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[13]
+      value: 
+      objectReference: {fileID: 419382748}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[14]
+      value: 
+      objectReference: {fileID: 1408118277}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: Waypoints.Array.data[15]
+      value: 
+      objectReference: {fileID: 252650753}
+    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
+        type: 3}
+      propertyPath: SpawnEnemy
+      value: 
+      objectReference: {fileID: 1348306843}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1646ea048ff5f4ba892e10c9940623df, type: 3}
 --- !u!1001 &598469777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3061,6 +3655,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (88)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -3125,6 +3724,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 942634708}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &628910730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 628910731}
+  m_Layer: 0
+  m_Name: Waypoint (16)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &628910731
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628910730}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -13.06, y: 0.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 29
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &639306882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3136,6 +3765,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (120)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -3315,6 +3949,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (125)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3384,6 +4023,113 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 719345403}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &708354702
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 708354703}
+  m_Layer: 0
+  m_Name: Waypoint (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &708354703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 708354702}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 19, y: 0.09, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &715515250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 715515253}
+  - component: {fileID: 715515252}
+  - component: {fileID: 715515251}
+  m_Layer: 0
+  m_Name: AlmacenPuntaje
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &715515251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715515250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &715515252
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715515250}
+  m_CullTransparentMesh: 0
+--- !u!224 &715515253
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715515250}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 44.97, y: -31.45}
+  m_SizeDelta: {x: 9.85, y: 2.88}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &719345403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3395,6 +4141,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (61)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -3465,7 +4216,7 @@ GameObject:
   m_Layer: 0
   m_Name: Perseguidor_WayPoint (5)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3547,7 +4298,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &734481153
 GameObject:
@@ -3561,7 +4312,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn_Object2
   m_TagString: Untagged
-  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3596,6 +4347,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (105)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -3672,6 +4428,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (75)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3741,6 +4502,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (55)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3809,6 +4575,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (73)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -3891,6 +4662,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (68)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3960,6 +4736,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (79)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4028,6 +4809,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (101)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -4104,7 +4890,7 @@ GameObject:
   m_Layer: 0
   m_Name: Perseguidor_WayPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4139,6 +4925,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (96)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -4214,6 +5005,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -4382,6 +5178,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (62)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4450,6 +5251,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (90)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -4532,6 +5338,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (123)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4607,6 +5418,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (30)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4676,6 +5492,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (127)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4739,6 +5560,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 891214913}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &899435340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 899435341}
+  m_Layer: 0
+  m_Name: Waypoint (12)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &899435341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899435340}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 24.12, y: 17.24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &904174385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
@@ -4762,6 +5613,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (100)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -4887,7 +5743,7 @@ PrefabInstance:
     - target: {fileID: 8026629430240811927, guid: 33f3652f1f7ee4193aec1f4013ecab36,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8026629430240811927, guid: 33f3652f1f7ee4193aec1f4013ecab36,
         type: 3}
@@ -4916,6 +5772,36 @@ PrefabInstance:
       objectReference: {fileID: 935225487}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33f3652f1f7ee4193aec1f4013ecab36, type: 3}
+--- !u!1 &909865057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 909865058}
+  m_Layer: 0
+  m_Name: Waypoint (8)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &909865058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 909865057}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 36.92, y: 13.84, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &935225487
 GameObject:
   m_ObjectHideFlags: 0
@@ -4928,7 +5814,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn_Player
   m_TagString: Untagged
-  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -4957,6 +5843,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (51)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -5026,6 +5917,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -5102,7 +5998,7 @@ GameObject:
   m_Layer: 0
   m_Name: Perseguidor_WayPoint (8)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5131,6 +6027,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -5207,6 +6108,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (132)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5281,6 +6187,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (102)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -5513,13 +6424,19 @@ Transform:
   - {fileID: 1321605991}
   - {fileID: 1417290430}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &966286472 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
     type: 3}
   m_PrefabInstance: {fileID: 22037966}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &967210827 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+    type: 3}
+  m_PrefabInstance: {fileID: 590089284}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &969318816 stripped
 Transform:
@@ -5538,6 +6455,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (84)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -5608,6 +6530,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (87)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5676,6 +6603,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -5752,7 +6684,7 @@ GameObject:
   m_Layer: 0
   m_Name: Perseguidor_WayPoint (7)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5781,6 +6713,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -5856,6 +6793,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (135)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -6130,6 +7072,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (104)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6205,6 +7152,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6268,6 +7220,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1036718742}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1041509186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1041509187}
+  m_Layer: 0
+  m_Name: Waypoint (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1041509187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041509186}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 35.05, y: 0.14, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1047959562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6279,6 +7261,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (112)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -6343,6 +7330,66 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1047959562}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1056334661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1056334662}
+  m_Layer: 0
+  m_Name: Waypoint (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1056334662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056334661}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 27.01, y: 0.29, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1065339043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1065339044}
+  m_Layer: 0
+  m_Name: Waypoint (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1065339044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1065339043}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 27.01, y: -11.73, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1086810948
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6354,6 +7401,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (54)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -6424,7 +7476,7 @@ GameObject:
   m_Layer: 0
   m_Name: Perseguidor_WayPoint (12)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -6453,6 +7505,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (47)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -6517,6 +7574,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1537827674}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1138966580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1138966581}
+  m_Layer: 0
+  m_Name: Waypoint (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1138966581
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1138966580}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 36.92, y: 0.34, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1150007914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6612,6 +7699,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -6730,6 +7822,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (86)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6804,6 +7901,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -6880,6 +7982,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (52)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6948,6 +8055,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -7123,6 +8235,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (138)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7198,6 +8315,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (64)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7267,7 +8389,7 @@ GameObject:
   m_Layer: 0
   m_Name: Perseguidor_WayPoint (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -7296,6 +8418,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (110)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -7378,7 +8505,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn_Enemy_Easy
   m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -7407,6 +8534,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (130)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -7483,6 +8615,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (29)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7552,6 +8689,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (46)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7620,6 +8762,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (91)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -7696,7 +8843,7 @@ GameObject:
   m_Layer: 0
   m_Name: Perseguidor_WayPoint (3)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -7731,6 +8878,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (59)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -7800,6 +8952,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (139)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -7897,7 +9054,7 @@ Transform:
   - {fileID: 1769814181}
   - {fileID: 734481154}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1431897339
 PrefabInstance:
@@ -7910,6 +9067,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (97)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -7992,6 +9154,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (53)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8061,6 +9228,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (99)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8124,12 +9296,48 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1479854695}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1483199878 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
+    type: 3}
+  m_PrefabInstance: {fileID: 8847642868625660780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1489808171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
     type: 3}
   m_PrefabInstance: {fileID: 1279014679}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1493720098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1493720099}
+  m_Layer: 0
+  m_Name: Waypoint (18)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1493720099
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493720098}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.95, y: -11.69, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 31
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1497300669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8141,6 +9349,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (119)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -8216,6 +9429,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (106)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -8401,6 +9619,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (63)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8470,6 +9693,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (32)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8538,6 +9766,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (134)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -8614,6 +9847,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8689,6 +9927,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (85)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8758,6 +10001,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (76)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8826,6 +10074,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (43)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -8902,6 +10155,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (26)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8976,6 +10234,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (57)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -9161,6 +10424,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (39)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9229,6 +10497,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -9305,6 +10578,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (137)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9379,6 +10657,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (115)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -9455,6 +10738,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (74)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9523,6 +10811,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (116)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -9599,6 +10892,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1562903329}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1702658669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1702658670}
+  m_Layer: 0
+  m_Name: Waypoint (11)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1702658670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1702658669}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 24.12, y: 16.27, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1706342279
 GameObject:
   m_ObjectHideFlags: 0
@@ -9611,7 +10934,7 @@ GameObject:
   m_Layer: 0
   m_Name: Perseguidor_WayPoint (11)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -9640,6 +10963,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -9734,6 +11062,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (66)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9802,6 +11135,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (77)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -9877,6 +11215,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (133)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -9959,7 +11302,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn_Object
   m_TagString: Untagged
-  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -10006,6 +11349,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (56)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -10075,6 +11423,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -10151,7 +11504,7 @@ GameObject:
   m_Layer: 0
   m_Name: Perseguidor_WayPoint (10)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -10180,6 +11533,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (129)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -10260,7 +11618,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1813972709}
   m_Layer: 0
-  m_Name: Persegidor_WayPoints
+  m_Name: Crepeer_Waypoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10290,8 +11648,27 @@ Transform:
   - {fileID: 1782980544}
   - {fileID: 1706342280}
   - {fileID: 1091609792}
+  - {fileID: 1823062294}
+  - {fileID: 1928612739}
+  - {fileID: 708354703}
+  - {fileID: 1056334662}
+  - {fileID: 1065339044}
+  - {fileID: 2092566275}
+  - {fileID: 1041509187}
+  - {fileID: 1138966581}
+  - {fileID: 909865058}
+  - {fileID: 1851152173}
+  - {fileID: 417258577}
+  - {fileID: 1702658670}
+  - {fileID: 899435341}
+  - {fileID: 57350819}
+  - {fileID: 2088524753}
+  - {fileID: 1914040102}
+  - {fileID: 628910731}
+  - {fileID: 496809102}
+  - {fileID: 1493720099}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1815608623
 GameObject:
@@ -10305,7 +11682,7 @@ GameObject:
   m_Layer: 0
   m_Name: Perseguidor_WayPoint (6)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -10334,6 +11711,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -10410,6 +11792,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (136)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10473,6 +11860,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1821668624}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1823062293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1823062294}
+  m_Layer: 0
+  m_Name: Waypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1823062294
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823062293}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.52, y: -11.39, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1833073230
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10484,6 +11901,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -10554,6 +11976,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (40)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10611,6 +12038,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60, type: 3}
+--- !u!1 &1851152172
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1851152173}
+  m_Layer: 0
+  m_Name: Waypoint (9)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1851152173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851152172}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 35.98, y: 15.19, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1855989028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10622,6 +12079,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (126)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -10698,6 +12160,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (60)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10766,6 +12233,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -10842,6 +12314,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (122)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10916,6 +12393,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -10992,6 +12474,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (33)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11061,6 +12548,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (92)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11124,6 +12616,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1913459341}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1914040101
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1914040102}
+  m_Layer: 0
+  m_Name: Waypoint (15)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1914040102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914040101}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -27.95, y: 0.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 28
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1917094148 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
@@ -11141,6 +12663,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -11217,6 +12744,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (114)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11292,6 +12824,36 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1546432108}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1928612738
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1928612739}
+  m_Layer: 0
+  m_Name: Waypoint (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1928612739
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928612738}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 19, y: -11.66, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1936876651
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11303,6 +12865,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -11413,7 +12980,7 @@ Transform:
   - {fileID: 671917613}
   - {fileID: 1028875954}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1963072551
 PrefabInstance:
@@ -11426,6 +12993,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (50)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -11495,6 +13067,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (65)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -11571,6 +13148,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (28)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11639,6 +13221,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -11855,7 +13442,7 @@ GameObject:
   m_Layer: 0
   m_Name: Perseguidor_WayPoint (9)
   m_TagString: Untagged
-  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -11884,6 +13471,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (113)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -11972,6 +13564,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (45)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12041,7 +13638,7 @@ GameObject:
   m_Layer: 0
   m_Name: Spawn_Enemy_Medium
   m_TagString: Untagged
-  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -12070,6 +13667,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -12140,6 +13742,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (35)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12208,6 +13815,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (83)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -12284,6 +13896,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (103)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12359,6 +13976,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (42)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12416,6 +14038,66 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60, type: 3}
+--- !u!1 &2088524752
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2088524753}
+  m_Layer: 0
+  m_Name: Waypoint (14)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2088524753
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2088524752}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -27.95, y: 18.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 27
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2092566274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2092566275}
+  m_Layer: 0
+  m_Name: Waypoint (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2092566275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092566274}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 35.05, y: -11.73, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1813972709}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2101628046
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12427,6 +14109,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -12503,6 +14190,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (21)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12578,6 +14270,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UvCoin (108)
       objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
+      objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12641,6 +14338,39 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2111117081}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2117143156
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2117143157}
+  m_Layer: 0
+  m_Name: Perseguidores
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2117143157
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117143156}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.122891, y: -3.687834, z: -0.98883796}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1483199878}
+  - {fileID: 411127935}
+  - {fileID: 967210827}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2119081274 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
@@ -12658,6 +14388,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -12733,6 +14468,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (111)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -12814,6 +14554,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UvCoin (67)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8408207070909049821, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
+        type: 3}
+      propertyPath: m_TagString
+      value: Coin
       objectReference: {fileID: 0}
     - target: {fileID: 8408207070909049822, guid: 697d6f3f7aa744cb0b73c6cc0fcc0c60,
         type: 3}
@@ -13262,7 +15007,7 @@ PrefabInstance:
     - target: {fileID: 987961690142475356, guid: a61e7ae5d95e9476a806bc9e8b766a9e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 987961690142475356, guid: a61e7ae5d95e9476a806bc9e8b766a9e,
         type: 3}
@@ -13279,13 +15024,23 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 987961690142475356, guid: a61e7ae5d95e9476a806bc9e8b766a9e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 987961690142475356, guid: a61e7ae5d95e9476a806bc9e8b766a9e,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.11
+      objectReference: {fileID: 0}
     - target: {fileID: 330928349, guid: a61e7ae5d95e9476a806bc9e8b766a9e, type: 3}
       propertyPath: Sound
       value: 
       objectReference: {fileID: 8300000, guid: 19b6b31cb3dee45d7afe9d0eb4d62ff8, type: 3}
     - target: {fileID: 330928349, guid: a61e7ae5d95e9476a806bc9e8b766a9e, type: 3}
       propertyPath: volumeSound
-      value: 2
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8075572069483013771, guid: a61e7ae5d95e9476a806bc9e8b766a9e,
         type: 3}
@@ -13462,7 +15217,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 2117143157}
     m_Modifications:
     - target: {fileID: 2810455026428104557, guid: 1646ea048ff5f4ba892e10c9940623df,
         type: 3}
@@ -13472,32 +15227,32 @@ PrefabInstance:
     - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.53
+      value: 8.592892
       objectReference: {fileID: 0}
     - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -9.56
+      value: -5.8721666
       objectReference: {fileID: 0}
     - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.98883796
       objectReference: {fileID: 0}
     - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
         type: 3}
@@ -13507,7 +15262,7 @@ PrefabInstance:
     - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7850263731240582209, guid: 1646ea048ff5f4ba892e10c9940623df,
         type: 3}
@@ -13606,18 +15361,8 @@ PrefabInstance:
       objectReference: {fileID: 252650753}
     - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
         type: 3}
-      propertyPath: Spawn
+      propertyPath: SpawnEnemy
       value: 
       objectReference: {fileID: 1348306843}
-    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
-        type: 3}
-      propertyPath: VisionRadius
-      value: 3.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 2252554159447434499, guid: 1646ea048ff5f4ba892e10c9940623df,
-        type: 3}
-      propertyPath: AttackRadius
-      value: 0.34
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1646ea048ff5f4ba892e10c9940623df, type: 3}
