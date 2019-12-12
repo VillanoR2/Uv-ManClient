@@ -9,12 +9,11 @@
 //------------------------------------------------------------------------------
 
 
-
-using GameService.Dominio;
 using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
+using GameService.Dominio;
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 [System.ServiceModel.ServiceContractAttribute(ConfigurationName="IGameService", CallbackContract=typeof(IGameServiceCallback))]
@@ -44,9 +43,6 @@ public interface IGameService {
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/TerminarPartida", ReplyAction="http://tempuri.org/IGameService/TerminarPartidaResponse")]
     void TerminarPartida(LogicaDelNegocio.Modelo.CuentaModel CuentaDeCorredor);
     
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/NotificarIniciarNivel", ReplyAction="http://tempuri.org/IGameService/NotificarIniciarNivelResponse")]
-    void NotificarIniciarNivel(LogicaDelNegocio.Modelo.CuentaModel CuentaDelCorredor);
-    
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/RecuperarMejoresPuntuaciones", ReplyAction="http://tempuri.org/IGameService/RecuperarMejoresPuntuacionesResponse")]
     LogicaDelNegocio.Modelo.CuentaModel[] RecuperarMejoresPuntuaciones();
     
@@ -71,9 +67,6 @@ public interface IGameServiceCallback {
     
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/RefrescarCuentasEnSala")]
     void RefrescarCuentasEnSala(LogicaDelNegocio.Modelo.CuentaModel[] CuentasEnMiSala);
-    
-    [System.ServiceModel.OperationContractAttribute(IsOneWay= true, Action="http://tempuri.org/IGameService/NuevoNivel", ReplyAction="http://tempuri.org/IGameService/NuevoNivelResponse")]
-    void NuevoNivel();
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -136,10 +129,6 @@ public partial class GameServiceClient : System.ServiceModel.DuplexClientBase<IG
         base.Channel.TerminarPartida(CuentaDeCorredor);
     }
     
-    public void NotificarIniciarNivel(LogicaDelNegocio.Modelo.CuentaModel CuentaDelCorredor) {
-        base.Channel.NotificarIniciarNivel(CuentaDelCorredor);
-    }
-    
     public LogicaDelNegocio.Modelo.CuentaModel[] RecuperarMejoresPuntuaciones() {
         return base.Channel.RecuperarMejoresPuntuaciones();
     }
@@ -148,6 +137,7 @@ public partial class GameServiceClient : System.ServiceModel.DuplexClientBase<IG
         base.Channel.EstaLaSalaLlena(CuentaEnSala);
     }
 }
+
 namespace ConexionRed.Udp
 {
     public class UdpReciverClient
@@ -214,5 +204,4 @@ namespace ConexionRed.Udp
         }
     }
 }
-
 

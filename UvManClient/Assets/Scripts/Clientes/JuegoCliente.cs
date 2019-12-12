@@ -6,7 +6,6 @@ using System.Threading;
 using GameService.Dominio;
 using System.ServiceModel;
 using GameService.Dominio.Enum;
-using System.Net.Sockets;
 using LogicaDelNegocio.Modelo.Enum;
 using ConexionRed.Udp;
 
@@ -16,7 +15,7 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
     private const int PUERTO_ENVIO_UDP2 = 8091;
     private const int PUERTO_ESCUCHA_UDP = 8296;
     private const int PUERTO_ESCUCHA_UDP2 = 8297;
-
+    public int Puntuacion = 0;
     private UdpReciverClient RecibidorDePaquetesUDP;
     private Thread HiloDeEscuchaPaquetesUDP;
 
@@ -26,11 +25,9 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
     public delegate void NotificacionSobrePartida();
     public event DatosDelMovimientoDeJugador SeMovioUnJugador;
     public event DatosDeInicioDeLaPartida IniciaLaPartida;
-    //public event NotificacionSobrePartida IniciaNuevoNivel;
+    public event NotificacionSobrePartida SeActivoElTiempoParaComer;
     public event DatosDeLaMuerteDeJugador SeMurioUnJugador;
-    public event DatosDeInicioDeLaPartida NuevoNivel;
     public event NotificacionSobrePartida TerminoLaPartida;
-    public event NotificacionSobrePartida PrepararNuevoNivel;
 
     public static JuegoCliente ClienteDelJuego;
     private string DireccionIpDelServidor;
@@ -100,9 +97,7 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
         }
         catch (Exception ex)
         {
-            Debug.Log(ex.Message);
-            Debug.Log("No se puede iniciar el servicio de escuha UDP");
-            
+            //EnviarNotificacion
         }        
     }
 
@@ -119,13 +114,8 @@ private void InicializarServicioDeJuego()
         ServicioDeJuego = new GameServiceClient(new InstanceContext(this), 
             new NetTcpBinding(SecurityMode.None), new EndpointAddress("net.tcp://" + DireccionIpDelServidor + ":8292/GameService"));
     }
-   
-    public void TerminarPartida()
-    {
-        TerminoLaPartida?.Invoke();
-    }
 
-    public void SalaLlena()
+public void SalaLlena()
     {
         SeLlenoLaSala?.Invoke();
     }
@@ -162,6 +152,10 @@ private void InicializarServicioDeJuego()
         }
     }
     
+    /// <summary>
+    /// Lanza notificaciones dependiendo del tipo de eventoEnJuego
+    /// </summary>
+    /// <param name="eventoEnJuego"></param>
     private void RecibirEventoEnElJuego(EventoEnJuego eventoEnJuego)
     {
         if (eventoEnJuego.IdSala == IdDeMiSala)
@@ -173,12 +167,6 @@ private void InicializarServicioDeJuego()
                     break;
                 case EnumTipoDeEventoEnJuego.IniciarPartida:
                     IniciaLaPartida?.Invoke(eventoEnJuego.DatosInicioDePartida);
-                    break;
-                case EnumTipoDeEventoEnJuego.IniciarCuentaRegresivaInicioNivel:
-                    NuevoNivel?.Invoke(eventoEnJuego.DatosInicioDePartida);
-                    break;
-                case EnumTipoDeEventoEnJuego.IniciarNivel:
-                    NuevoNivel?.Invoke(eventoEnJuego.DatosInicioDePartida);
                     break;
                 case EnumTipoDeEventoEnJuego.MuerteJugador:
                     if (eventoEnJuego.CuentaRemitente != CuentaEnSesion.NombreUsuario)
@@ -192,10 +180,23 @@ private void InicializarServicioDeJuego()
                         SeMovioUnJugador?.Invoke(eventoEnJuego.DatosDelMovimiento);
                     }
                     break;
+               case EnumTipoDeEventoEnJuego.IniciaTiempoMatar:
+                    if(eventoEnJuego.CuentaRemitente != CuentaEnSesion.NombreUsuario)
+                    {
+                        SeActivoElTiempoParaComer?.Invoke();
+                    }
+                    break;
             }
         }
     }
     
+    /// <summary>
+    /// Envia a las demas cuentas el movimiento realizado por el jugador
+    /// </summary>
+    /// <param name="x">float</param>
+    /// <param name="y">float</param>
+    /// <param name="movimientoX">float</param>
+    /// <param name="movimientoY">float</param>
     public void EnviarMovimiento(float x, float y, float movimientoX, float movimientoY)
     {
         EventoEnJuego eventoEnJuego = new EventoEnJuego();
@@ -225,6 +226,10 @@ private void InicializarServicioDeJuego()
         }
     }
 
+    /// <summary>
+    /// Envia un mensaje de partida terminada con la mejor puntuacion del corredor
+    /// </summary>
+    /// <param name="PersonajeDelCorredor"></param>
     public void TerminarPartida(Character_Movement PersonajeDelCorredor)
     {
         if (CuentaEnSesion.Jugador.RolDelJugador == EnumTipoDeJugador.Corredor)
@@ -233,36 +238,50 @@ private void InicializarServicioDeJuego()
             {
                 CuentaEnSesion.Jugador.MejorPuntacion = PersonajeDelCorredor.PuntacionTotal;
             }
+            ServicioDeJuego.TerminarPartida(CuentaEnSesion);
         }
-        ServicioDeJuego.TerminarPartida(CuentaEnSesion);
     }
-
+    
     /// <summary>
-    /// Notifica que el conteo para el inicio del nuevo nivel va a comenzar o que el nuevo nivel comenzo
+    /// Lanza una notificacion indicando que la partida a finalizado
     /// </summary>
-    public void NotificarInicioPartida()
-    {
-        ServicioDeJuego.NotificarIniciarNivel(CuentaEnSesion);
-    }
-
     public void NotificarTerminaPartida()
     {
-        throw new NotImplementedException();
+        TerminoLaPartida?.Invoke();
     }
-
+    
     /// <summary>
-    /// Notifica que un nuevo nivel esta apunto de iniciar
+    /// Notifica a los demas jugadores que el jugador mato a otro
     /// </summary>
-    void IGameServiceCallback.NuevoNivel()
-    {
-        PrepararNuevoNivel?.Invoke();
-    }
-
+    /// <param name="nombreUsuario">String</param>
+    /// <param name="NumeroVidas">String</param>
     public void NotificarMuerteJugador(String nombreUsuario, int NumeroVidas)
     {
         EventoEnJuego MuerteDeJugador = new EventoEnJuego();
-        MuerteDeJugador.EventoEnJuegoMuerteJugador(CuentaEnSesion.NombreUsuario, IdDeMiSala, nombreUsuario, NumeroVidas, 0);
-        UdpSender enviadorDePaquetesUDP = new UdpSender(DireccionIpDelServidor, PUERTO_ENVIO_UDP1, PUERTO_ENVIO_UDP2);
-        enviadorDePaquetesUDP.EnviarPaquete(MuerteDeJugador);
+        MuerteDeJugador.EventoEnJuegoMuerteJugador(CuentaEnSesion.NombreUsuario, IdDeMiSala, nombreUsuario, NumeroVidas);
+        UdpSender EnviadorDePaquetesUDP = new UdpSender(DireccionIpDelServidor, PUERTO_ENVIO_UDP1, PUERTO_ENVIO_UDP2);
+        EnviadorDePaquetesUDP.EnviarPaquete(MuerteDeJugador);
+    }
+
+    /// <summary>
+    /// Notica a las demas cuentas que el corredor puede comer perseguidores
+    /// </summary>
+    public void NotificarCorredorPuedeComerJugadores()
+    {
+        EventoEnJuego CorredorPuedeComerCorredores = new EventoEnJuego();
+        CorredorPuedeComerCorredores.SeInicioTiempoDeMatar(CuentaEnSesion.NombreUsuario, IdDeMiSala);
+        UdpSender EnviadorDePauetesUdp = new UdpSender(DireccionIpDelServidor, PUERTO_ENVIO_UDP1, PUERTO_ENVIO_UDP2);
+        EnviadorDePauetesUdp.EnviarPaquete(CorredorPuedeComerCorredores);
+    }
+
+    /// <summary>
+    /// Borra los datos exlusivos de la partida
+    /// </summary>
+    public void ReiniciarDatosJuego()
+    {
+        Puntuacion = 0;
+        CuentasEnLaSala.Clear();
+        IdDeMiSala = String.Empty;
+        MiSalaEsPublica = false;
     }
 }

@@ -1,6 +1,6 @@
 Win
 PlayerPath?
-C:/Users/Miguel/Desktop/UvManCliente/UvManClient_Data/UvManClient.exe
+C:/Users/Miguel/Desktop/UvManCliente/UvManClient.exe
 SceneListBegin?
 Assets/UI/TitleScreen.unity
 Assets/UI/LoginScreen.unity
@@ -143,7 +143,7 @@ b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Alerta
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
 34226e3bb5a09cf902b81015c07d639e Assembly-CSharp.dll:.ChatCliente
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ManejoDeCanvas
+4511f12088d7ac9987671fa82514388a Assembly-CSharp.dll:.ManejoDeCanvas
 e01c5ae2ea1c827f483e1ba489bff641 Assembly-CSharp.dll:.buttonsOptions
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -184,7 +184,7 @@ ee0cef6caaac8ae485bfa82f000f0f7b Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 a0503b7874ede994a7d35ecb5d2eb0d6 Assembly-CSharp.dll:.buttonsCreateLobby
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
-2ba9278ff60c1e4041a2cc8ccc24d993 Assembly-CSharp.dll:.JuegoCliente
+bc9e96e9577f01e92c9c1b0f86611d06 Assembly-CSharp.dll:.JuegoCliente
 a93330e20ae5b336b3e2209fc6d27c7c Assembly-CSharp.dll:.buttonsJoinPrivateLobby
 96cda6682db9ecba0512bb0c548ccc31 Assembly-CSharp.dll:.CharacterMovementOnline
 5372ed2ce39229b1ac910757999a8be2 Unity.TextMeshPro.dll:TMPro.TextMeshPro

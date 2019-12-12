@@ -74,6 +74,7 @@
     <Compile Include="Assets\Scripts\buttonsOptions.cs" />
     <Compile Include="Assets\Scripts\buttonsRegister.cs" />
     <Compile Include="Assets\Scripts\buttonsVerificationAccount.cs" />
+    <Compile Include="Assets\Scripts\CanvasMultiplayer.cs" />
     <Compile Include="Assets\Scripts\CharacterManager.cs" />
     <Compile Include="Assets\Scripts\Clientes\ChatCliente.cs" />
     <Compile Include="Assets\Scripts\Clientes\CuentaCliente.cs" />
@@ -87,7 +88,6 @@
     <Compile Include="Assets\Scripts\LogicaDelChat.cs" />
     <Compile Include="Assets\Scripts\LogicaDelLobby.cs" />
     <Compile Include="Assets\Scripts\LogicaDelMultiplayer.cs" />
-    <Compile Include="Assets\Scripts\ManejoDeCanvas.cs" />
     <Compile Include="Assets\Scripts\SelectLanguage.cs" />
     <Compile Include="Assets\Scripts\Servicios\ServiceChat.cs" />
     <Compile Include="Assets\Scripts\Servicios\ServiceCuenta.cs" />

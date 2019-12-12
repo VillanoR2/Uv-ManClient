@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325d1e129b4e9402ba22df89d0839814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EstaActivoElScript: 0
   EsElJuegadorActual: 0
   VidasDisponibles: 0
   PuntacionTotal: 0
@@ -173,10 +174,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aa5bc1e2bae5d044a8351f0236c7616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EstaActivoElScript: 0
   VidasDisponibles: 0
-  Speed: 4
-  PosicionInicial: {x: 0, y: 0}
+  PuntacionTotal: 0
+  CantidadDeUvCoinsRecolectadas: 0
+  EstaActivoTiempoDeMatar: 1
   RolDelJugador: 0
+  PosicionInicial: {x: 0, y: 0}
+  Speed: 4
 --- !u!1 &8026629430574747187
 GameObject:
   m_ObjectHideFlags: 0

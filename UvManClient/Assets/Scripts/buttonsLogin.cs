@@ -14,13 +14,7 @@ public class buttonsLogin : MonoBehaviour
 
     public GameObject MensajeDeAlerta;
     public Alerta ManejadorDeMensajeDeAlerta;
-
-    private void Start()
-    {
-        gameObject.AddComponent<Canvas>();
-    }
-
-
+    
     private CuentaModel RecuperarDatosDeLogin()
     {
         CuentaModel cuentaParaIniciarSesion = new CuentaModel();
@@ -42,7 +36,7 @@ public class buttonsLogin : MonoBehaviour
                 CuentaModel cuentaIniciarSesion = RecuperarDatosDeLogin();
                 SessionCliente.clienteDeSesion.AsegurarLaInformacion(cuentaIniciarSesion.NombreUsuario, cuentaIniciarSesion.Contrasena);
 
-                EnumEstadoInicioSesion estadoDeInicioDeSesion = clienteSesion.IniciarSesion(cuentaIniciarSesion); ;
+                EnumEstadoInicioSesion estadoDeInicioDeSesion = clienteSesion.IniciarSesion(cuentaIniciarSesion); 
                 switch (estadoDeInicioDeSesion)
                 {
                     case EnumEstadoInicioSesion.Correcto:

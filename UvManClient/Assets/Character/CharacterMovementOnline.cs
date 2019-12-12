@@ -1,10 +1,11 @@
-﻿using LogicaDelNegocio.Modelo.Enum;
+﻿using Assets.Scripts.Util;
+using LogicaDelNegocio.Modelo.Enum;
 using UnityEngine;
 
 public class CharacterMovementOnline : MonoBehaviour
 {
     public bool EstaActivoElScript = false;
-    private const int TOTAL_UV_COINS = 329;
+    private const int TOTAL_UVCOINS = 329;
     public int VidasDisponibles;
     public int PuntacionTotal;
     public int CantidadDeUvCoinsRecolectadas;
@@ -12,12 +13,12 @@ public class CharacterMovementOnline : MonoBehaviour
 
     public EnumTipoDeJugador RolDelJugador;
     public Vector2 PosicionInicial;
-    Vector2 Posicion;
+    private Vector2 Posicion;
     public float Speed = 4f;
-    Vector2 mov;
-    Animator Anim;
-    Rigidbody2D rb2D;
-
+    private Vector2 mov;
+    private Animator Anim;
+    private Rigidbody2D rb2D;
+    private Color ColorDelPersonaje;
 
     void Start()
     {
@@ -25,6 +26,17 @@ public class CharacterMovementOnline : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         Posicion = rb2D.position;
         InicializarAnimacionHaciaAbajo();
+        InicializarColorDelPersonaje();
+    }
+
+    private void InicializarColorDelPersonaje()
+    {
+        ColorDelPersonaje = new Color(255, 255, 255, 255);
+    }
+
+    private void ActualizarColorDelPersonaje()
+    {
+        GetComponent<SpriteRenderer>().color = ColorDelPersonaje;
     }
 
     private void InicializarAnimacionHaciaAbajo()
@@ -61,6 +73,8 @@ public class CharacterMovementOnline : MonoBehaviour
             Posicion = Vector2.zero;
         }
         rb2D.MovePosition(rb2D.position + mov * Speed * Time.deltaTime);
+
+        ActualizarColorDelPersonaje();
     }
 
     public void DescontarVida(int CantidadVidas)
@@ -95,4 +109,46 @@ public class CharacterMovementOnline : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Inicia un cronometro con el tiempo de matar
+    /// </summary>
+    public void ActivaTiempoDeMatar()
+    {
+        EstaActivoTiempoDeMatar = false;
+        Cronometro CronometroTiempoActivoDeMatar = new Cronometro(500, 10000);
+        CronometroTiempoActivoDeMatar.TranscurrioUnIntervalo += CambiarColorPersonaje;
+        CronometroTiempoActivoDeMatar.FinalizoElTimepo += DesactivarTiempoMatar;
+        CronometroTiempoActivoDeMatar.Iniciar();
+    }
+
+    /// <summary>
+    /// Cambia el color del render del personaje para indicar que puede comer personajes
+    /// </summary>
+    private void CambiarColorPersonaje()
+    {
+        Color ColorOriginal = new Color(255, 255, 255, 255);
+        Color ColorComer1 = new Color(234, 143, 47, 255);
+        Color ColorComer2 = new Color(255, 0, 0, 255);
+        if (ColorDelPersonaje == ColorOriginal)
+        {
+            ColorDelPersonaje = ColorComer1;
+        }
+        else if (ColorDelPersonaje == ColorComer1)
+        {
+            ColorDelPersonaje = ColorComer2;
+        }
+        else
+        {
+            ColorDelPersonaje = ColorComer1;
+        }
+    }
+
+    /// <summary>
+    /// Desactiva el tiempo de matar
+    /// </summary>
+    private void DesactivarTiempoMatar()
+    {
+        ColorDelPersonaje = new Color(255, 255, 255, 255);
+        EstaActivoTiempoDeMatar = false;
+    }
 }

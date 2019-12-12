@@ -1,5 +1,5 @@
-﻿using GameService.Dominio;
-using GameService.Dominio.Enum;
+﻿using System;
+using GameService.Dominio;
 using LogicaDelNegocio.Modelo;
 using LogicaDelNegocio.Modelo.Enum;
 using System.Collections.Generic;
@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 
 public class LogicaDelMultiplayer : MonoBehaviour
 {
+    private CuentaModel CuentaDelJugadorPrincipal;
     private CharacterManager ManejadorDePersonajes = CharacterManager.ManejadorDePersonajes;
     private JuegoCliente ClienteDelJuego = JuegoCliente.ClienteDelJuego;
     public Character_Movement JugadorActual;
@@ -18,7 +19,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
     private GameObject Perseguidor2;
     private GameObject Perseguidor3;
     private GameObject Perseguidor4;
-    
+
     private int CANTIDAD_VIDAS_CORREDOR = 5;
     private int CANTIDAD_VIDAS_PERSEGUIDOR = 3;
 
@@ -30,27 +31,42 @@ public class LogicaDelMultiplayer : MonoBehaviour
     private readonly Vector2 POSICION_PERSEGUIDOR3 = new Vector2(23.5f, -16.5f);
     private readonly Vector2 POSICION_PERSEGUIDOR4 = new Vector2(-11.5f, 11.5f);
 
-
     void Start()
+    {
+        SuscribirseAEventosDeJuego();
+        IniciarNuevoJuego();
+    }
+
+    /// <summary>
+    /// Prepara a los objetos del juego para iniciar
+    /// </summary>
+    private void IniciarNuevoJuego()
     {
         ColocarUvCoinsEnMapa();
         InicializarPersonajesEnElMapa();
-        SuscribirseAEventosDeJuego();
     }
 
+    /// <summary>
+    /// Se suscribe a los eventos del cliente de juego
+    /// </summary>
     private void SuscribirseAEventosDeJuego()
     {
         ClienteDelJuego.SeMurioUnJugador += MatarJugador;
         ClienteDelJuego.SeMovioUnJugador += MoverJugador;
-        ClienteDelJuego.PrepararNuevoNivel += ReiniciarNivel;
+        ClienteDelJuego.SeActivoElTiempoParaComer += ActivarTiempoDeComer;
     }
 
-    private CuentaModel ObtenerCuentaDeNombreDeUsuario(string cuenta)
+    /// <summary>
+    /// Recupera la cuenta en la lista de Jugadores en sesion que tenga el mismo nombre de usuario
+    /// </summary>
+    /// <param name="NombreUsuario">String</param>
+    /// <returns>La cuenta del nombre de usuario</returns>
+    private CuentaModel ObtenerCuentaDeNombreDeUsuario(string NombreUsuario)
     {
         CuentaModel CuentaAMover = null;
         foreach (CuentaModel cuentaEnElDiccionario in Jugadores.Keys)
         {
-            if (cuentaEnElDiccionario.NombreUsuario == cuenta)
+            if (cuentaEnElDiccionario.NombreUsuario == NombreUsuario)
             {
                 CuentaAMover = cuentaEnElDiccionario;
                 break;
@@ -59,6 +75,10 @@ public class LogicaDelMultiplayer : MonoBehaviour
         return CuentaAMover;
     }
 
+    /// <summary>
+    /// Se encarga de mover un personaje online en el mapa
+    /// </summary>
+    /// <param name="movimientoJugador">MovimientoJugador</param>
     private void MoverJugador(MovimientoJugador movimientoJugador)
     {
         CuentaModel cuentaAMover = ObtenerCuentaDeNombreDeUsuario(movimientoJugador.Usuario);
@@ -69,6 +89,11 @@ public class LogicaDelMultiplayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Recupera la CuentaModel que se encuentra en el diccionario de jugadores a partir de una cuenta
+    /// </summary>
+    /// <param name="cuentaABuscar">CuentaModel</param>
+    /// <returns>La cuenta que se encuentra en el diccionario de la cuneta</returns>
     private CuentaModel ObtenerCuentaDelDiccionario(CuentaModel cuentaABuscar)
     {
         CuentaModel cuenta = null;
@@ -83,11 +108,22 @@ public class LogicaDelMultiplayer : MonoBehaviour
         return cuenta;
     }
 
-    private void EnviarCoordenadas(float x, float y, float movimientoX, float movimientoY)
+    /// <summary>
+    /// Envia la posicion de mi personaje en el juego asi como los movimientos que hice
+    /// </summary>
+    /// <param name="x">float</param>
+    /// <param name="y">float</param>
+    /// <param name="movimientoX">float</param>
+    /// <param name="movimientoY">float</param>
+    private void EnviarMiMovimiento(float x, float y, float movimientoX, float movimientoY)
     {
         ClienteDelJuego.EnviarMovimiento(x, y, movimientoX, movimientoY);
     }
 
+    /// <summary>
+    /// Instancia un Personaje a partir de las cuentas en sesion asi como los inicializa estableciendo la informacion
+    /// de su perssonaje
+    /// </summary>
     private void InicializarPersonajesEnElMapa()
     {
         foreach (CuentaModel cuentaEnJuego in ClienteDelJuego.CuentasEnLaSala)
@@ -132,19 +168,13 @@ public class LogicaDelMultiplayer : MonoBehaviour
             }
             if (EsElJugadorActual)
             {
+                CuentaDelJugadorPrincipal = cuentaEnJuego;
                 InstanciaDelObjecto.GetComponent<CharacterMovementOnline>().EstaActivoElScript = false;
-                InstanciaDelObjecto.GetComponent<CharacterMovementOnline>().enabled = false;
                 JugadorActual = InstanciaDelObjecto.GetComponent<Character_Movement>();
                 JugadorActual.enabled = true;
-                JugadorActual.EstaActivoElScript = true;
-                JugadorActual.RolDelJugador = TipoDeJugador;
-                JugadorActual.PosicionInicial = PosicionInicial;
-                JugadorActual.VidasDisponibles = CantidadDeVidas;
-                JugadorActual.EsElJuegadorActual = EsElJugadorActual;
+                InicializarMovement_Character(JugadorActual, true, EsElJugadorActual, PosicionInicial,
+                    TipoDeJugador, CantidadDeVidas);
                 JugadorActual.EstaActivoTiempoDeMatar = true;
-                JugadorActual.MeMovi += EnviarCoordenadas;
-                JugadorActual.MateAJugador += NotificarMateAUnJugador;
-                JugadorActual.RecolectoTodasLasMonedas += IniciarNuevoNivel;
             }
             else
             {
@@ -152,10 +182,8 @@ public class LogicaDelMultiplayer : MonoBehaviour
                 InstanciaDelObjecto.GetComponent<Character_Movement>().enabled = false;
                 ScriptDeMovimiento = InstanciaDelObjecto.GetComponent<CharacterMovementOnline>();
                 ScriptDeMovimiento.enabled = true;
-                ScriptDeMovimiento.EstaActivoElScript = true;
-                ScriptDeMovimiento.PosicionInicial = PosicionInicial;
-                ScriptDeMovimiento.RolDelJugador = TipoDeJugador;
-                ScriptDeMovimiento.VidasDisponibles = CantidadDeVidas;
+                InicializarMovementCharacterOnline(ScriptDeMovimiento, true, PosicionInicial,
+                    TipoDeJugador, CantidadDeVidas);
             }
             InstanciaDelObjecto.tag = tag;
             ScriptsDeMovimiento.Add(cuentaEnJuego, ScriptDeMovimiento);
@@ -163,21 +191,72 @@ public class LogicaDelMultiplayer : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Establece la información necesaria al Script del Personaje del jugador actual para que pueda estar en la partida
+    /// </summary>
+    /// <param name="MovimientoDelPersonaje">Character_Movement</param>
+    /// <param name="EstaActivo">Boolean</param>
+    /// <param name="EsElJugadorActual">Boolean</param>
+    /// <param name="PosicionInicial">Vector2</param>
+    /// <param name="RolDeJugador">EnumTipoDeJugador</param>
+    /// <param name="VidasDisponibles">int</param>
+    private void InicializarMovement_Character(Character_Movement MovimientoDelPersonaje, Boolean EstaActivo,
+        Boolean EsElJugadorActual, Vector2 PosicionInicial, EnumTipoDeJugador RolDeJugador, int VidasDisponibles)
+    {
+        MovimientoDelPersonaje.EstaActivoElScript = EstaActivo;
+        MovimientoDelPersonaje.RolDelJugador = RolDeJugador;
+        MovimientoDelPersonaje.PosicionInicial = PosicionInicial;
+        MovimientoDelPersonaje.VidasDisponibles = VidasDisponibles;
+        MovimientoDelPersonaje.EsElJuegadorActual = EsElJugadorActual;
+        JugadorActual.MeMovi += EnviarMiMovimiento;
+        JugadorActual.MateAJugador += NotificarMateAUnJugador;
+        JugadorActual.RecolectoTodasLasMonedas += TerminarPartida;
+        JugadorActual.PuedoComerPerseguidores += NotificarCorredorPuedeComer;
+    }
+
+    /// <summary>
+    /// Establece la información necesaria del jugador en linea para que pueda estar en la partida
+    /// </summary>
+    /// <param name="MovimientoDelPersonaje">ChrarcterMovementOnline</param>
+    /// <param name="EstaActivo">Boolean</param>
+    /// <param name="PosicionInicial">Vector2</param>
+    /// <param name="RolDeJugador">EnumTipoDeJugador</param>
+    /// <param name="VidasDisponibles">int</param>
+    private void InicializarMovementCharacterOnline(CharacterMovementOnline MovimientoDelPersonaje, Boolean EstaActivo,
+        Vector2 PosicionInicial, EnumTipoDeJugador RolDeJugador, int VidasDisponibles)
+    {
+        MovimientoDelPersonaje.EstaActivoElScript = EstaActivo;
+        MovimientoDelPersonaje.RolDelJugador = RolDeJugador;
+        MovimientoDelPersonaje.PosicionInicial = PosicionInicial;
+        MovimientoDelPersonaje.VidasDisponibles = VidasDisponibles;
+    }
+
+    /// <summary>
+    /// Intancia un prefab de las UvCoins en el mapa
+    /// </summary>
     private void ColocarUvCoinsEnMapa()
     {
         UvCoins = Instantiate(PrefabUvCoins);
     }
 
-    private void IniciarNuevoNivel()
-    {
-        ClienteDelJuego.NotificarInicioPartida();
-    }
-
+    
+    /// <summary>
+    /// Verifica si la cuenta es el jugador actual
+    /// </summary>
+    /// <param name="cuenta">CuentaModel</param>
+    /// <returns>Verdadero si es el jugador actual, falso si no</returns>
     private bool EsElJugadorPrincipal(CuentaModel cuenta)
     {
         return ClienteDelJuego.CuentaEnSesion.NombreUsuario == cuenta.NombreUsuario;
     }
-
+   
+    /// <summary>
+    /// Instancia un personake en el mapa
+    /// </summary>
+    /// <param name="PrefabAInstanciar">GameObject</param>
+    /// <param name="Posicion">Vector2</param>
+    /// <param name="EsELJugadorActual">bool</param>
+    /// <returns>La instancia del prefab</returns>
     private GameObject ColocarPersonajeEnElMapa(GameObject PrefabAInstanciar, Vector2 Posicion, bool EsELJugadorActual)
     {
         if (EsELJugadorActual)
@@ -220,7 +299,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
         bool CuentanConVidas = false;
         foreach (CharacterMovementOnline movimientoDelJugador in ScriptsDeMovimiento.Values)
         {
-            if(movimientoDelJugador != null)
+            if (movimientoDelJugador != null)
             {
                 if ((movimientoDelJugador.RolDelJugador > 0) && (movimientoDelJugador.VidasDisponibles > 0))
                 {
@@ -242,6 +321,10 @@ public class LogicaDelMultiplayer : MonoBehaviour
     /// <param name="CuentaADescontarVidas">Cuenta del personaje a la que se le descontara una vida</param>
     private void DescontarVida(CuentaModel CuentaADescontarVidas, int CantidadDeVidas)
     {
+        if (CuentaADescontarVidas.Jugador.RolDelJugador == EnumTipoDeJugador.Corredor)
+        {
+            ColocarPersonajesEnPosicionInicial();
+        }
         if (EsElJugadorPrincipal(CuentaADescontarVidas))
         {
             JugadorActual.DescontarVida(CantidadDeVidas);
@@ -259,7 +342,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
     {
         if (!LosPerseguidoresAunTienenVidas())
         {
-            //TerminarPartida();
+            TerminarPartida();
         }
     }
 
@@ -269,11 +352,11 @@ public class LogicaDelMultiplayer : MonoBehaviour
     /// </summary>
     private void TerminarPartida()
     {
+        ClienteDelJuego.Puntuacion = JugadorActual.PuntacionTotal;
         if (JugadorActual.RolDelJugador == EnumTipoDeJugador.Corredor)
         {
             ClienteDelJuego.TerminarPartida(JugadorActual);
         }
-        SceneManager.LoadScene("MenuScreen");
     }
 
     /// <summary>
@@ -293,39 +376,13 @@ public class LogicaDelMultiplayer : MonoBehaviour
     }
 
     /// <summary>
-    /// Oculta del juego el Personaje al que pertenece la cuenta
-    /// </summary>
-    /// <param name="CuentaADesactivar"></param>
-    //private void DesactivarJugadorEnLinea(CuentaModel CuentaADesactivar)
-    //{
-    //    CuentaModel CuentaEnDiciconario = ObtenerCuentaDelDiccionario(CuentaADesactivar);
-    //    if (CuentaADesactivar != null)
-    //    {
-    //        Jugadores[CuentaEnDiciconario].SetActive(false);
-    //    }
-    //}
-
-    /// <summary>
-    /// Muestra en el juego al Personaje al que pertenece la cuenta
-    /// </summary>
-    /// <param name="CuentaActivar"></param>
-    private void ActivarJugadorEnLinea(CuentaModel CuentaActivar)
-    {
-        CuentaModel CuentaEnDiciconario = ObtenerCuentaDelDiccionario(CuentaActivar);
-        if (CuentaActivar != null)
-        {
-            Jugadores[CuentaEnDiciconario].SetActive(true);
-        }
-    }
-
-    /// <summary>
     /// Quita la camara individual y desactiva al Jugador actual
     /// </summary>
     private void DesactivarJugadorActual()
     {
-        GameObject PersonajeActual = JugadorActual.gameObject;
-        PersonajeActual.GetComponentInChildren<Camera>().enabled = false;
-        PersonajeActual.SetActive(false);
+        JugadorActual.ColocarseEnLaPosicionInicial();
+        JugadorActual.DesactivarCamara();
+        Jugadores[CuentaDelJugadorPrincipal].SetActive(false);
     }
 
     /// <summary>
@@ -348,70 +405,21 @@ public class LogicaDelMultiplayer : MonoBehaviour
             }
         }
     }
-
+    
     /// <summary>
-    /// Coloca al GameObject que pertenece del jugador actual en la posicion Inicial y establece la camara individual
-    /// </summary>
-    private void ActivarJugadorActual()
-    {
-        GameObject PersonajeActual = JugadorActual.gameObject;
-        JugadorActual.ColocarseEnLaPosicionInicial();
-        PersonajeActual.GetComponentInChildren<Camera>().enabled = true;
-        PersonajeActual.SetActive(true);
-    }
-
-    private void ReiniciarNivel()
-    {
-        ReiniciarUvCoins();
-        ReiniciarVidasPerseguidores();
-        ReiniciarJugadoresEnLinea();
-        ActivarJugadorActual();
-    }
-
-
-    /// <summary>
-    /// Reinicia la vida de los personajes que su rol sea Persuidor y
-    /// coloca a todos los jugadores en la posicion inicial
-    /// </summary>
-    private void ReiniciarVidasPerseguidores()
-    {
-        foreach (CharacterMovementOnline Personaje in ScriptsDeMovimiento.Values)
-        {
-            Personaje.ColocarseEnLaPosicionInicial();
-            if (Personaje.RolDelJugador > 0)
-            {
-                Personaje.VidasDisponibles = CANTIDAD_VIDAS_PERSEGUIDOR;
-            }
-        }
-    }
-
-    /// <summary>
-    /// Coloca en el mapa a los jugadores en linea
-    /// </summary>
-    private void ReiniciarJugadoresEnLinea()
-    {
-        foreach(CuentaModel cuenta in Jugadores.Keys)
-        {
-            ActivarJugadorEnLinea(cuenta);
-        }
-    }
-
-    private void ReiniciarUvCoins()
-    {
-        Destroy(UvCoins);
-        UvCoins = Instantiate(PrefabUvCoins);
-    }
-
-    /// <summary>
-    /// Notifica al cliente del juego que mate a un jugador
+    /// Notifica al cliente del juego que el jugador mato a un jugador en linea
     /// </summary>
     /// <param name="RolDelJugadorMatado">El Rol del jugador matado</param>
     private void NotificarMateAUnJugador(EnumTipoDeJugador RolDelJugadorMatado, int NumeroVidas)
     {
         CuentaModel CuentaMuerto = BuscarCuentaPorRol(RolDelJugadorMatado);
-        if(CuentaMuerto != null)
+        if (CuentaMuerto != null)
         {
             ClienteDelJuego.NotificarMuerteJugador(CuentaMuerto.NombreUsuario, NumeroVidas);
+        }
+        if(CuentaMuerto.Jugador.RolDelJugador == EnumTipoDeJugador.Corredor)
+        {
+            ReacomodarPersonajes();
         }
     }
 
@@ -423,14 +431,76 @@ public class LogicaDelMultiplayer : MonoBehaviour
     private CuentaModel BuscarCuentaPorRol(EnumTipoDeJugador RolDelJugador)
     {
         CuentaModel CuentaDelRol = null;
-        foreach(CuentaModel CuentaEnLaSala in ClienteDelJuego.CuentasEnLaSala)
+        foreach (CuentaModel CuentaEnLaSala in ClienteDelJuego.CuentasEnLaSala)
         {
-            if(CuentaEnLaSala.Jugador.RolDelJugador == RolDelJugador)
+            if (CuentaEnLaSala.Jugador.RolDelJugador == RolDelJugador)
             {
                 CuentaDelRol = CuentaEnLaSala;
             }
         }
         return CuentaDelRol;
+    }
+
+    private void ReacomodarPersonajes()
+    {
+        ColocarPersonajesEnPosicionInicial();
+    }
+
+    /// <summary>
+    /// Coloca a todos los jugadores en su posicion inicial en el mapa
+    /// </summary>
+    private void ColocarPersonajesEnPosicionInicial()
+    {
+        foreach(CharacterMovementOnline ScriptDelPersonaje in ScriptsDeMovimiento.Values)
+        {
+            if (ScriptDelPersonaje != null)
+            {
+                ScriptDelPersonaje.ColocarseEnLaPosicionInicial();
+            }
+        }
+        JugadorActual.ColocarseEnLaPosicionInicial();
+    }
+
+    /// <summary>
+    /// Notifica al Cliente del juego que el corredor puede comer jugadores para que envie el mesanje a los demas jugadores
+    /// </summary>
+    private void NotificarCorredorPuedeComer()
+    {
+        ClienteDelJuego.NotificarCorredorPuedeComerJugadores();
+    }
+
+    /// <summary>
+    /// Se activa el tiempo de comer en el jugador actual y en el corredor
+    /// </summary>
+    private void ActivarTiempoDeComer()
+    {
+        JugadorActual.ActivaTiempoDeMatar();
+        CharacterMovementOnline ScriptDelCorredor = RecuperarScriptDePersonaje(EnumTipoDeJugador.Corredor);
+        if (ScriptDelCorredor != null)
+        {
+            ScriptDelCorredor.ActivaTiempoDeMatar();    
+        }
+    }
+    
+    /// <summary>
+    /// Recupera el script de movimiento del personaje que sea del tipo de personaje
+    /// </summary>
+    /// <param name="tipoDelPersonaje">EnumTipoDeJugador</param>
+    /// <returns>El ChracterMovenent que tiene ese rol</returns>
+    private CharacterMovementOnline RecuperarScriptDePersonaje(EnumTipoDeJugador tipoDelPersonaje)
+    {
+        CharacterMovementOnline ScriptDelPersonaje = null;
+        foreach (CharacterMovementOnline ScriptDeMovimiento in ScriptsDeMovimiento.Values)
+        {
+            if (ScriptDeMovimiento != null)
+            {
+                if (ScriptDeMovimiento.RolDelJugador == tipoDelPersonaje)
+                {
+                    ScriptDelPersonaje = ScriptDeMovimiento;
+                }
+            }
+        }
+        return ScriptDelPersonaje;
     }
 }
 
