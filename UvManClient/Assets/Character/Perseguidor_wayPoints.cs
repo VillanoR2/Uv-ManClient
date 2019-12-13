@@ -17,6 +17,10 @@ public class Perseguidor_wayPoints : MonoBehaviour
     Rigidbody2D RigidBody2D;
     public GameObject SpawnEnemy;
 
+    /// <summary>
+    /// El metodo Start es un metodo predefinido por UNITY que su funcion es realizar todo lo que se encuentre dentro 
+    /// de el al iniciar la ejecucion por primera vez del proyecto. Este metodo no recibe ningun parametro y es de tipo void.
+    /// </summary>
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -24,11 +28,17 @@ public class Perseguidor_wayPoints : MonoBehaviour
         Animator = GetComponent<Animator>();
         RigidBody2D = GetComponent<Rigidbody2D>();
     }
+    /// <summary>
+    /// El metodo FixedUpdate es un metodo predefinido por UNITY que su funcion es cargar todo lo que este dentro de el por cada
+    /// segundo que pase durante la ejecucion sin esperar o. Es un metodo que no recibe valores y es de tipo void.
+    /// </summary>
     void FixedUpdate()
     {
         TargetFollow();
     }
-
+    /// <summary>
+    /// El metodo PointPatrol define un arreglo de puntos que funcionaran como puntos de patrullaje a la que el objeto se dirigira.
+    /// </summary>
     void PointPatrol()
     {
         Vector2 Movement = Waypoints[Point].position - transform.position;
@@ -47,6 +57,10 @@ public class Perseguidor_wayPoints : MonoBehaviour
             Point = (Point + 1) % Waypoints.Length;
         }
     }
+    /// <summary>
+    /// El metodo TargetFollow designa dos areas una de vision y una de ataque y designa que si un objetivo se encuentra 
+    /// en el area de visión transforma su posicion actual a la posicion del objetivo.
+    /// </summary>
     void TargetFollow()
     {
         Target = ActualPosition;
@@ -94,7 +108,10 @@ public class Perseguidor_wayPoints : MonoBehaviour
 
         Debug.DrawLine(transform.position, Target, Color.green);
     }
-
+    /// <summary>
+    /// El metodo Respawn es un metodo que reasigna al objeto a la posicin de el objeto llamado spawn generado en la escena,
+    /// este metodo es de tipo void y no recibe parametros.
+    /// </summary>
     void Respawn()
     {
         gameObject.SetActive(true);
@@ -107,7 +124,10 @@ public class Perseguidor_wayPoints : MonoBehaviour
             TargetFollow();
         }
     }
-
+    /// <summary>
+    /// El metodo OnTriggerEnter2D es un metodo predefinido por UNITY que su funcion es manejar la accion disparador cuando dos coliciones se encuentran.Es un metodo de tipo void
+    /// <paramref name="Collider">Es un parametro de tipo Collider2D <paramref/>
+    /// </summary>
         void OnTriggerEnter2D(Collider2D Collider)
     {
         if (Collider.gameObject.tag == "Player")
@@ -117,7 +137,9 @@ public class Perseguidor_wayPoints : MonoBehaviour
 
         }
     }
-
+    /// <summary>
+    /// El metodo OnDrawGizmosSelected es un metodo que dibuja una circunferencia alrededor del objeto asignado.
+    /// </summary>
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
