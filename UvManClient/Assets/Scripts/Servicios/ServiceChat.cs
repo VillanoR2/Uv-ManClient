@@ -16,32 +16,20 @@ public interface IChatService {
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/Conectar", ReplyAction="http://tempuri.org/IChatService/ConectarResponse")]
     bool Conectar(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
-    
-    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IChatService/ObtenerCuentasConectadas", ReplyAction="http://tempuri.org/IChatService/ObtenerCuentasConectadasResponse")]
-    LogicaDelNegocio.Modelo.CuentaModel[] ObtenerCuentasConectadas();
-    
+
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/EnviarMensaje")]
     void EnviarMensaje(GameChatService.Dominio.Message Mensaje);
-    
-    [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/EstaEscribiendo")]
-    void EstaEscribiendo(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
-    
+
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, IsTerminating=true, Action="http://tempuri.org/IChatService/Desconectar")]
     void Desconectar(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 public interface IChatServiceCallback {
-    
-    [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/RefrescarCuentasConectadas")]
-    void RefrescarCuentasConectadas(LogicaDelNegocio.Modelo.CuentaModel[] CuentasConectadas);
-    
+
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/RecibirMensaje")]
     void RecibirMensaje(GameChatService.Dominio.Message Mensaje);
-    
-    [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/EstaEscribiendoCallback")]
-    void EstaEscribiendoCallback(string Cuenta);
-    
+
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IChatService/Unirse")]
     void Unirse(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
     
@@ -80,19 +68,11 @@ public partial class ChatServiceClient : System.ServiceModel.DuplexClientBase<IC
     public bool Conectar(LogicaDelNegocio.Modelo.CuentaModel Cuenta) {
         return base.Channel.Conectar(Cuenta);
     }
-    
-    public LogicaDelNegocio.Modelo.CuentaModel[] ObtenerCuentasConectadas() {
-        return base.Channel.ObtenerCuentasConectadas();
-    }
-    
+
     public void EnviarMensaje(GameChatService.Dominio.Message Mensaje) {
         base.Channel.EnviarMensaje(Mensaje);
     }
-    
-    public void EstaEscribiendo(LogicaDelNegocio.Modelo.CuentaModel Cuenta) {
-        base.Channel.EstaEscribiendo(Cuenta);
-    }
-    
+
     public void Desconectar(LogicaDelNegocio.Modelo.CuentaModel Cuenta) {
         base.Channel.Desconectar(Cuenta);
     }

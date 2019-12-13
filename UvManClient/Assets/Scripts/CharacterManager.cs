@@ -5,15 +5,15 @@ using LogicaDelNegocio.Modelo;
 using LogicaDelNegocio.Modelo.Enum;
 using UnityEngine;
 
+/// <summary>
+/// Se encarga de proporcionar aprites y prefabs de personajes
+/// </summary>
 public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager ManejadorDePersonajes;
-    private Dictionary<string, Sprite> Corredores = new Dictionary<string, Sprite>();
-    private Dictionary<string, Sprite> Perseguidores = new Dictionary<string, Sprite>();
-    private List<CorredorAdquiridoModel> CorredoresDisponibles = new List<CorredorAdquiridoModel>();
-    private Dictionary<string, GameObject> PrefabsDeCorredores = new Dictionary<string, GameObject>();
-    private Dictionary<string, GameObject> PrefabsDePerseguidores = new Dictionary<string, GameObject>();
-
+    private Dictionary<string, Sprite> SpritesDePersonajes = new Dictionary<string, Sprite>();
+    private Dictionary<string, GameObject> PrefabsDePersonajes = new Dictionary<string, GameObject>();
+    
     public Sprite sCMegamam;
     public Sprite sCBomberman;
     public Sprite sCLink;
@@ -37,57 +37,85 @@ public class CharacterManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
     void Start()
     {
-        CrearDiccionarioDeCorredores();
-        CrearDiccionarioDePerseguidores();
+        CrearDiccionarioDeSprites();
     }
 
-    private void CrearDiccionarioDeCorredores()
+    /// <summary>
+    /// Crea un diccionario con los sprites de los personajes
+    /// </summary>
+    private void CrearDiccionarioDeSprites()
     {
-        Corredores.Add("Megaman", sCMegamam);
-        Corredores.Add("Bomberman", sCBomberman);
-        Corredores.Add("Link", sCLink);
-        PrefabsDeCorredores.Add("Megaman", PrefabCMegaman);
-        PrefabsDeCorredores.Add("Bomberman", PrefabCBomberman);
-        PrefabsDeCorredores.Add("Link", PrefabCLink);
+        SpritesDePersonajes.Add("Megaman", sCMegamam);
+        SpritesDePersonajes.Add("Bomberman", sCBomberman);
+        SpritesDePersonajes.Add("Link", sCLink);
+        PrefabsDePersonajes.Add("Megaman", PrefabCMegaman);
+        PrefabsDePersonajes.Add("Bomberman", PrefabCBomberman);
+        PrefabsDePersonajes.Add("Link", PrefabCLink);
+        SpritesDePersonajes.Add("Creeper", sPCreeper);
+        PrefabsDePersonajes.Add("Creeper", PrefabPCreeper);
     }
-
-    private void CrearDiccionarioDePerseguidores()
-    {
-        Perseguidores.Add("Creeper", sPCreeper);
-        PrefabsDePerseguidores.Add("Creeper", PrefabPCreeper);
-    }
-
+    
+    /// <summary>
+    /// Regresa el sprite que le corresponde al jugador dependiendo de su rol
+    /// </summary>
+    /// <param name="Jugador">JugadorModel</param>
+    /// <returns>El sprite que le pertenece al jugador</returns>
     public Sprite ObtenerSpriteDePersonaje(JugadorModel Jugador)
     {
-        return sPCreeper;
-        if (Jugador.RolDelJugador == EnumTipoDeJugador.Corredor)
+        Sprite SpriteDelJugador = SpritesDePersonajes["Megaman"];
+        switch (Jugador.RolDelJugador)
         {
-            String nombreDelPersonaje = Jugador.CorredorSeleccionado.Nombre;
-            return Corredores[nombreDelPersonaje];
+            case EnumTipoDeJugador.Corredor:
+                SpriteDelJugador = SpritesDePersonajes["Bomberman"];
+                break;
+            case EnumTipoDeJugador.Perseguidor1:
+                SpriteDelJugador = SpritesDePersonajes["Megaman"];
+                break;
+            case EnumTipoDeJugador.Perseguidor2:
+                SpriteDelJugador = SpritesDePersonajes["Link"];
+                break;
+            case EnumTipoDeJugador.Perseguidor3:
+                SpriteDelJugador = SpritesDePersonajes["Creeper"];
+                break;
+            case EnumTipoDeJugador.Perseguidor4:
+                SpriteDelJugador = SpritesDePersonajes["Megaman"];
+                break;
         }
-        else
-        {
-            String nombreDelPersonaje = Jugador.PerseguidorSeleccionado.Nombre;
-            return Perseguidores[nombreDelPersonaje];
-        }
+
+        return SpriteDelJugador;
     }
 
+    /// <summary>
+    /// Regresa el Prefab que le corresponde al jugador dependiendo de su rol
+    /// </summary>
+    /// <param name="Jugador">JugadorModel</param>
+    /// <returns>Un GameObject que es un prefab del personaje que le pertenece al jugador</returns>
     public GameObject ObtenerPrefabDePersonaje(JugadorModel Jugador)
     {
-        return PrefabCMegaman;
-        if (Jugador.RolDelJugador == EnumTipoDeJugador.Corredor)
+        GameObject PrefabDelJugador = PrefabsDePersonajes["Megaman"];
+        switch (Jugador.RolDelJugador)
         {
-            String nombreDelPersonaje = Jugador.CorredorSeleccionado.Nombre;
-            return PrefabsDeCorredores[nombreDelPersonaje];
+            case EnumTipoDeJugador.Corredor:
+                PrefabDelJugador = PrefabsDePersonajes["Bomberman"];
+                break;
+            case EnumTipoDeJugador.Perseguidor1:
+                PrefabDelJugador = PrefabsDePersonajes["Megaman"];
+                break;
+            case EnumTipoDeJugador.Perseguidor2:
+                PrefabDelJugador = PrefabsDePersonajes["Link"];
+                break;
+            case EnumTipoDeJugador.Perseguidor3:
+                PrefabDelJugador = PrefabsDePersonajes["Link"];
+                break;
+            case EnumTipoDeJugador.Perseguidor4:
+                PrefabDelJugador = PrefabsDePersonajes["Megaman"];
+                break;
         }
-        else
-        {
-            String nombreDelPersonaje = Jugador.PerseguidorSeleccionado.Nombre;
-            return PrefabsDePerseguidores[nombreDelPersonaje];
-        }
+
+        return PrefabDelJugador;
     }
 
 }

@@ -2,12 +2,15 @@
 using LogicaDelNegocio.Modelo.Enum;
 using UnityEngine;
 
+/// <summary>
+/// Se encarga de controlar al personaje del jugador actual
+/// </summary>
 public class Character_Movement : MonoBehaviour
 {
-    public bool EstaActivoElScript = false;
+    public bool EstaActivoElScript;
     private const int TOTAL_UVCOINS = 329;
     private const int UVCOINS_NECESARIAS_PARA_ACTIVARMATAR = 28;
-    private bool VolverAPosicionInicial = false;
+    private bool VolverAPosicionInicial;
     public bool EsElJuegadorActual;
     public int VidasDisponibles;
     public int PuntacionTotal;
@@ -23,81 +26,99 @@ public class Character_Movement : MonoBehaviour
     public event NotificacionPartida PuedoComerPerseguidores;
     public event MuerteDeJugador MateAJugador;
     public event PosicionJugador MeMovi;
-
     
-    public float Speed = 4f;
-    private Vector2 mov;
-    private Animator Anim;
-    private Rigidbody2D rb2D;
-    private Vector2 movimiento;
+    public float Velocidad = 4f;
+    private Vector2 MovimientoContinuo;
+    private Animator Animacion;
+    private Rigidbody2D Rigidbody;
+    private Vector2 MovimientoNuevo;
     private bool LaCamaraEstaActiva;
-    private SpriteRenderer RenderDelPersonaje;
+    private Color ColorDelPersonaje;
 
     void Start()
     {
-        Anim = GetComponent<Animator>();
-        rb2D = GetComponent<Rigidbody2D>();
+        Animacion = GetComponent<Animator>();
+        Rigidbody = GetComponent<Rigidbody2D>();
         InicializarAnimacionHaciaAbajo();
         CantidadDeUvCoinsRecolectadas = 0;
         EstaActivoTiempoDeMatar = false;
         LaCamaraEstaActiva = true;
-        RenderDelPersonaje = GetComponent<SpriteRenderer>();
+        InicializarColorDelPersonaje();
     }
 
+    /// <summary>
+    /// Coloca la animacion del personaje hacia abajo
+    /// </summary>
     private void InicializarAnimacionHaciaAbajo()
     {
-        Anim.SetFloat("MovY", -0.1f);             
+        Animacion.SetFloat("MovY", -0.1f);             
     }
 
+    /// <summary>
+    /// Coloca el color del personaje en blanco
+    /// </summary>
+    private void InicializarColorDelPersonaje()
+    {
+        ColorDelPersonaje = new Color(255, 255, 255, 255);
+    }
+    
     void Update()
     {
-        movimiento = new Vector2(
+        MovimientoNuevo = new Vector2(
         Input.GetAxisRaw("Horizontal"),
         Input.GetAxisRaw("Vertical"));
 
-        if(movimiento != Vector2.zero)
+        if(MovimientoNuevo != Vector2.zero)
         {
-            mov = movimiento;
+            MovimientoContinuo = MovimientoNuevo;
         }
 
-        if (mov != Vector2.zero)
+        if (MovimientoContinuo != Vector2.zero)
         {
-            Anim.SetFloat("MovX",mov.x);
-            Anim.SetFloat("MovY",mov.y);
-            Anim.SetBool("Walking", true);
+            Animacion.SetFloat("MovX",MovimientoContinuo.x);
+            Animacion.SetFloat("MovY",MovimientoContinuo.y);
+            Animacion.SetBool("Walking", true);
         }
         else{
-            Anim.SetBool("Walking",false);
+            Animacion.SetBool("Walking",false);
         }
         if (VolverAPosicionInicial)
         {
-            rb2D.position = PosicionInicial;
-            mov = Vector2.zero;
+            Rigidbody.position = PosicionInicial;
+            MovimientoContinuo = Vector2.zero;
             VolverAPosicionInicial = false;
         }
         ActualizarCamara();
         VerificarMovimiento();
+        ActualizarColorDelPersonaje();
     }
 
     void FixedUpdate()
     {
         if (EsElJuegadorActual)
         {
-            rb2D.MovePosition(rb2D.position + mov * Speed * Time.deltaTime);
+            Rigidbody.MovePosition(Rigidbody.position + MovimientoContinuo * Velocidad * Time.deltaTime);
         }
     }
 
+    /// <summary>
+    /// Verifica si el jugador cambio de direccion su movimiento
+    /// </summary>
     private void VerificarMovimiento()
     {
         if (EsElJuegadorActual)
         {
-            if (movimiento != Vector2.zero)
+            if (MovimientoNuevo != Vector2.zero)
             {
-                MeMovi?.Invoke(rb2D.position.x, rb2D.position.y, mov.x, mov.y);
+                MeMovi?.Invoke(Rigidbody.position.x, Rigidbody.position.y, MovimientoContinuo.x, MovimientoContinuo.y);
             }
         }
     }
 
+    /// <summary>
+    /// Descuenta una vida al jugador
+    /// </summary>
+    /// <param name="CantidadVidas"></param>
     public void DescontarVida(int CantidadVidas)
     {
         if (EstaActivoElScript)
@@ -107,6 +128,9 @@ public class Character_Movement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Coloca al personaje en su posicion inicial
+    /// </summary>
     public void ColocarseEnLaPosicionInicial()
     {
         if (EstaActivoElScript)
@@ -115,6 +139,10 @@ public class Character_Movement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Detecta las colisiones que tiene el personje con otros objetos
+    /// </summary>
+    /// <param name="collision">Collision2D</param>
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
@@ -136,9 +164,13 @@ public class Character_Movement : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Detecta cuando el personaje entra en el disparador de una UvCoin
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(EstaActivoElScript && RolDelJugador == 0 && collision.gameObject.tag == "UvCoin")
+        if(EstaActivoElScript && RolDelJugador == 0 && collision.gameObject.CompareTag("UvCoin"))
         {
             PuntacionTotal += 3;
             Destroy(collision.gameObject);
@@ -148,7 +180,6 @@ public class Character_Movement : MonoBehaviour
                 ActivaTiempoDeMatar();
                 PuedoComerPerseguidores?.Invoke();
             }
-
             if(EsElJuegadorActual && CantidadDeUvCoinsRecolectadas == TOTAL_UVCOINS)
             {
                 CantidadDeUvCoinsRecolectadas = 0;
@@ -164,15 +195,7 @@ public class Character_Movement : MonoBehaviour
     {
         LaCamaraEstaActiva = false;
     }
-
-    /// <summary>
-    /// Activa la camara que sigue al jugador
-    /// </summary>
-    public void ActivarCamara()
-    {
-        LaCamaraEstaActiva = true;
-    }
-   
+    
     /// <summary>
     /// Inicia un cronometro con el tiempo de matar
     /// </summary>
@@ -196,16 +219,17 @@ public class Character_Movement : MonoBehaviour
         Color ColorOriginal = new Color(255, 255, 255, 255);
         Color ColorComer1 = new Color(234, 143, 47, 255);
         Color ColorComer2 = new Color(255, 0, 0, 255);
-        if(RenderDelPersonaje.color == ColorOriginal)
+        if (ColorDelPersonaje == ColorOriginal)
         {
-            RenderDelPersonaje.color = ColorComer1;
-        }else if(RenderDelPersonaje.color == ColorComer1)
+            ColorDelPersonaje = ColorComer1;
+        }
+        else if (ColorDelPersonaje == ColorComer1)
         {
-            RenderDelPersonaje.color = ColorComer2;
+            ColorDelPersonaje = ColorComer2;
         }
         else
         {
-            RenderDelPersonaje.color = ColorComer1;
+            ColorDelPersonaje = ColorComer1;
         }
     }
 
@@ -214,10 +238,7 @@ public class Character_Movement : MonoBehaviour
     /// </summary>
     private void DesactivarTiempoMatar()
     {
-        if(RolDelJugador == EnumTipoDeJugador.Corredor)
-        {
-            RenderDelPersonaje.color = new Color(255, 255, 255, 255);
-        }
+        ColorDelPersonaje = new Color(255, 255, 255, 255);
         EstaActivoTiempoDeMatar = false;
     }
 
@@ -227,5 +248,13 @@ public class Character_Movement : MonoBehaviour
     private void ActualizarCamara()
     {
         GetComponentInChildren<Camera>().enabled = LaCamaraEstaActiva;
+    }
+    
+    /// <summary>
+    /// Actualiza el color del sprite del persoje colocando la que se encuentra en el atributo Color
+    /// </summary>
+    private void ActualizarColorDelPersonaje()
+    {
+        GetComponent<SpriteRenderer>().color = ColorDelPersonaje;
     }
 }

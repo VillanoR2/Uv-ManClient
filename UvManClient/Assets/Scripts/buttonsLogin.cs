@@ -34,8 +34,6 @@ public class buttonsLogin : MonoBehaviour
             {
                 SessionCliente.clienteDeSesion.ReiniciarServicio();
                 CuentaModel cuentaIniciarSesion = RecuperarDatosDeLogin();
-                SessionCliente.clienteDeSesion.AsegurarLaInformacion(cuentaIniciarSesion.NombreUsuario, cuentaIniciarSesion.Contrasena);
-
                 EnumEstadoInicioSesion estadoDeInicioDeSesion = clienteSesion.IniciarSesion(cuentaIniciarSesion); 
                 switch (estadoDeInicioDeSesion)
                 {

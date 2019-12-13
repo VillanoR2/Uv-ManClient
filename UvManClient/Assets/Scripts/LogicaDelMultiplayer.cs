@@ -6,6 +6,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Se encarga de manejar a los elementos que se encuentran en el mapa y a los jugadores online
+/// </summary>
 public class LogicaDelMultiplayer : MonoBehaviour
 {
     private CuentaModel CuentaDelJugadorPrincipal;
@@ -238,7 +241,6 @@ public class LogicaDelMultiplayer : MonoBehaviour
     {
         UvCoins = Instantiate(PrefabUvCoins);
     }
-
     
     /// <summary>
     /// Verifica si la cuenta es el jugador actual
@@ -356,6 +358,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
         if (JugadorActual.RolDelJugador == EnumTipoDeJugador.Corredor)
         {
             ClienteDelJuego.TerminarPartida(JugadorActual);
+            DesuscribirseAEventosDeJuego();
         }
     }
 
@@ -384,27 +387,6 @@ public class LogicaDelMultiplayer : MonoBehaviour
         JugadorActual.DesactivarCamara();
         Jugadores[CuentaDelJugadorPrincipal].SetActive(false);
     }
-
-    /// <summary>
-    /// Elimina la instancia del GameObject al que pertenezca la cuenta
-    /// </summary>
-    /// <param name="JugadorADestruir">Cuenta del GameObject a destruir</param>
-    private void DestruirJugador(CuentaModel JugadorADestruir)
-    {
-        CuentaModel CuentaADestruir = ObtenerCuentaDelDiccionario(JugadorADestruir);
-        if (CuentaADestruir != null)
-        {
-            if (ScriptsDeMovimiento[CuentaADestruir].RolDelJugador == EnumTipoDeJugador.Corredor)
-            {
-                TerminarPartida();
-            }
-            else
-            {
-                Destroy(Jugadores[CuentaADestruir]);
-                Jugadores.Remove(CuentaADestruir);
-            }
-        }
-    }
     
     /// <summary>
     /// Notifica al cliente del juego que el jugador mato a un jugador en linea
@@ -419,7 +401,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
         }
         if(CuentaMuerto.Jugador.RolDelJugador == EnumTipoDeJugador.Corredor)
         {
-            ReacomodarPersonajes();
+            ColocarPersonajesEnPosicionInicial();
         }
     }
 
@@ -440,12 +422,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
         }
         return CuentaDelRol;
     }
-
-    private void ReacomodarPersonajes()
-    {
-        ColocarPersonajesEnPosicionInicial();
-    }
-
+    
     /// <summary>
     /// Coloca a todos los jugadores en su posicion inicial en el mapa
     /// </summary>
@@ -501,6 +478,16 @@ public class LogicaDelMultiplayer : MonoBehaviour
             }
         }
         return ScriptDelPersonaje;
+    }
+    
+    /// <summary>
+    /// Se desuscribe a los servicios de eventos en juegos
+    /// </summary>
+    private void DesuscribirseAEventosDeJuego()
+    {
+        ClienteDelJuego.SeMurioUnJugador -= MatarJugador;
+        ClienteDelJuego.SeMovioUnJugador -= MoverJugador;
+        ClienteDelJuego.SeActivoElTiempoParaComer -= ActivarTiempoDeComer;
     }
 }
 

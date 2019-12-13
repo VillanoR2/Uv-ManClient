@@ -1,13 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Timers;
-using GameService.Dominio;
 using LogicaDelNegocio.Modelo;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Se encarga de colocar la informacion de los personajes en el lobby y de cambiar de pantalla cuando la
+/// partida comience
+/// </summary>
 public class LogicaDelLobby : MonoBehaviour
 {
     private JuegoCliente ClienteDelJuego = JuegoCliente.ClienteDelJuego;
@@ -15,8 +17,6 @@ public class LogicaDelLobby : MonoBehaviour
     private Boolean EsSalaPublica;
     private List<Image> ListaDeImagenesDeJugadores = new List<Image>();
     private List<Text> ListaDetextoDeJugadores = new List<Text>();
-
-    public Sprite MiImagen;
     
     public Text txtIdSala;
     public Text txtTipoSala;
@@ -32,6 +32,9 @@ public class LogicaDelLobby : MonoBehaviour
     public Image imageJugador5;
     public Text txtJugador5;
 
+    /// <summary>
+    /// Inicicializa la lista de imagenes de los jugadores en la sala
+    /// </summary>
     private void InicializarListaDeImaganes()
     {
         ListaDeImagenesDeJugadores.Add(imageJugador1);
@@ -40,7 +43,7 @@ public class LogicaDelLobby : MonoBehaviour
         ListaDeImagenesDeJugadores.Add(imageJugador4);
         ListaDeImagenesDeJugadores.Add(imageJugador5);
     }
-
+    
     private void InicializarListaDeTextos()
     {
         ListaDetextoDeJugadores.Add(txtJugador1);
@@ -87,7 +90,6 @@ public class LogicaDelLobby : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SuscribirseAEventosClienteJuego();
         EsconderJugadoresEnSesion();
         RecuperarInformacionDeSala();
         InicializarTextosDeInformacionSala();
@@ -96,16 +98,22 @@ public class LogicaDelLobby : MonoBehaviour
         ActualizarInformacionDeLosJugeadoresEnSala();
         ActualizarTextoCantidadDeJugadores();
         PreguntarSalaLlena();
+        SuscribirseAEventosClienteJuego();
     }
 
+    /// <summary>
+    /// Se suscribe a los eventos del cliente de juego
+    /// </summary>
     private void SuscribirseAEventosClienteJuego()
     {
         ClienteDelJuego.SeActualizaronRoles += ActualizarInformacionDeLosJugeadoresEnSala;
         ClienteDelJuego.SeActualizaronRoles += ActualizarTextoCantidadDeJugadores;
         ClienteDelJuego.SeLlenoLaSala += SeLlenoLaSala;
-        //ClienteDelJuego.IniciaLaPartida += IniciaLaPartida;
     }
 
+    /// <summary>
+    /// Le pregunta al servicio del juego si la sala ya se encuentra llena
+    /// </summary>
     private void PreguntarSalaLlena()
     {
         ClienteDelJuego.EstaLlenaLaSala();
@@ -113,14 +121,17 @@ public class LogicaDelLobby : MonoBehaviour
 
     private void ActualizarInformacionDelJugador(Image ImagenDelJugador, Text TextDelJudador, CuentaModel Cuenta)
     {
-        ImagenDelJugador.gameObject.SetActive(true);
-        if (TextDelJudador != null)
+        if (ImagenDelJugador.gameObject != null && TextDelJudador.gameObject != null)
         {
-            ImagenDelJugador.sprite = CharacterManager.ManejadorDePersonajes.ObtenerSpriteDePersonaje(Cuenta.Jugador);
-        }
+            ImagenDelJugador.gameObject.SetActive(true);
+            if (TextDelJudador != null)
+            {
+                ImagenDelJugador.sprite = CharacterManager.ManejadorDePersonajes.ObtenerSpriteDePersonaje(Cuenta.Jugador);
+            }
 
-        TextDelJudador.gameObject.SetActive(true);
-        TextDelJudador.text = Cuenta.NombreUsuario;
+            TextDelJudador.gameObject.SetActive(true);
+            TextDelJudador.text = Cuenta.NombreUsuario;   
+        }
     }
 
     private void ActualizarInformacionDeLosJugeadoresEnSala()
@@ -157,19 +168,11 @@ public class LogicaDelLobby : MonoBehaviour
         temporizador.Enabled = true;
         temporizador.Start();
     }
-    
+
     private void CambiarAMultijugador(object source, ElapsedEventArgs e)
     {
         CambiarAPantallaMultijugador();
     }
-
-    //private void IniciaLaPartida(InicioPartida datosDeInicioDePartida)
-    //{
-    //    if (datosDeInicioDePartida.CambiarPantallaMultijugador)
-    //    {
-    //        CambiarAPantallaMultijugador();
-    //    }
-    //}
 
     public void SoloPruebas()
     {
@@ -178,8 +181,17 @@ public class LogicaDelLobby : MonoBehaviour
 
     private void CambiarAPantallaMultijugador()
     {
+        DesuscriibirseALosServiciosDelJuego();
         SceneManager.LoadScene("MultiplayerScreen");
     }
 
-
+    /// <summary>
+    /// Se desuscribe a los servivios del cliente del juego
+    /// </summary>
+    private void DesuscriibirseALosServiciosDelJuego()
+    {
+        ClienteDelJuego.SeActualizaronRoles -= ActualizarInformacionDeLosJugeadoresEnSala;
+        ClienteDelJuego.SeActualizaronRoles -= ActualizarTextoCantidadDeJugadores;
+        ClienteDelJuego.SeLlenoLaSala -= SeLlenoLaSala;
+    }
 }

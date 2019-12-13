@@ -3,11 +3,13 @@ using GameService.Dominio;
 using System;
 using System.Collections.Generic;
 using LogicaDelNegocio.Modelo;
-using LogicaDelNegocio.Modelo.Enum;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Se encarga de mostrar un canvas cuando el juego ha terminado o cuando el juego esta por iniciar
+/// </summary>
 public class CanvasMultiplayer : MonoBehaviour
 {
     private const int SEGUNDOS_INICIO_PARTIDA = 5;
@@ -40,7 +42,7 @@ public class CanvasMultiplayer : MonoBehaviour
     private void InicializarPlantillaPuntuacionesAltas()
     {
         InstanciasDePuntuacionesAltas = new List<DatosMejorPuntuacion>();
-        float AlturaDeMejoresPuntuaciones = 20f;
+        float AlturaDeMejoresPuntuaciones = 25f;
         for (int i = 0; i < 5; i++)
         {
             Transform PuntuacionAlta = Instantiate(PlantillaPuntuacionAlta, MejoresPuntuaciones);
@@ -62,7 +64,7 @@ public class CanvasMultiplayer : MonoBehaviour
         CuentaModel[] MejoresPuntuaciones = ClienteDelJuego.ServicioDeJuego.RecuperarMejoresPuntuaciones();
         for (int i = 0; i < MejoresPuntuaciones.Length; i++)
         {
-            InstanciasDePuntuacionesAltas[i].TextoPosicion.text = Convert.ToString(i);
+            InstanciasDePuntuacionesAltas[i].TextoPosicion.text = Convert.ToString((i+1));
             InstanciasDePuntuacionesAltas[i].TextoPuntuacion.text = Convert.ToString(MejoresPuntuaciones[i].Jugador.MejorPuntacion);
             InstanciasDePuntuacionesAltas[i].TextoUsuario.text = MejoresPuntuaciones[i].NombreUsuario;
             InstanciasDePuntuacionesAltas[i].MejorPuntuacion.SetActive(true);
@@ -72,8 +74,8 @@ public class CanvasMultiplayer : MonoBehaviour
     /// <summary>
     /// Coloca en los Text del canvas la puntuacion del jugador en la partida
     /// </summary>
-    /// <param name="Puntacion"></param>
-    /// <param name="NombreUsuario"></param>
+    /// <param name="Puntacion">String</param>
+    /// <param name="NombreUsuario">String</param>
     private void ColocarTextoDeFinPartida(String Puntacion, String NombreUsuario)
     {
         txtPuntuacionActual.text = String.Format("Tu puntuacion fue de: {0}", Puntacion);
@@ -123,7 +125,7 @@ public class CanvasMultiplayer : MonoBehaviour
     /// <summary>
     /// Verifica el tipo de mensaje recibido, dependiendo del mensaje quita la pausa o inicia el conteo
     /// </summary>
-    /// <param name="iniciaPartida"></param>
+    /// <param name="iniciaPartida">InicioPartida</param>
     private void RealizarAccionDeInicioDeJuego(InicioPartida iniciaPartida)
     {
         if (iniciaPartida.IniciarPartida)
@@ -157,7 +159,7 @@ public class CanvasMultiplayer : MonoBehaviour
     /// <summary>
     /// Inicia una cuenta regresiva
     /// </summary>
-    /// <param name="SegundosAContar"></param>
+    /// <param name="SegundosAContar">int</param>
     private void RealizarConteo(int SegundosAContar)
     {
         CronometroInicioDePartida?.Stop();
@@ -198,8 +200,7 @@ public class CanvasMultiplayer : MonoBehaviour
     {
         txtCentro.text = TextoEnCanvas + SegundosCuentaRegresiva;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         ActualizarTexto();
@@ -237,8 +238,17 @@ public class CanvasMultiplayer : MonoBehaviour
     /// </summary>
     public void IrAMenuPrincipal()
     {
+        DesuscribirseAEventosDelJuego();
         ClienteDelJuego.ReiniciarDatosJuego();
         SceneManager.LoadScene("MainScreen");
+    }
+    
+    /// <summary>
+    /// Se desuscribe a los eventos del cliente del juego
+    /// </summary>
+    private void DesuscribirseAEventosDelJuego(){
+        ClienteDelJuego.IniciaLaPartida -= RealizarAccionDeInicioDeJuego;
+        ClienteDelJuego.TerminoLaPartida -= TerminarPartida;
     }
 }
 

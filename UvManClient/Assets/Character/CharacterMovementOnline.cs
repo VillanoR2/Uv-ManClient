@@ -2,13 +2,13 @@
 using LogicaDelNegocio.Modelo.Enum;
 using UnityEngine;
 
+/// <summary>
+/// Se encarga de controlar al personaje de un jugador en linea
+/// </summary>
 public class CharacterMovementOnline : MonoBehaviour
 {
-    public bool EstaActivoElScript = false;
-    private const int TOTAL_UVCOINS = 329;
+    public bool EstaActivoElScript;
     public int VidasDisponibles;
-    public int PuntacionTotal;
-    public int CantidadDeUvCoinsRecolectadas;
     public bool EstaActivoTiempoDeMatar = true;
 
     public EnumTipoDeJugador RolDelJugador;
@@ -29,32 +29,52 @@ public class CharacterMovementOnline : MonoBehaviour
         InicializarColorDelPersonaje();
     }
 
+    /// <summary>
+    /// Coloca el color del personaje en color blanco
+    /// </summary>
     private void InicializarColorDelPersonaje()
     {
         ColorDelPersonaje = new Color(255, 255, 255, 255);
     }
 
+    /// <summary>
+    /// Actualiza el color del personaje al color que se encuentra en el atributo Color
+    /// </summary>
     private void ActualizarColorDelPersonaje()
     {
         GetComponent<SpriteRenderer>().color = ColorDelPersonaje;
     }
 
+    /// <summary>
+    /// Coloca la animacion del personaje hacia abajo
+    /// </summary>
     private void InicializarAnimacionHaciaAbajo()
     {
         Anim.SetFloat("MovY", -0.1f);
     }
 
+    /// <summary>
+    /// Coloca la poscion del personaje en las coordenadas x,y y se empieza a mover hacia la direccion movimientoX,
+    /// movimientoY
+    /// </summary>
+    /// <param name="x">float</param>
+    /// <param name="y">float</param>
+    /// <param name="movimientoX">float</param>
+    /// <param name="movimientoY">float</param>
     public void RealizarMovimiento(float x, float y, float movimientoX, float movimientoY)
     {
         mov = new Vector2(movimientoX, movimientoY);
         Posicion = new Vector2(x, y);
     }
 
+    /// <summary>
+    /// Desactiva al personaje
+    /// </summary>
     public void DesactivarObjeto()
     {
         gameObject.SetActive(false);
     }
-
+    
     private void FixedUpdate()
     {
         if (mov != Vector2.zero)
@@ -77,6 +97,10 @@ public class CharacterMovementOnline : MonoBehaviour
         ActualizarColorDelPersonaje();
     }
 
+    /// <summary>
+    /// Descuenta una vida del personaje
+    /// </summary>
+    /// <param name="CantidadVidas">int</param>
     public void DescontarVida(int CantidadVidas)
     {
         if (EstaActivoElScript)
@@ -88,9 +112,11 @@ public class CharacterMovementOnline : MonoBehaviour
             }
             ColocarseEnLaPosicionInicial();
         }
-        
     }
 
+    /// <summary>
+    /// Coloca al personaje en su posicion inicial
+    /// </summary>
     public void ColocarseEnLaPosicionInicial()
     {
         if (EstaActivoElScript && PosicionInicial != null)
@@ -100,15 +126,18 @@ public class CharacterMovementOnline : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Detecta cuando el personaje entra en contacto con una UvCoin
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (EstaActivoElScript && RolDelJugador == 0 && collision.gameObject.tag == "UvCoin")
+        if (EstaActivoElScript && RolDelJugador == 0 && collision.gameObject.CompareTag("UvCoin"))
         {
             Destroy(collision.gameObject);
-            CantidadDeUvCoinsRecolectadas += 1;
         }
     }
-
+    
     /// <summary>
     /// Inicia un cronometro con el tiempo de matar
     /// </summary>
