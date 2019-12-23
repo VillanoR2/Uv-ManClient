@@ -1,20 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class LogicUvCoin : MonoBehaviour
+/// <summary>
+/// La clase UvCoinLogic maneja la logica de los objetos "monedas" que deberan ser recogidos por el jugador
+/// </summary>
+public class UvCoinLogic : MonoBehaviour
 {
-	public int puntosGanados = 5;
+    public int puntosGanados = 10;
     public AudioClip coinSound;
     public float volumeSound = 1f;
-    
-    void OnTriggerEnter2D(Collider2D co)
+
+    /// <summary>
+    /// El metodo OnTriggerEnter2D es un metodo predefinido por UNITY que su funcion es manejar la accion disparador cuando dos coliciones se encuentran.Es un metodo de tipo void
+    /// <paramref name="Collider">Es un parametro de tipo Collider2D <paramref/>
+    /// </summary>
+    void OnTriggerEnter2D(Collider2D Collider)
     {
-        if (co.tag == "Player")
+        if (Collider.tag == "Player")
         {
             AudioSource.PlayClipAtPoint(coinSound, Camera.main.transform.position, volumeSound);
             NotificationCenter.DefaultCenter().PostNotification(this, "IncrementarPuntos", puntosGanados);
             Destroy(gameObject);
         }
     }
+
 }

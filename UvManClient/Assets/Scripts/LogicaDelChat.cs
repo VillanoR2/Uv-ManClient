@@ -7,12 +7,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LogicaDelChat : MonoBehaviour
+public class buttonsLobby : MonoBehaviour
 {
-    public Text TXTMensajes;
-    public InputField IFMensajeAEnviar;
-    private CuentaModel cuenta;
-    private ChatCliente clienteDeChat;
+    public Text MessageText;
+    public InputField SendingMessage;
+    private CuentaModel Account;
+    private ChatCliente ChatClient;
 
     private void Start()
     {
@@ -22,23 +22,22 @@ public class LogicaDelChat : MonoBehaviour
 
     private void Update()
     {
-        TXTMensajes.text = clienteDeChat.mensajes;
+        MessageText.text = ChatClient.mensajes;
     }
 
     private void RecuperarCuentaLogeada()
     {
-        cuenta = Cuenta.cuentaLogeada.cuenta;
+        Account = Cuenta.cuentaLogeada.cuenta;
     }
 
     private void RecuperarServicioDeChat()
     {
-        clienteDeChat = ChatCliente.clienteDeChat;
+        ChatClient = ChatCliente.clienteDeChat;
     }
 
     public void ButtonReturn()
     {
-        clienteDeChat.servicioDeChat.Desconectar(cuenta);
-        
+        ChatClient.servicioDeChat.Desconectar(Account);
         SceneManager.LoadScene("MainScreen");
     }
 
@@ -49,20 +48,20 @@ public class LogicaDelChat : MonoBehaviour
 
     public void EnviarMensaje()
     {
-        if(IFMensajeAEnviar.text != "")
+        if(SendingMessage.text != "")
         {
-            Message mensajeEnviar = RecuperarMensajeParaEnviar();
-            clienteDeChat.EnviarMensaje(mensajeEnviar);
-            IFMensajeAEnviar.text = "";
+            Message MensajeEnviar = RecuperarMesajeParaEnviar();
+            ChatClient.EnviarMensaje(MensajeEnviar);
+            SendingMessage.text = "";
         }
     }
 
-    private Message RecuperarMensajeParaEnviar()
+    private Message RecuperarMesajeParaEnviar()
     {
-        Message mensaje = new Message();
-        mensaje.HoraEnvio = DateTime.Now;
-        mensaje.Remitente = cuenta;
-        mensaje.Mensaje = IFMensajeAEnviar.text;
-        return mensaje;
+        Message Mensaje = new Message();
+        Mensaje.horaEnvio = DateTime.Now;
+        Mensaje.remitente = Account;
+        Mensaje.mensaje = SendingMessage.text;
+        return Mensaje;
     }
 }
