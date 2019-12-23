@@ -10,10 +10,6 @@ public class buttonsLogin : MonoBehaviour
 
     public InputField usuario;
     public InputField contrasena;
-    public CuentaModel cuentaLogeada;
-
-    public GameObject MensajeDeAlerta;
-    public Alerta ManejadorDeMensajeDeAlerta;
     
     private CuentaModel RecuperarDatosDeLogin()
     {
