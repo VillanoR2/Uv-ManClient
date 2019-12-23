@@ -9,10 +9,10 @@ using UnityEngine.UI;
 
 public class buttonsLobby : MonoBehaviour
 {
-    public Text TXTMensajes;
-    public InputField IFMensajeAEnviar;
-    private CuentaModel cuenta;
-    private ChatCliente clienteDeChat;
+    public Text MessageText;
+    public InputField SendingMessage;
+    private CuentaModel Account;
+    private ChatCliente ChatClient;
 
     private void Start()
     {
@@ -22,22 +22,22 @@ public class buttonsLobby : MonoBehaviour
 
     private void Update()
     {
-        TXTMensajes.text = clienteDeChat.mensajes;
+        MessageText.text = ChatClient.mensajes;
     }
 
     private void RecuperarCuentaLogeada()
     {
-        cuenta = Cuenta.cuentaLogeada.cuenta;
+        Account = Cuenta.cuentaLogeada.cuenta;
     }
 
     private void RecuperarServicioDeChat()
     {
-        clienteDeChat = ChatCliente.clienteDeChat;
+        ChatClient = ChatCliente.clienteDeChat;
     }
 
     public void ButtonReturn()
     {
-        clienteDeChat.servicioDeChat.Desconectar(cuenta);
+        ChatClient.servicioDeChat.Desconectar(Account);
         SceneManager.LoadScene("MainScreen");
     }
 
@@ -48,20 +48,20 @@ public class buttonsLobby : MonoBehaviour
 
     public void EnviarMensaje()
     {
-        if(IFMensajeAEnviar.text != "")
+        if(SendingMessage.text != "")
         {
-            Message mensajeEnviar = RecuperarMesajeParaEnviar();
-            clienteDeChat.EnviarMensaje(mensajeEnviar);
-            IFMensajeAEnviar.text = "";
+            Message MensajeEnviar = RecuperarMesajeParaEnviar();
+            ChatClient.EnviarMensaje(MensajeEnviar);
+            SendingMessage.text = "";
         }
     }
 
     private Message RecuperarMesajeParaEnviar()
     {
-        Message mensaje = new Message();
-        mensaje.horaEnvio = DateTime.Now;
-        mensaje.remitente = cuenta;
-        mensaje.mensaje = IFMensajeAEnviar.text;
-        return mensaje;
+        Message Mensaje = new Message();
+        Mensaje.horaEnvio = DateTime.Now;
+        Mensaje.remitente = Account;
+        Mensaje.mensaje = SendingMessage.text;
+        return Mensaje;
     }
 }

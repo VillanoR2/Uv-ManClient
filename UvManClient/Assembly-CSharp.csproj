@@ -54,11 +54,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Character\Character_Movement.cs" />
-     <Compile Include="Assets\Character\Creeper\Perseguidor_wayPoints.cs" />
+     <Compile Include="Assets\Character\Perseguidor_wayPoints.cs" />
      <Compile Include="Assets\Maps\MainCamera.cs" />
      <Compile Include="Assets\Maps\Objects\Coin\UvCoinLogic.cs" />
+     <Compile Include="Assets\Maps\Objects\PickAxe\pickAxLogic.cs" />
      <Compile Include="Assets\Maps\Objects\Warp\Warp.cs" />
-     <Compile Include="Assets\Scripts\AdaptadorDeCamara.cs" />
      <Compile Include="Assets\Scripts\buttonPressStart.cs" />
      <Compile Include="Assets\Scripts\buttonsLobby.cs" />
      <Compile Include="Assets\Scripts\buttonsLogin.cs" />
@@ -70,17 +70,19 @@
      <Compile Include="Assets\Scripts\Clientes\CuentaCliente.cs" />
      <Compile Include="Assets\Scripts\Clientes\SessionCliente.cs" />
      <Compile Include="Assets\Scripts\Cuenta.cs" />
+     <Compile Include="Assets\Scripts\GameOverScript.cs" />
      <Compile Include="Assets\Scripts\Globalizacion\AsignadorTexto.cs" />
      <Compile Include="Assets\Scripts\Globalizacion\ControladorJson.cs" />
      <Compile Include="Assets\Scripts\Globalizacion\Serializable.cs" />
      <Compile Include="Assets\Scripts\Globalizacion\TextoId.cs" />
-     <Compile Include="Assets\Scripts\LifeManager.cs" />
+     <Compile Include="Assets\Scripts\HUD\Puntuacion.cs" />
+     <Compile Include="Assets\Scripts\HUD\Vidas.cs" />
      <Compile Include="Assets\Scripts\NotificationCenter.cs" />
-     <Compile Include="Assets\Scripts\Puntuacion.cs" />
      <Compile Include="Assets\Scripts\SelectLanguage.cs" />
      <Compile Include="Assets\Scripts\Servicios\ServiceChat.cs" />
      <Compile Include="Assets\Scripts\Servicios\ServiceCuenta.cs" />
      <Compile Include="Assets\Scripts\Servicios\ServiceSession.cs" />
+     <Compile Include="Assets\Scripts\Timer.cs" />
      <None Include="Assets\UI\Sprites\gameicons-expansion\Spritesheet\sheet_black2x.xml" />
      <None Include="Assets\UI\Sprites\kenney_emotespack\Spritesheets\vector_style3.xml" />
      <None Include="Assets\UI\Sprites\kenney_emotespack\Spritesheets\pixel_style6.xml" />
@@ -123,19 +125,19 @@
      <None Include="Assets\UI\Sprites\gameicons-expansion\Spritesheet\sheet_black1x.xml" />
      <None Include="Assets\UI\Sprites\gameicons-expansion\Game icons (base)\Spritesheet\sheet_white1x.xml" />
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>/Users/arturovilla/UvManCliente/UvManClient/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>/Users/arturovilla/Documents/GitHub/Uv-ManClient/UvManClient/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>/Users/arturovilla/UvManCliente/UvManClient/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>/Users/arturovilla/Documents/GitHub/Uv-ManClient/UvManClient/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>/Users/arturovilla/UvManCliente/UvManClient/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>/Users/arturovilla/Documents/GitHub/Uv-ManClient/UvManClient/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>/Users/arturovilla/UvManCliente/UvManClient/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>/Users/arturovilla/Documents/GitHub/Uv-ManClient/UvManClient/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.DataPrivacy">
- <HintPath>/Users/arturovilla/UvManCliente/UvManClient/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+ <HintPath>/Users/arturovilla/Documents/GitHub/Uv-ManClient/UvManClient/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>/Applications/Unity/Hub/Editor/2018.4.9f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -342,16 +344,16 @@
  <HintPath>/Applications/Unity/Hub/Editor/2018.4.9f1/Unity.app/Contents/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="System.ServiceModel">
- <HintPath>/Users/arturovilla/UvManCliente/UvManClient/Assets/Plugin/System.ServiceModel.dll</HintPath>
+ <HintPath>/Users/arturovilla/Documents/GitHub/Uv-ManClient/UvManClient/Assets/Plugin/System.ServiceModel.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Tracker">
- <HintPath>/Users/arturovilla/UvManCliente/UvManClient/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+ <HintPath>/Users/arturovilla/Documents/GitHub/Uv-ManClient/UvManClient/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.Editor">
- <HintPath>/Users/arturovilla/UvManCliente/UvManClient/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+ <HintPath>/Users/arturovilla/Documents/GitHub/Uv-ManClient/UvManClient/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
- <HintPath>/Users/arturovilla/UvManCliente/UvManClient/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+ <HintPath>/Users/arturovilla/Documents/GitHub/Uv-ManClient/UvManClient/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>/Applications/Unity/Hub/Editor/2018.4.9f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
