@@ -130,13 +130,13 @@ public class LogicaDelMultiplayer : MonoBehaviour
         if (EsELJugadorActual)
         {
             PrefabAInstanciar.GetComponentInChildren<Camera>(true).gameObject.SetActive(true);
-            PrefabAInstanciar.GetComponent<Character_Movement>().enabled = true;
+            PrefabAInstanciar.GetComponent<JugadorLocal>().enabled = true;
             PrefabAInstanciar.GetComponent<CharacterMovementOnline>().enabled = false;
         }
         else
         {
             PrefabAInstanciar.GetComponentInChildren<Camera>(true).gameObject.SetActive(false);
-            PrefabAInstanciar.GetComponent<Character_Movement>().enabled = false;
+            PrefabAInstanciar.GetComponent<JugadorLocal>().enabled = false;
             PrefabAInstanciar.GetComponent<CharacterMovementOnline>().enabled = true;
         }
         PrefabAInstanciar.SetActive(true);

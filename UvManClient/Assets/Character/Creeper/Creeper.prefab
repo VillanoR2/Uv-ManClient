@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 95981161633491144}
   - component: {fileID: 1714854419}
   - component: {fileID: 326493609441691747}
-  - component: {fileID: 2252554159447434499}
   m_Layer: 8
   m_Name: Creeper
   m_TagString: Enemy
@@ -139,36 +138,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &2252554159447434499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2810455026428104557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cc026f2bbef045e1affc9ee929eaf21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  Speed: 0.075
-  VisionRadius: 3
-  AttackRadius: 0.3
-  SpawnEnemy: {fileID: 0}

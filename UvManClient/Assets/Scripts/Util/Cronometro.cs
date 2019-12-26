@@ -8,7 +8,7 @@ using System.Timers;
 namespace Assets.Scripts.Util
 {
 
-    public class Cronometro : Timer
+    public class Cronometro : System.Timers.Timer
     {
         private DateTime Inicio;
         public delegate void TiempoTranscurrido();

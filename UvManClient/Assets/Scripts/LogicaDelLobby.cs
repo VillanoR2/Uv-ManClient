@@ -145,7 +145,7 @@ public class LogicaDelLobby : MonoBehaviour
     
     private void IniciarTemporizador()
     {
-        Timer temporizador = new Timer(5000);
+        System.Timers.Timer temporizador = new System.Timers.Timer(5000);
         temporizador.Elapsed += CambiarAMultijugador;
         temporizador.AutoReset = false;
         temporizador.Enabled = true;
@@ -156,15 +156,7 @@ public class LogicaDelLobby : MonoBehaviour
     {
         CambiarAPantallaMultijugador();
     }
-
-    //private void IniciaLaPartida(InicioPartida datosDeInicioDePartida)
-    //{
-    //    if (datosDeInicioDePartida.CambiarPantallaMultijugador)
-    //    {
-    //        CambiarAPantallaMultijugador();
-    //    }
-    //}
-
+    
     public void SoloPruebas()
     {
         CambiarAPantallaMultijugador();
@@ -174,6 +166,5 @@ public class LogicaDelLobby : MonoBehaviour
     {
         SceneManager.LoadScene("MultiplayerScreen");
     }
-
-
+    
 }

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8026629430240811925}
   - component: {fileID: 8026629430240811926}
   - component: {fileID: 8026629430240811913}
-  - component: {fileID: 8026629430240811912}
   - component: {fileID: 4450229514788592708}
   m_Layer: 0
   m_Name: Link_Player
@@ -140,19 +139,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0029346943, y: -0.2195754}
   m_Size: {x: 0.59904814, y: 0.9460592}
   m_Direction: 0
---- !u!114 &8026629430240811912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8026629430240811923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 325d1e129b4e9402ba22df89d0839814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 4
 --- !u!82 &4450229514788592708
 AudioSource:
   m_ObjectHideFlags: 0
@@ -171,7 +157,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 5
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

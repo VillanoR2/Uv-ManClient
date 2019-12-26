@@ -59,9 +59,9 @@ public class buttonsLobby : MonoBehaviour
     private Message RecuperarMesajeParaEnviar()
     {
         Message Mensaje = new Message();
-        Mensaje.horaEnvio = DateTime.Now;
-        Mensaje.remitente = Account;
-        Mensaje.mensaje = SendingMessage.text;
+        Mensaje.HoraEnvio = DateTime.Now;
+        Mensaje.Remitente = Account;
+        Mensaje.Mensaje = SendingMessage.text;
         return Mensaje;
     }
 }
