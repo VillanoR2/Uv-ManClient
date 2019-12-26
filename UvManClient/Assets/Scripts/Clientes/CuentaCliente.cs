@@ -9,12 +9,18 @@ public class CuentaCliente : MonoBehaviour
     public CuentaServiceClient servicioDeCuenta;
     public CuentaModel cuentaAVerificar;
 
+    /// <summary>
+    /// Inicializa el servicio de cuentas
+    /// </summary>
     private void InicializarServicioDeCuenta()
     {
         servicioDeCuenta = new CuentaServiceClient(new NetTcpBinding(SecurityMode.None),
             new EndpointAddress("net.tcp://" + direccionIpDelServidor + ":8092/CuentaService"));
     }
 
+    /// <summary>
+    /// Recupera la dirección Ip del servidor
+    /// </summary>
     private void RecuperarIpDelServidor()
     {
         direccionIpDelServidor = SessionCliente.clienteDeSesion.direccionIpDelServidor;
@@ -40,18 +46,21 @@ public class CuentaCliente : MonoBehaviour
         InicializarServicioDeCuenta();           
     }
 
+    /// <summary>
+    /// Actualiza la direccion ip del servidor y reincia el servicio
+    /// </summary>
     private void ActualizarIpDelServidor()
     {
         RecuperarIpDelServidor();
         InicializarServicioDeCuenta();
     }
 
+    /// <summary>
+    /// Reinicia el cliente del servicio de cuenta
+    /// </summary>
     public void ReiniciarServicio()
     {
-        if(servicioDeCuenta.State == CommunicationState.Closed)
-        {
-            InicializarServicioDeCuenta();
-        }
+        InicializarServicioDeCuenta();
     }
 
 }

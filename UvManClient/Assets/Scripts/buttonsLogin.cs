@@ -10,11 +10,7 @@ public class buttonsLogin : MonoBehaviour
 
     public InputField usuario;
     public InputField contrasena;
-    public CuentaModel cuentaLogeada;
-
-    public GameObject ExceptionObject;
-
-
+    
     private CuentaModel RecuperarDatosDeLogin()
     {
         CuentaModel cuentaParaIniciarSesion = new CuentaModel();
@@ -27,16 +23,14 @@ public class buttonsLogin : MonoBehaviour
 
     public void ButtonLogIn()
     {
-        // try
+        try
         {
             SessionServiceClient clienteSesion = SessionCliente.clienteDeSesion.servicioDeSesion;
             if (CamposDeLogeoNoVacios())
             {
                 SessionCliente.clienteDeSesion.ReiniciarServicio();
                 CuentaModel cuentaIniciarSesion = RecuperarDatosDeLogin();
-                SessionCliente.clienteDeSesion.AsegurarLaInformacion(cuentaIniciarSesion.NombreUsuario, cuentaIniciarSesion.Contrasena);
-                
-                EnumEstadoInicioSesion estadoDeInicioDeSesion = clienteSesion.IniciarSesion(cuentaIniciarSesion);;
+                EnumEstadoInicioSesion estadoDeInicioDeSesion = clienteSesion.IniciarSesion(cuentaIniciarSesion); 
                 switch (estadoDeInicioDeSesion)
                 {
                     case EnumEstadoInicioSesion.Correcto:
@@ -55,12 +49,10 @@ public class buttonsLogin : MonoBehaviour
                         break;
                 }
             }
+        }
+        catch (Exception ex)
+        {
             
-            //}
-            //catch (Exception ex)
-            //{
-            //    Debug.Log(ex.GetType());
-            //}
         }
     }
 

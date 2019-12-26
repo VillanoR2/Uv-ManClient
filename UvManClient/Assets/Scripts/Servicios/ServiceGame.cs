@@ -8,9 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.Net.Sockets;
-using UnityEngine;
 
+using System.IO;
+using System.Net;
+using System.Net.Sockets;
+using System.Runtime.Serialization.Formatters.Binary;
+using GameService.Dominio;
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 [System.ServiceModel.ServiceContractAttribute(ConfigurationName="IGameService", CallbackContract=typeof(IGameServiceCallback))]
@@ -36,13 +39,22 @@ public interface IGameService {
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/MiSalaEsPublica", ReplyAction="http://tempuri.org/IGameService/MiSalaEsPublicaResponse")]
     bool MiSalaEsPublica(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/TerminarPartida", ReplyAction="http://tempuri.org/IGameService/TerminarPartidaResponse")]
+    void TerminarPartida(LogicaDelNegocio.Modelo.CuentaModel CuentaDeCorredor);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/RecuperarMejoresPuntuaciones", ReplyAction="http://tempuri.org/IGameService/RecuperarMejoresPuntuacionesResponse")]
+    LogicaDelNegocio.Modelo.CuentaModel[] RecuperarMejoresPuntuaciones();
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/EstaLaSalaLlena", ReplyAction="http://tempuri.org/IGameService/EstaLaSalaLlenaResponse")]
+    void EstaLaSalaLlena(LogicaDelNegocio.Modelo.CuentaModel CuentaEnSala);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
 public interface IGameServiceCallback {
     
-    [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/TerminarPartida")]
-    void TerminarPartida();
+    [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/NotificarTerminaPartida")]
+    void NotificarTerminaPartida();
     
     [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameService/SalaLlena")]
     void SalaLlena();
@@ -112,120 +124,84 @@ public partial class GameServiceClient : System.ServiceModel.DuplexClientBase<IG
     public bool MiSalaEsPublica(LogicaDelNegocio.Modelo.CuentaModel Cuenta) {
         return base.Channel.MiSalaEsPublica(Cuenta);
     }
+    
+    public void TerminarPartida(LogicaDelNegocio.Modelo.CuentaModel CuentaDeCorredor) {
+        base.Channel.TerminarPartida(CuentaDeCorredor);
+    }
+    
+    public LogicaDelNegocio.Modelo.CuentaModel[] RecuperarMejoresPuntuaciones() {
+        return base.Channel.RecuperarMejoresPuntuaciones();
+    }
+    
+    public void EstaLaSalaLlena(LogicaDelNegocio.Modelo.CuentaModel CuentaEnSala) {
+        base.Channel.EstaLaSalaLlena(CuentaEnSala);
+    }
 }
 
-namespace GameService.Dominio
+namespace ConexionRed.Udp
 {
-    public class UdpReciver
+    public class UdpReciverClient
     {
-        private string DireccionIpDelServidor;
-        private readonly int PUERTO = 8296;
-        private readonly int PUERTO2 = 8297;
-        private System.Net.Sockets.UdpClient ClienteUDP;
-        
+        private UdpClient ClienteUDP;
+
         public delegate void RecibirEventoEnJuego(EventoEnJuego eventoEnJuego);
         public event RecibirEventoEnJuego EventoRecibido;
+        private int PuertoEscucha1;
+        private int PuertoEscucha2;
 
-        public UdpReciver(string direccionIpDelServidor)
+        public UdpReciverClient(int Puerto1, int Puerto2)
         {
-            DireccionIpDelServidor = direccionIpDelServidor;
+            PuertoEscucha1 = Puerto1;
+            PuertoEscucha2 = Puerto2;
         }
-        
+
         public static EventoEnJuego Deserializar(byte[] byteArray)
         {
             if (byteArray == null)
             {
                 return null;
             }
-            using (System.IO.MemoryStream StreamDeMemoria = new System.IO.MemoryStream(byteArray))
+            BinaryFormatter FormateadorBinario = new BinaryFormatter();
+            using (MemoryStream StreamDeMemoria = new MemoryStream())
             {
-                System.Runtime.Serialization.Formatters.Binary.BinaryFormatter FormateadorBinario =
-                    new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                StreamDeMemoria.Position = 0;
+                StreamDeMemoria.Write(byteArray, 0, byteArray.Length);
+                StreamDeMemoria.Seek(0, SeekOrigin.Begin);
                 EventoEnJuego eventoEnJuego = (EventoEnJuego)FormateadorBinario.Deserialize(StreamDeMemoria);
                 return eventoEnJuego;
             }
         }
-        
+
         public void RecibirDatos()
         {
             try
             {
-                ClienteUDP = new System.Net.Sockets.UdpClient(PUERTO);
+                ClienteUDP = new UdpClient(PuertoEscucha1);
             }
             catch (SocketException)
             {
-                ClienteUDP = new UdpClient(PUERTO2);   
+                ClienteUDP = new UdpClient(PuertoEscucha2);
             }
-            //try
-            //{
-                while (true)
+
+            while (true)
+            {
+                IPEndPoint anyIP = new IPEndPoint(IPAddress.Any, 0);
+                byte[] data = ClienteUDP.Receive(ref anyIP);
+                if (data != null && data.Length > 0)
                 {
-                    System.Net.IPEndPoint anyIP = 
-                        new System.Net.IPEndPoint(System.Net.IPAddress.Any, 0);
-                    byte[] data = ClienteUDP.Receive(ref anyIP);
-                    if (data != null && data.Length > 0 )
-                    {
-                        EventoEnJuego eventoEnJuego = Deserializar(data);
-                        EventoRecibido?.Invoke(eventoEnJuego);   
-                    }
+                    EventoEnJuego eventoEnJuego = Deserializar(data);
+                    EventoRecibido?.Invoke(eventoEnJuego);
                 }
-            //}
-            //catch (System.Exception err)
-            //{
-            //    System.Diagnostics.Debug.Write(err.Message);
-            //}
+            }
         }
 
         public void LiberarRecursos()
         {
-            ClienteUDP.Dispose();
-        }
-    }
+            if (ClienteUDP != null)
+            {
+                ClienteUDP.Dispose();
+            }
 
-    
-    public class UdpSender
-    {
-        private readonly int PUERTO = 8090;
-        private readonly int PUERTO2 = 8091;
-        private System.Net.IPEndPoint IpEnviarPaquete;
-        private System.Net.IPEndPoint IpEnviarPaquete2;
-        private System.Net.Sockets.UdpClient ClienteUDP;
-
-        public UdpSender(string direccionIp)
-        {
-            if(direccionIp == "localhost")
-            {
-                direccionIp = "127.0.0.1";
-            }
-            IpEnviarPaquete = new System.Net.IPEndPoint(System.Net.IPAddress.Parse(direccionIp), PUERTO);
-            IpEnviarPaquete2 = new System.Net.IPEndPoint(System.Net.IPAddress.Parse(direccionIp), PUERTO2);
-        }
-        
-        private static byte[] SerializarAArregloDeBytes(EventoEnJuego eventoEnJuego)
-        {
-            if (eventoEnJuego == null)
-            {
-                return null;
-            }
-            using (System.IO.MemoryStream StreamDeMemoria = new System.IO.MemoryStream())
-            {
-                System.Runtime.Serialization.DataContractSerializer Serializador = 
-                    new System.Runtime.Serialization.DataContractSerializer(typeof(EventoEnJuego));
-                Serializador.WriteObject(StreamDeMemoria, eventoEnJuego);
-                return StreamDeMemoria.ToArray();
-            }
-        }
-
-        public void EnviarPaquete(EventoEnJuego eventoEnJuego)
-        {
-            ClienteUDP = new System.Net.Sockets.UdpClient();
-            if (eventoEnJuego != null)
-            {
-                byte[] datos = SerializarAArregloDeBytes(eventoEnJuego);
-                ClienteUDP.Send(datos, datos.Length, IpEnviarPaquete);
-                ClienteUDP.Send(datos, datos.Length, IpEnviarPaquete2);
-            }
         }
     }
 }
+

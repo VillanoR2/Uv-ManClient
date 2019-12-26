@@ -4,6 +4,9 @@ using System.ServiceModel;
 using System;
 using GameChatService.Dominio;
 
+/// <summary>
+/// Se encarga de manejar el servicio de chat
+/// </summary>
 public class ChatCliente : MonoBehaviour, IChatServiceCallback
 {
     public static ChatCliente clienteDeChat;
@@ -11,49 +14,55 @@ public class ChatCliente : MonoBehaviour, IChatServiceCallback
     private String direccionIpDelServidor;
     public String mensajes;
 
+    /// <summary>
+    /// Recupera la direccion Ip del servidor
+    /// </summary>
     private void RecuperarIpDelServidor()
     {
         direccionIpDelServidor = SessionCliente.clienteDeSesion.direccionIpDelServidor;
     }
 
+    /// <summary>
+    /// Reinicia el servicio del juego
+    /// </summary>
     public void ReiniciarServicio()
     {
-        if(servicioDeChat.State == CommunicationState.Closed)
-        {
-            RecuperarIpDelServidor();
-            InicializarClienteDeChat();
-        }
+        RecuperarIpDelServidor();
+        InicializarClienteDeChat();
     }
 
+    /// <summary>
+    /// Inicia el cliente del servicio de chat
+    /// </summary>
     private void InicializarClienteDeChat()
     {
         servicioDeChat = new ChatServiceClient(new InstanceContext(this) ,
             new NetTcpBinding(SecurityMode.None), 
             new EndpointAddress("net.tcp://" + direccionIpDelServidor + ":8192/ChatService"));
-
     }
 
+    /// <summary>
+    /// Muestra el mensaje de que un mensaje abandono el servicio de chat
+    /// </summary>
+    /// <param name="cuenta"></param>
     public void Abandonar(CuentaModel cuenta)
     {
         mensajes += "### El usuario " + cuenta.NombreUsuario + " ha abandonado la partida ###\n";
     }
-
-    public void EstaEscribiendoCallback(string cuenta)
-    {
-        
-    }
-
+    
+    /// <summary>
+    /// Agrega el mensaje recibido a la lista de mensajes
+    /// </summary>
+    /// <param name="mensaje">Message</param>
     public void RecibirMensaje(Message mensaje)
     {
         mensajes += (mensaje.Remitente.NombreUsuario + " >> " + mensaje.Mensaje + ": " + mensaje.HoraEnvio.ToShortTimeString() + "\n");
     }
-
-    //Quitar
-    public void RefrescarCuentasConectadas(CuentaModel[] cuentasConectadas)
-    {
-        
-    }
-
+    
+    /// <summary>
+    /// Muestra en los mensajes el nombre de usuario de la cuenta que se conecto
+    /// </summary>
+    /// <param name="cuenta">CuentaModel</param>
     public void Unirse(CuentaModel cuenta)
     {
         mensajes += "### El usuario " + cuenta.NombreUsuario + " se ha unido a la partida ###\n";
@@ -79,6 +88,10 @@ public class ChatCliente : MonoBehaviour, IChatServiceCallback
         InicializarClienteDeChat();
     }
 
+    /// <summary>
+    /// Envia mensaje a todos los usuarios de la sala
+    /// </summary>
+    /// <param name="mensajeAEnviar">Message</param>
     public void EnviarMensaje(Message mensajeAEnviar)
     {       
         servicioDeChat.EnviarMensaje(mensajeAEnviar);

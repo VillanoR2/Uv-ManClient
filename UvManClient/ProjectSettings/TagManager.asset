@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Enemy
-  - Coin
+  - UvCoin
+  - Perseguidor
+  - Corredor
   layers:
   - Default
   - TransparentFX
@@ -15,9 +16,9 @@ TagManager:
   - UI
   - 
   - 
-  - Enemie
-  - Player
-  - Attack
+  - 
+  - 
+  - 
   - 
   - 
   - 

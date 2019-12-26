@@ -64,26 +64,29 @@ public partial class SessionServiceClient : System.ServiceModel.DuplexClientBase
         base.Channel.CerrarSesion(Cuenta);
     }
 }
-namespace SessionService.Dominio.Enum {
+
+namespace SessionService.Dominio.Enum
+{
     using System.Runtime.Serialization;
-    
-    
+
+
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="EnumEstadoInicioSesion", Namespace="http://schemas.datacontract.org/2004/07/SessionService.Dominio.Enum")]
-    public enum EnumEstadoInicioSesion : int {
-        
+    [System.Runtime.Serialization.DataContractAttribute(Name = "EnumEstadoInicioSesion", Namespace = "http://schemas.datacontract.org/2004/07/SessionService.Dominio.Enum")]
+    public enum EnumEstadoInicioSesion : int
+    {
+
         [System.Runtime.Serialization.EnumMemberAttribute()]
         Correcto = 1,
-        
+
         [System.Runtime.Serialization.EnumMemberAttribute()]
         CredencialesInvalidas = 0,
-        
+
         [System.Runtime.Serialization.EnumMemberAttribute()]
         CuentaNoVerificada = -1,
-        
+
         [System.Runtime.Serialization.EnumMemberAttribute()]
         ErrorBD = -2,
-        
+
         [System.Runtime.Serialization.EnumMemberAttribute()]
         CuentaYaLogeada = -3,
     }

@@ -64,7 +64,7 @@ fc108ce7d98c40ac0907e8ca7f500c76 UnityEngine.UI.dll:UnityEngine.UI.Text
 abf1930d8126d0b2e00e9449129a0190 UnityEngine.UI.dll:UnityEngine.EventSystems.TouchInputModule
 64e54c0cbb0177c5ea26f340efb9ff85 UnityEngine.UI.dll:UnityEngine.UI.VerticalLayoutGroup
 b31ef1c110c5a7ed74ad67be3ae59038 Unity.TextMeshPro.dll:TMPro.TMP_InputField
-13f8f373b951cbaf0f891949929b196a Assembly-CSharp.dll:.Character_Movement
+c8eba267fc3c09b36bd5270cbac12bb5 Assembly-CSharp.dll:.Character_Movement
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 5fc094978ce3e3591a7500ed380d854a UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -140,8 +140,10 @@ b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 3db34c2929f3ea3807cf0b80a2d31ec2 Assembly-CSharp.dll:.SelectLanguage
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.Alerta
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
 34226e3bb5a09cf902b81015c07d639e Assembly-CSharp.dll:.ChatCliente
+0d08ce3e378374d50844b36c54a42ed5 Assembly-CSharp.dll:.CanvasMultiplayer
 e01c5ae2ea1c827f483e1ba489bff641 Assembly-CSharp.dll:.buttonsOptions
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -157,7 +159,7 @@ e0ee4b3d4e27318934cc940a969d3d96 UnityEngine.Networking.dll:UnityEngine.Networki
 ad9173d3a69d99153f38ed4b62226129 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransform
 9b895dcabbc1faf095c000c32d471fd0 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformChild
 5887ef1bc706b22b773d253fd443ceef UnityEngine.Networking.dll:UnityEngine.Networking.NetworkTransformVisualizer
-f1ea035c9ef97dfd918caa806e0ec503 Assembly-CSharp.dll:.LogicaDelMultiplayer
+2e6e96bb59ce8b02a1062a9c271d2b67 Assembly-CSharp.dll:.LogicaDelMultiplayer
 35a9693c388776aaf487636491a20f11 Unity.TextMeshPro.dll:TMPro.TMP_FontAsset
 e1300922cc039f41ab46a47f4cb05898 Unity.TextMeshPro.dll:TMPro.TMP_Settings
 02efbbe0560ba4b8f191028f55675131 Assembly-CSharp.dll:.buttonsLogin
@@ -182,12 +184,11 @@ ee0cef6caaac8ae485bfa82f000f0f7b Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 a0503b7874ede994a7d35ecb5d2eb0d6 Assembly-CSharp.dll:.buttonsCreateLobby
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
-2ba9278ff60c1e4041a2cc8ccc24d993 Assembly-CSharp.dll:.JuegoCliente
+bc9e96e9577f01e92c9c1b0f86611d06 Assembly-CSharp.dll:.JuegoCliente
 a93330e20ae5b336b3e2209fc6d27c7c Assembly-CSharp.dll:.buttonsJoinPrivateLobby
-13f8f373b951cbaf0f891949929b196a Assembly-CSharp.dll:.CharacterMovementOnline
+52532eadb6d322d077e9334b3d951aca Assembly-CSharp.dll:.CharacterMovementOnline
 5372ed2ce39229b1ac910757999a8be2 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
-ef099aea573e76f8664de3622267c76c Assembly-CSharp.dll:.LogicaDelLobby
+08f84c45d0014e2f1d51526426caab3a Assembly-CSharp.dll:.LogicaDelLobby
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 cb6bcb078af101e627219c47e62bda56 Assembly-CSharp.dll:.buttonsRegister
-71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.ManejoDeCanvas

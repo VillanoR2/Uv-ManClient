@@ -7,6 +7,9 @@ using System.Net;
 using LogicaDelNegocio.Modelo;
 using System.Security.Principal;
 
+/// <summary>
+/// Se encarga de manejar el servicio de sesion
+/// </summary>
 public class SessionCliente : MonoBehaviour, ISessionServiceCallback
 {
     public static SessionCliente clienteDeSesion;
@@ -17,25 +20,14 @@ public class SessionCliente : MonoBehaviour, ISessionServiceCallback
     public delegate void CambioDireccionIP();
     public event CambioDireccionIP ModificacionDeLaDireccion;
 
+    /// <summary>
+    /// Iniciliza el servicio de sesion
+    /// </summary>
     private void InicializarServicioDeSesion()
     {
         servicioDeSesion = new SessionServiceClient(new InstanceContext(this), new NetTcpBinding(SecurityMode.Transport), 
             new EndpointAddress("net.tcp://" + direccionIpDelServidor + ":7972/SessionService"));
         
-    }
-
-    public void AsegurarLaInformacion(String usuario, String contrasena)
-    {
-        NetworkCredential credencialesDeUsuario = new NetworkCredential(usuario, contrasena);
-        servicioDeSesion.ClientCredentials.Windows.AllowedImpersonationLevel = TokenImpersonationLevel.Identification;
-
-        servicioDeSesion.ClientCredentials.Windows.AllowNtlm = false;
-        servicioDeSesion.ClientCredentials.Windows.ClientCredential = credencialesDeUsuario;
-    }
-
-    private void RecuperarIpDelServidor()
-    {
-        direccionIpDelServidor = SessionCliente.clienteDeSesion.direccionIpDelServidor;
     }
 
     private void Awake()
@@ -57,19 +49,27 @@ public class SessionCliente : MonoBehaviour, ISessionServiceCallback
         InicializarServicioDeSesion();
     }
 
+    /// <summary>
+    /// Responde al servidor que el cliente esta vivo
+    /// </summary>
+    /// <returns>Verdadero</returns>
     public bool EstaVivo()
     {
         return true;
     }
 
+    /// <summary>
+    /// Reinicia el servicio del cliente
+    /// </summary>
     public void ReiniciarServicio()
     {
-        if(servicioDeSesion.State == CommunicationState.Closed)
-        {
-            InicializarServicioDeSesion();
-        }
+        InicializarServicioDeSesion();
     }
 
+    /// <summary>
+    /// Guarda la direccion Ip del cliente
+    /// </summary>
+    /// <returns></returns>
     public Boolean Guardar()
     {
         BinaryFormatter formatoBinario = new BinaryFormatter();
@@ -91,6 +91,9 @@ public class SessionCliente : MonoBehaviour, ISessionServiceCallback
         }
     }
 
+    /// <summary>
+    /// Recupera el archivo de la configuracion Ip del servidor
+    /// </summary>
     private void CargarArchivoDeConfiguracion()
     {
         if (File.Exists(rutaDelArchivoDeConfiguracion))
@@ -117,6 +120,9 @@ public class SessionCliente : MonoBehaviour, ISessionServiceCallback
 
 }
 
+/// <summary>
+/// Se encarga de guardar la direccion ip del servidor
+/// </summary>
 [Serializable]
 class ConfiguracionAGuardar
 {
