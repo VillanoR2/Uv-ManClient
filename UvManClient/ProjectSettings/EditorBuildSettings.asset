@@ -32,4 +32,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/UI/GameOverScene.unity
     guid: 5b41eccff6c4e4854a29774ac5487317
+  - enabled: 1
+    path: Assets/UI/JoinLobby.unity
+    guid: b397a47f1bf24bf49b262d4e1ff8cc7a
+  - enabled: 1
+    path: Assets/UI/CreateLobby.unity
+    guid: 8fc908e221a08ac47a4b07a27b6186e2
+  - enabled: 1
+    path: Assets/UI/JoinPrivateLobby.unity
+    guid: 05c72a8f9b71cb44aacf372754821648
+  - enabled: 1
+    path: Assets/UI/MultiplayerScreen.unity
+    guid: c768602fe9a0eb947999b61d613c53a8
   m_configObjects: {}

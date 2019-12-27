@@ -61,9 +61,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Character\Character_Movement.cs" />
-    <Compile Include="Assets\Character\CharacterMovementOnline.cs" />
-    <Compile Include="Assets\Maps\Objects\UvCoinLogic.cs" />
-    <Compile Include="Assets\Scripts\AdaptadorDeCamara.cs" />
+    <Compile Include="Assets\Character\JugadorEnLinea.cs" />
+    <Compile Include="Assets\Character\JugadorLocal.cs" />
+    <Compile Include="Assets\Character\PuntosDeCaminoPerseguidor.cs" />
+    <Compile Include="Assets\Maps\MainCamera.cs" />
+    <Compile Include="Assets\Maps\Objects\Coin\LogicaUvCoin.cs" />
+    <Compile Include="Assets\Maps\Objects\PickAxe\pickAxLogic.cs" />
+    <Compile Include="Assets\Maps\Objects\Warp\Warp.cs" />
     <Compile Include="Assets\Scripts\Alerta.cs" />
     <Compile Include="Assets\Scripts\buttonPressStart.cs" />
     <Compile Include="Assets\Scripts\buttonsCreateLobby.cs" />
@@ -81,18 +85,23 @@
     <Compile Include="Assets\Scripts\Clientes\JuegoCliente.cs" />
     <Compile Include="Assets\Scripts\Clientes\SessionCliente.cs" />
     <Compile Include="Assets\Scripts\Cuenta.cs" />
+    <Compile Include="Assets\Scripts\GameOverScript.cs" />
     <Compile Include="Assets\Scripts\Globalizacion\AsignadorTexto.cs" />
     <Compile Include="Assets\Scripts\Globalizacion\ControladorJson.cs" />
     <Compile Include="Assets\Scripts\Globalizacion\Serializable.cs" />
     <Compile Include="Assets\Scripts\Globalizacion\TextoId.cs" />
+    <Compile Include="Assets\Scripts\HUD\Puntuacion.cs" />
+    <Compile Include="Assets\Scripts\HUD\Vidas.cs" />
     <Compile Include="Assets\Scripts\LogicaDelChat.cs" />
     <Compile Include="Assets\Scripts\LogicaDelLobby.cs" />
     <Compile Include="Assets\Scripts\LogicaDelMultiplayer.cs" />
+    <Compile Include="Assets\Scripts\NotificationCenter.cs" />
     <Compile Include="Assets\Scripts\SelectLanguage.cs" />
     <Compile Include="Assets\Scripts\Servicios\ServiceChat.cs" />
     <Compile Include="Assets\Scripts\Servicios\ServiceCuenta.cs" />
     <Compile Include="Assets\Scripts\Servicios\ServiceGame.cs" />
     <Compile Include="Assets\Scripts\Servicios\ServiceSession.cs" />
+    <Compile Include="Assets\Scripts\Timer.cs" />
     <Compile Include="Assets\Scripts\Util\Cronometro.cs" />
     <None Include="Assets\UI\Sprites\gameicons-expansion\Spritesheet\sheet_black2x.xml" />
     <None Include="Assets\UI\Sprites\kenney_emotespack\Spritesheets\vector_style3.xml" />

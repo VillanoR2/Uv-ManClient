@@ -281,11 +281,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b19d56b911e1a564f9cf5090ea1eb395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Corredor: {fileID: 0}
-  Perseguidor1: {fileID: 0}
-  Perseguidor2: {fileID: 0}
-  Perseguidor3: {fileID: 0}
-  Perseguidor4: {fileID: 0}
+  JugadorActual: {fileID: 0}
+  PrefabUvCoins: {fileID: 4109341314320581776, guid: 8328030c26709d5479c218bf4925c140,
+    type: 3}
 --- !u!1 &968725505
 GameObject:
   m_ObjectHideFlags: 0
