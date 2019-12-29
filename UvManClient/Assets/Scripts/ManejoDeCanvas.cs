@@ -10,7 +10,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Se encarga de mostrar un canvas cuando el juego ha terminado o cuando el juego esta por iniciar
 /// </summary>
-public class CanvasMultiplayer : MonoBehaviour
+public class ManejoDeCanvas : MonoBehaviour
 {
     private const int SEGUNDOS_INICIO_PARTIDA = 5;
     private Canvas cInicioPartida;

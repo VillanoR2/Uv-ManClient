@@ -1,13 +1,11 @@
 ﻿using GameChatService.Dominio;
 using LogicaDelNegocio.Modelo;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class buttonsLobby : MonoBehaviour
+public class LogicaDelChat : MonoBehaviour
 {
     public Text MessageText;
     public InputField SendingMessage;
@@ -39,11 +37,6 @@ public class buttonsLobby : MonoBehaviour
     {
         ChatClient.servicioDeChat.Desconectar(Account);
         SceneManager.LoadScene("MainScreen");
-    }
-
-    public void ButtonStart()
-    {
-        //Inicia Partida
     }
 
     public void EnviarMensaje()
