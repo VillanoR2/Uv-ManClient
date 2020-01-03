@@ -60,7 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Character\Character_Movement.cs" />
+    <Compile Include="Assets\Character\Jugador.cs" />
     <Compile Include="Assets\Character\JugadorEnLinea.cs" />
     <Compile Include="Assets\Character\JugadorLocal.cs" />
     <Compile Include="Assets\Character\PuntosDeCaminoPerseguidor.cs" />
@@ -68,7 +68,6 @@
     <Compile Include="Assets\Maps\Objects\Coin\LogicaUvCoin.cs" />
     <Compile Include="Assets\Maps\Objects\PickAxe\pickAxLogic.cs" />
     <Compile Include="Assets\Maps\Objects\Warp\Warp.cs" />
-    <Compile Include="Assets\Scripts\Alerta.cs" />
     <Compile Include="Assets\Scripts\buttonPressStart.cs" />
     <Compile Include="Assets\Scripts\buttonsCreateLobby.cs" />
     <Compile Include="Assets\Scripts\buttonsJoinLobby.cs" />
@@ -123,6 +122,7 @@
     <None Include="Assets\UI\Sprites\gameicons-expansion\Spritesheet\sheet_white2x.xml" />
     <None Include="Assets\UI\Sprites\kenney_emotespack\License.txt" />
     <None Include="Assets\UI\Sprites\kenney_emotespack\Spritesheets\vector_style7.xml" />
+    <None Include="Assets\Plugin\NLog.xml" />
     <None Include="Assets\UI\Sprites\gameicons-expansion\Game icons (base)\Spritesheet\sheet_black2x.xml" />
     <None Include="Assets\UI\Fonts\press_start_2p\LICENSE.txt" />
     <None Include="Assets\UI\Sprites\gameicons-expansion\Game icons (base)\license.txt" />
@@ -146,19 +146,19 @@
     <None Include="Assets\UI\Sprites\gameicons-expansion\Game icons (base)\Spritesheet\sheet_white1x.xml" />
     <None Include="Assets\Plugin\EntityFramework.xml" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/Miguel/Documents/Uv-ManClient/UvManClient/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/pumas/Documents/Uv-ManClient/UvManClient/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/Miguel/Documents/Uv-ManClient/UvManClient/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/pumas/Documents/Uv-ManClient/UvManClient/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/Miguel/Documents/Uv-ManClient/UvManClient/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/pumas/Documents/Uv-ManClient/UvManClient/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/Miguel/Documents/Uv-ManClient/UvManClient/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/pumas/Documents/Uv-ManClient/UvManClient/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Users/Miguel/Documents/Uv-ManClient/UvManClient/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Users/pumas/Documents/Uv-ManClient/UvManClient/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -362,28 +362,31 @@
       <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="AccesoDatos">
-      <HintPath>C:/Users/Miguel/Documents/Uv-ManClient/UvManClient/Assets/Plugin/AccesoDatos.dll</HintPath>
+      <HintPath>C:/Users/pumas/Documents/Uv-ManClient/UvManClient/Assets/Plugin/AccesoDatos.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
-      <HintPath>C:/Users/Miguel/Documents/Uv-ManClient/UvManClient/Assets/Plugin/EntityFramework.dll</HintPath>
+      <HintPath>C:/Users/pumas/Documents/Uv-ManClient/UvManClient/Assets/Plugin/EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="GameService">
-      <HintPath>C:/Users/Miguel/Documents/Uv-ManClient/UvManClient/Assets/Plugin/GameService.dll</HintPath>
+      <HintPath>C:/Users/pumas/Documents/Uv-ManClient/UvManClient/Assets/Plugin/GameService.dll</HintPath>
     </Reference>
     <Reference Include="LogicaDelNegocio">
-      <HintPath>C:/Users/Miguel/Documents/Uv-ManClient/UvManClient/Assets/Plugin/LogicaDelNegocio.dll</HintPath>
+      <HintPath>C:/Users/pumas/Documents/Uv-ManClient/UvManClient/Assets/Plugin/LogicaDelNegocio.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>C:/Users/pumas/Documents/Uv-ManClient/UvManClient/Assets/Plugin/NLog.dll</HintPath>
     </Reference>
     <Reference Include="System.ServiceModel">
-      <HintPath>C:/Users/Miguel/Documents/Uv-ManClient/UvManClient/Assets/Plugin/System.ServiceModel.dll</HintPath>
+      <HintPath>C:/Users/pumas/Documents/Uv-ManClient/UvManClient/Assets/Plugin/System.ServiceModel.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/Miguel/Documents/Uv-ManClient/UvManClient/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/Users/pumas/Documents/Uv-ManClient/UvManClient/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/Miguel/Documents/Uv-ManClient/UvManClient/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/Users/pumas/Documents/Uv-ManClient/UvManClient/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/Miguel/Documents/Uv-ManClient/UvManClient/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/Users/pumas/Documents/Uv-ManClient/UvManClient/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

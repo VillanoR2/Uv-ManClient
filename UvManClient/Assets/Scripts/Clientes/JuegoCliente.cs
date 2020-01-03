@@ -31,6 +31,7 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
     public event NotificacionSobrePartida SeActivoElTiempoParaComer;
     public event DatosDeLaMuerteDeJugador SeMurioUnJugador;
     public event NotificacionSobrePartida TerminoLaPartida;
+    public event NotificacionSobrePartida MostrarPantallaFinJuego;
     public static JuegoCliente ClienteDelJuego;
     private string DireccionIpDelServidor;
     public GameServiceClient ServicioDeJuego;
@@ -66,7 +67,7 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
     /// </summary>
     private void RecuperarCuentaEnSession()
     {
-        CuentaEnSesion = Cuenta.cuentaLogeada.cuenta;
+        CuentaEnSesion = Cuenta.CuentaLogeada.CuentaM;
     }
 
     /// <summary>
@@ -245,7 +246,7 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
         }
         if(MiCuentaCompleta != null)
         {
-            Cuenta.cuentaLogeada.cuenta = MiCuentaCompleta;
+            Cuenta.CuentaLogeada.CuentaM = MiCuentaCompleta;
             CuentaEnSesion = MiCuentaCompleta;
         }
     }
@@ -254,7 +255,7 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
     /// Envia un mensaje de partida terminada con la mejor puntuacion del corredor
     /// </summary>
     /// <param name="PersonajeDelCorredor"></param>
-    public void TerminarPartida(Character_Movement PersonajeDelCorredor)
+    public void TerminarPartida(Jugador PersonajeDelCorredor)
     {
         if (CuentaEnSesion.Jugador.RolDelJugador == EnumTipoDeJugador.Corredor)
         {
@@ -263,8 +264,8 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
                 CuentaEnSesion.Jugador.MejorPuntacion = PersonajeDelCorredor.PuntacionTotal;
             }
             ServicioDeJuego.TerminarPartida(CuentaEnSesion);
-            TerminoLaPartida?.Invoke();
         }
+        MostrarPantallaFinJuego?.Invoke();
     }
     
     /// <summary>
@@ -308,5 +309,14 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
         CuentasEnLaSala.Clear();
         IdDeMiSala = String.Empty;
         MiSalaEsPublica = false;
+    }
+
+    /// <summary>
+    /// Abandona la sala actual
+    /// </summary>
+    public void SalirDeLaSala()
+    {
+        ServicioDeJuego.AbandonarSala(CuentaEnSesion);
+        ReiniciarDatosJuego();
     }
 }

@@ -38,12 +38,18 @@ public class buttonsOptions : MonoBehaviour
         SceneManager.LoadScene("LoginScreen");
     }
 
+    /// <summary>
+    /// Metodo propio de UNITY que ejecuta lo que se encuentra dentro del metodo al iniciar la escena
+    /// </summary>
     private void Start()
     {
         RecuperarDireccionIP();
         IFDireccionIp.text = direccionIP;
     }
 
+    /// <summary>
+    /// Muestra el panel de la configuración de idiomas
+    /// </summary>
     public void ShowPanel()
     { 
         counter++;

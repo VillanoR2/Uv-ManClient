@@ -4,24 +4,34 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+/// <summary>
+/// Se encarga de manejar los elementos de la escena de VerifyAccountScreen
+/// </summary>
 public class buttonsVerificationAccount : MonoBehaviour
 {
     public InputField IFCodigoVerificacion;
-    CuentaModel cuentaAVerificar;
-
-    // Start is called before the first frame update
-
+    private CuentaModel CuentaAVerificar;
+    
+    /// <summary>
+    /// Recupera la información de la cuenta a verificar
+    /// </summary>
     private void RecuperarCuentaAVerificar()
     {
-        cuentaAVerificar = CuentaCliente.clienteDeCuenta.cuentaAVerificar;
+        CuentaAVerificar = CuentaCliente.clienteDeCuenta.cuentaAVerificar;
     }
 
+    /// <summary>
+    /// Metodo propio de UNITY que ejecuta lo que se encuentra dentro de el
+    /// </summary>
     void Start()
     {
         RecuperarCuentaAVerificar();
         VerificarCuentaAVerificarValida();
     }
 
+    /// <summary>
+    /// Solicita al servicio de sesion que verfique la cuenta con el codigo introducido
+    /// </summary>
     public void VerificarCuenta()
     {
         string codigoRecuperado = IFCodigoVerificacion.text;
@@ -29,7 +39,8 @@ public class buttonsVerificationAccount : MonoBehaviour
         {
             CuentaCliente.clienteDeCuenta.ReiniciarServicio();
             EnumEstadoVerificarCuenta SeVerificoCorrectamente = 
-                CuentaCliente.clienteDeCuenta.servicioDeCuenta.VerificarCuenta(codigoRecuperado, cuentaAVerificar);
+                CuentaCliente.clienteDeCuenta.servicioDeCuenta.VerificarCuenta(codigoRecuperado, CuentaAVerificar);
+            //Mostrar enum de se verifico correctamente
         }
         else
         {
@@ -38,22 +49,31 @@ public class buttonsVerificationAccount : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Regresa a la pantalla de login si la cuenta a verificar es invalida
+    /// </summary>
     private void VerificarCuentaAVerificarValida()
     {
-        if (cuentaAVerificar == null)
+        if (CuentaAVerificar == null)
         {
             //Mostrar mensaje de error al realizar el registro
             SceneManager.LoadScene("LoginScreen");
         }
     }
 
+    /// <summary>
+    /// Regresa a la escena de login
+    /// </summary>
     public void RegresarLoginScreen()
     {
         SceneManager.LoadScene("LoginScreen");
     }
 
-    //private void ReenviarCodigo()
-    //{
-    //    CuentaCliente.clienteDeCuenta.servicioDeCuenta.
-    //}
+    /// <summary>
+    /// Reenvia el codigo de verficacion a la cuenta a verificar
+    /// </summary>
+    public void ReenviarCodigo()
+    {
+       CuentaCliente.clienteDeCuenta.servicioDeCuenta.ReEnviarCorreoVerificacion(CuentaAVerificar);
+    }
 }

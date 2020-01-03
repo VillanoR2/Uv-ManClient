@@ -48,6 +48,9 @@ public interface IGameService {
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/EstaLaSalaLlena", ReplyAction="http://tempuri.org/IGameService/EstaLaSalaLlenaResponse")]
     void EstaLaSalaLlena(LogicaDelNegocio.Modelo.CuentaModel CuentaEnSala);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGameService/AbandonarSala", ReplyAction="http://tempuri.org/IGameService/AbandonarSalaResponse")]
+    void AbandonarSala(LogicaDelNegocio.Modelo.CuentaModel Cuenta);
 }
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -136,8 +139,11 @@ public partial class GameServiceClient : System.ServiceModel.DuplexClientBase<IG
     public void EstaLaSalaLlena(LogicaDelNegocio.Modelo.CuentaModel CuentaEnSala) {
         base.Channel.EstaLaSalaLlena(CuentaEnSala);
     }
+    
+    public void AbandonarSala(LogicaDelNegocio.Modelo.CuentaModel Cuenta) {
+        base.Channel.AbandonarSala(Cuenta);
+    }
 }
-
 namespace ConexionRed.Udp
 {
     public class UdpReciverClient

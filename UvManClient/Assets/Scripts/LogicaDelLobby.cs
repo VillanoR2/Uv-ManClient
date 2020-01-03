@@ -44,6 +44,9 @@ public class LogicaDelLobby : MonoBehaviour
         ListaDeImagenesDeJugadores.Add(imageJugador5);
     }
     
+    /// <summary>
+    /// Inicializa la list de los textos de los jugadores
+    /// </summary>
     private void InicializarListaDeTextos()
     {
         ListaDetextoDeJugadores.Add(txtJugador1);
@@ -53,12 +56,18 @@ public class LogicaDelLobby : MonoBehaviour
         ListaDetextoDeJugadores.Add(txtJugador5);
     }
     
+    /// <summary>
+    /// Recupera la información de la sala
+    /// </summary>
     private void RecuperarInformacionDeSala()
     {
         IdDeLaSala = ClienteDelJuego.IdDeMiSala;
         EsSalaPublica = ClienteDelJuego.MiSalaEsPublica;
     }
     
+    /// <summary>
+    /// Coloca la información de la sala en los textbox
+    /// </summary>
     private void InicializarTextosDeInformacionSala()
     {
         String TipoDeSala;
@@ -72,12 +81,21 @@ public class LogicaDelLobby : MonoBehaviour
         txtTipoSala.text = TipoDeSala;
         txtIdSala.text = IdDeLaSala;
     }
+    
+    /// <summary>
+    /// Esconde el texto y la imagen de un jugador
+    /// </summary>
+    /// <param name="ImagenADesactivar">Image</param>
+    /// <param name="TextoADesactivar">Text</param>
     private void EsconderJugador(Image ImagenADesactivar, Text TextoADesactivar)
     {
         ImagenADesactivar.gameObject.SetActive(false);
         TextoADesactivar.gameObject.SetActive(false);
     }
     
+    /// <summary>
+    /// Esconde la información de todos los jugadores en la sala
+    /// </summary>
     private void EsconderJugadoresEnSesion()
     {
         EsconderJugador(imageJugador1, txtJugador1);
@@ -87,7 +105,9 @@ public class LogicaDelLobby : MonoBehaviour
         EsconderJugador(imageJugador5, txtJugador5);
     }
     
-    // Start is called before the first frame update
+    /// <summary>
+    /// Metodo de UNITY que se ejecuta en el primer cuadro de la escena
+    /// </summary>
     void Start()
     {
         EsconderJugadoresEnSesion();
@@ -169,6 +189,11 @@ public class LogicaDelLobby : MonoBehaviour
         temporizador.Start();
     }
 
+    /// <summary>
+    /// Cambia a la escena de multiplaerScreen
+    /// </summary>
+    /// <param name="source">object</param>
+    /// <param name="e">ElapsedEventArgs</param>
     private void CambiarAMultijugador(object source, ElapsedEventArgs e)
     {
         CambiarAPantallaMultijugador();
@@ -179,19 +204,32 @@ public class LogicaDelLobby : MonoBehaviour
         CambiarAPantallaMultijugador();
     }
 
+    /// <summary>
+    /// Cambia a la escena MultiplayerScreen
+    /// </summary>
     private void CambiarAPantallaMultijugador()
     {
-        DesuscriibirseALosServiciosDelJuego();
+        DesuscribirseALosServiciosDelJuego();
         SceneManager.LoadScene("MultiplayerScreen");
     }
 
     /// <summary>
     /// Se desuscribe a los servivios del cliente del juego
     /// </summary>
-    private void DesuscriibirseALosServiciosDelJuego()
+    private void DesuscribirseALosServiciosDelJuego()
     {
         ClienteDelJuego.SeActualizaronRoles -= ActualizarInformacionDeLosJugeadoresEnSala;
         ClienteDelJuego.SeActualizaronRoles -= ActualizarTextoCantidadDeJugadores;
         ClienteDelJuego.SeLlenoLaSala -= SeLlenoLaSala;
+    }
+
+    /// <summary>
+    /// Saca a la cuenta de la sala y cambia a la escena MainScreen
+    /// </summary>
+    public void Regresar()
+    {
+        ClienteDelJuego.SalirDeLaSala();
+        DesuscribirseALosServiciosDelJuego();
+        SceneManager.LoadScene("MainScreen");
     }
 }

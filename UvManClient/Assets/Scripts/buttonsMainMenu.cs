@@ -1,37 +1,48 @@
 ﻿using LogicaDelNegocio.Modelo;
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Se encarga de los elementos de la escena de MainScreen
+/// </summary>
 public class buttonsMainMenu : MonoBehaviour
 {
     private CuentaModel cuenta;
 
+    /// <summary>
+    /// Metodo predefinido de UNITY que se encarga de ejecutar todo cuando inicia una escena
+    /// </summary>
     void Start()
     {
         RecuperarCuentaLogeada();    
     }
 
+    /// <summary>
+    /// Recupera la informacion de la cuenta logeada
+    /// </summary>
     private void RecuperarCuentaLogeada()
     { 
-        cuenta = Cuenta.cuentaLogeada.cuenta;
+        cuenta = Cuenta.CuentaLogeada.CuentaM;
     }
     
+    /// <summary>
+    /// Cambia a la escena SingleScreen
+    /// </summary>
     public void NewGame(){
         SceneManager.LoadScene("SingleScreen");
     }
+    
+    /// <summary>
+    /// Cambia a la escena JoinLobby
+    /// </summary>
     public void Multiplayer()
     {
         SceneManager.LoadScene("JoinLobby");
     }
-
-    public void Option(){
-         SceneManager.LoadScene("OptionScreen");
-
-    }
-
+    
+    /// <summary>
+    /// Cierra el programa
+    /// </summary>
     public void Quit()
     {
         SessionCliente.clienteDeSesion.servicioDeSesion.CerrarSesion(cuenta);

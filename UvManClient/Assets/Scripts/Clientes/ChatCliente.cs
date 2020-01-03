@@ -36,6 +36,7 @@ public class ChatCliente : MonoBehaviour, IChatServiceCallback
     /// </summary>
     private void InicializarClienteDeChat()
     {
+        mensajes = String.Empty;
         servicioDeChat = new ChatServiceClient(new InstanceContext(this) ,
             new NetTcpBinding(SecurityMode.None), 
             new EndpointAddress("net.tcp://" + direccionIpDelServidor + ":8192/ChatService"));
@@ -68,6 +69,9 @@ public class ChatCliente : MonoBehaviour, IChatServiceCallback
         mensajes += "### El usuario " + cuenta.NombreUsuario + " se ha unido a la partida ###\n";
     }
 
+    /// <summary>
+    /// Metodo de UNITY que se ejecuta cuando se carga la escena
+    /// </summary>
     private void Awake()
     {
         if (clienteDeChat == null)

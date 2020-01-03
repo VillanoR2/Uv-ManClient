@@ -3,9 +3,7 @@ using System.ServiceModel;
 using System.Runtime.Serialization.Formatters.Binary;
 using System;
 using System.IO;
-using System.Net;
 using LogicaDelNegocio.Modelo;
-using System.Security.Principal;
 
 /// <summary>
 /// Se encarga de manejar el servicio de sesion
@@ -25,11 +23,12 @@ public class SessionCliente : MonoBehaviour, ISessionServiceCallback
     /// </summary>
     private void InicializarServicioDeSesion()
     {
-        servicioDeSesion = new SessionServiceClient(new InstanceContext(this), new NetTcpBinding(SecurityMode.Transport), 
+        servicioDeSesion = new SessionServiceClient(new InstanceContext(this),
+            new NetTcpBinding(SecurityMode.Transport),
             new EndpointAddress("net.tcp://" + direccionIpDelServidor + ":7972/SessionService"));
-        
     }
 
+    //Metodo de UNITY que se ejecuta al cargarse la escena
     private void Awake()
     {
         rutaDelArchivoDeConfiguracion = Application.persistentDataPath + "/configuracion.dat";
@@ -43,6 +42,9 @@ public class SessionCliente : MonoBehaviour, ISessionServiceCallback
         }
     }
 
+    /// <summary>
+    /// Metodo de UNITY que se ejecuta en el primer cuadro de la escena
+    /// </summary>
     private void Start()
     {
         CargarArchivoDeConfiguracion();

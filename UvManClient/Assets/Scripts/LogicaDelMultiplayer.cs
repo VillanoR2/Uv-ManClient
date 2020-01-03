@@ -4,7 +4,6 @@ using LogicaDelNegocio.Modelo;
 using LogicaDelNegocio.Modelo.Enum;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 /// <summary>
 /// Se encarga de manejar a los elementos que se encuentran en el mapa y a los jugadores online
@@ -14,7 +13,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
     private CuentaModel CuentaDelJugadorPrincipal;
     private CharacterManager ManejadorDePersonajes = CharacterManager.ManejadorDePersonajes;
     private JuegoCliente ClienteDelJuego = JuegoCliente.ClienteDelJuego;
-    public Character_Movement JugadorActual;
+    public Jugador JugadorActual;
     public GameObject PrefabUvCoins;
     private GameObject UvCoins;
     private GameObject Corredor;
@@ -27,13 +26,16 @@ public class LogicaDelMultiplayer : MonoBehaviour
     private int CANTIDAD_VIDAS_PERSEGUIDOR = 3;
 
     private Dictionary<CuentaModel, GameObject> Jugadores = new Dictionary<CuentaModel, GameObject>();
-    private Dictionary<CuentaModel, CharacterMovementOnline> ScriptsDeMovimiento = new Dictionary<CuentaModel, CharacterMovementOnline>();
+    private Dictionary<CuentaModel, JugadorEnLinea> ScriptsDeMovimiento = new Dictionary<CuentaModel, JugadorEnLinea>();
     private readonly Vector2 POSICION_CORREDOR = new Vector2(-7f, 3.5f);
     private readonly Vector2 POSICION_PERSEGUIDOR1 = new Vector2(-0.5f, -8.5f);
     private readonly Vector2 POSICION_PERSEGUIDOR2 = new Vector2(12.5f, -8.5f);
     private readonly Vector2 POSICION_PERSEGUIDOR3 = new Vector2(23.5f, -16.5f);
     private readonly Vector2 POSICION_PERSEGUIDOR4 = new Vector2(-11.5f, 11.5f);
 
+    /// <summary>
+    /// Metodo de UNITY que se ejecuta en el primer cuadro de la escena
+    /// </summary>
     void Start()
     {
         SuscribirseAEventosDeJuego();
@@ -57,6 +59,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
         ClienteDelJuego.SeMurioUnJugador += MatarJugador;
         ClienteDelJuego.SeMovioUnJugador += MoverJugador;
         ClienteDelJuego.SeActivoElTiempoParaComer += ActivarTiempoDeComer;
+        ClienteDelJuego.TerminoLaPartida += TerminarPartida;
     }
 
     /// <summary>
@@ -133,7 +136,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
         {
             GameObject PrefabAInstanciar = ManejadorDePersonajes.ObtenerPrefabDePersonaje(cuentaEnJuego.Jugador);
             GameObject InstanciaDelObjecto = null;
-            CharacterMovementOnline ScriptDeMovimiento = null;
+            JugadorEnLinea ScriptDeMovimiento = null;
             Vector2 PosicionInicial = new Vector2(0, 0);
             EnumTipoDeJugador TipoDeJugador = EnumTipoDeJugador.Corredor;
             int CantidadDeVidas = CANTIDAD_VIDAS_PERSEGUIDOR;
@@ -172,20 +175,20 @@ public class LogicaDelMultiplayer : MonoBehaviour
             if (EsElJugadorActual)
             {
                 CuentaDelJugadorPrincipal = cuentaEnJuego;
-                InstanciaDelObjecto.GetComponent<CharacterMovementOnline>().EstaActivoElScript = false;
-                JugadorActual = InstanciaDelObjecto.GetComponent<Character_Movement>();
+                InstanciaDelObjecto.GetComponent<JugadorEnLinea>().EstaActivoElScript = false;
+                JugadorActual = InstanciaDelObjecto.GetComponent<Jugador>();
                 JugadorActual.enabled = true;
-                InicializarMovement_Character(JugadorActual, true, EsElJugadorActual, PosicionInicial,
+                InicializarJugador(JugadorActual, true, EsElJugadorActual, PosicionInicial,
                     TipoDeJugador, CantidadDeVidas);
                 JugadorActual.EstaActivoTiempoDeMatar = true;
             }
             else
             {
-                InstanciaDelObjecto.GetComponent<Character_Movement>().EstaActivoElScript = false;
-                InstanciaDelObjecto.GetComponent<Character_Movement>().enabled = false;
-                ScriptDeMovimiento = InstanciaDelObjecto.GetComponent<CharacterMovementOnline>();
+                InstanciaDelObjecto.GetComponent<Jugador>().EstaActivoElScript = false;
+                InstanciaDelObjecto.GetComponent<Jugador>().enabled = false;
+                ScriptDeMovimiento = InstanciaDelObjecto.GetComponent<JugadorEnLinea>();
                 ScriptDeMovimiento.enabled = true;
-                InicializarMovementCharacterOnline(ScriptDeMovimiento, true, PosicionInicial,
+                InicializarJugadorEnLinea(ScriptDeMovimiento, true, PosicionInicial,
                     TipoDeJugador, CantidadDeVidas);
             }
             InstanciaDelObjecto.tag = tag;
@@ -203,7 +206,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
     /// <param name="PosicionInicial">Vector2</param>
     /// <param name="RolDeJugador">EnumTipoDeJugador</param>
     /// <param name="VidasDisponibles">int</param>
-    private void InicializarMovement_Character(Character_Movement MovimientoDelPersonaje, Boolean EstaActivo,
+    private void InicializarJugador(Jugador MovimientoDelPersonaje, Boolean EstaActivo,
         Boolean EsElJugadorActual, Vector2 PosicionInicial, EnumTipoDeJugador RolDeJugador, int VidasDisponibles)
     {
         MovimientoDelPersonaje.EstaActivoElScript = EstaActivo;
@@ -225,7 +228,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
     /// <param name="PosicionInicial">Vector2</param>
     /// <param name="RolDeJugador">EnumTipoDeJugador</param>
     /// <param name="VidasDisponibles">int</param>
-    private void InicializarMovementCharacterOnline(CharacterMovementOnline MovimientoDelPersonaje, Boolean EstaActivo,
+    private void InicializarJugadorEnLinea(JugadorEnLinea MovimientoDelPersonaje, Boolean EstaActivo,
         Vector2 PosicionInicial, EnumTipoDeJugador RolDeJugador, int VidasDisponibles)
     {
         MovimientoDelPersonaje.EstaActivoElScript = EstaActivo;
@@ -264,14 +267,14 @@ public class LogicaDelMultiplayer : MonoBehaviour
         if (EsELJugadorActual)
         {
             PrefabAInstanciar.GetComponentInChildren<Camera>(true).gameObject.SetActive(true);
-            PrefabAInstanciar.GetComponent<Character_Movement>().enabled = true;
-            PrefabAInstanciar.GetComponent<CharacterMovementOnline>().enabled = false;
+            PrefabAInstanciar.GetComponent<Jugador>().enabled = true;
+            PrefabAInstanciar.GetComponent<JugadorEnLinea>().enabled = false;
         }
         else
         {
             PrefabAInstanciar.GetComponentInChildren<Camera>(true).gameObject.SetActive(false);
-            PrefabAInstanciar.GetComponent<Character_Movement>().enabled = false;
-            PrefabAInstanciar.GetComponent<CharacterMovementOnline>().enabled = true;
+            PrefabAInstanciar.GetComponent<Jugador>().enabled = false;
+            PrefabAInstanciar.GetComponent<JugadorEnLinea>().enabled = true;
         }
         PrefabAInstanciar.SetActive(true);
         return Instantiate(PrefabAInstanciar, Posicion, transform.rotation);
@@ -299,7 +302,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
     private bool LosPerseguidoresAunTienenVidas()
     {
         bool CuentanConVidas = false;
-        foreach (CharacterMovementOnline movimientoDelJugador in ScriptsDeMovimiento.Values)
+        foreach (JugadorEnLinea movimientoDelJugador in ScriptsDeMovimiento.Values)
         {
             if (movimientoDelJugador != null)
             {
@@ -355,12 +358,9 @@ public class LogicaDelMultiplayer : MonoBehaviour
     private void TerminarPartida()
     {
         ClienteDelJuego.Puntuacion = JugadorActual.PuntacionTotal;
-        if (JugadorActual.RolDelJugador == EnumTipoDeJugador.Corredor)
-        {
-            ClienteDelJuego.TerminarPartida(JugadorActual);
-            DesuscribirseAEventosDeJuego();
+        DesuscribirseAEventosDeJuego();
+        ClienteDelJuego.TerminarPartida(JugadorActual);
         }
-    }
 
     /// <summary>
     /// Verifica si el jugador actual tiene vidas, de no ser asi desactiva al jugador actual y si el jugador actual es el
@@ -428,7 +428,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
     /// </summary>
     private void ColocarPersonajesEnPosicionInicial()
     {
-        foreach(CharacterMovementOnline ScriptDelPersonaje in ScriptsDeMovimiento.Values)
+        foreach(JugadorEnLinea ScriptDelPersonaje in ScriptsDeMovimiento.Values)
         {
             if (ScriptDelPersonaje != null)
             {
@@ -452,7 +452,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
     private void ActivarTiempoDeComer()
     {
         JugadorActual.ActivaTiempoDeMatar();
-        CharacterMovementOnline ScriptDelCorredor = RecuperarScriptDePersonaje(EnumTipoDeJugador.Corredor);
+        JugadorEnLinea ScriptDelCorredor = RecuperarScriptDePersonaje(EnumTipoDeJugador.Corredor);
         if (ScriptDelCorredor != null)
         {
             ScriptDelCorredor.ActivaTiempoDeMatar();    
@@ -464,10 +464,10 @@ public class LogicaDelMultiplayer : MonoBehaviour
     /// </summary>
     /// <param name="tipoDelPersonaje">EnumTipoDeJugador</param>
     /// <returns>El ChracterMovenent que tiene ese rol</returns>
-    private CharacterMovementOnline RecuperarScriptDePersonaje(EnumTipoDeJugador tipoDelPersonaje)
+    private JugadorEnLinea RecuperarScriptDePersonaje(EnumTipoDeJugador tipoDelPersonaje)
     {
-        CharacterMovementOnline ScriptDelPersonaje = null;
-        foreach (CharacterMovementOnline ScriptDeMovimiento in ScriptsDeMovimiento.Values)
+        JugadorEnLinea ScriptDelPersonaje = null;
+        foreach (JugadorEnLinea ScriptDeMovimiento in ScriptsDeMovimiento.Values)
         {
             if (ScriptDeMovimiento != null)
             {
@@ -488,6 +488,7 @@ public class LogicaDelMultiplayer : MonoBehaviour
         ClienteDelJuego.SeMurioUnJugador -= MatarJugador;
         ClienteDelJuego.SeMovioUnJugador -= MoverJugador;
         ClienteDelJuego.SeActivoElTiempoParaComer -= ActivarTiempoDeComer;
+        ClienteDelJuego.TerminoLaPartida -= TerminarPartida;
     }
 }
 

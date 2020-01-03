@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Se encarga de controlar al personaje de un jugador en linea
 /// </summary>
-public class CharacterMovementOnline : MonoBehaviour
+public class JugadorEnLinea : MonoBehaviour
 {
     public bool EstaActivoElScript;
     public int VidasDisponibles;
@@ -132,7 +132,7 @@ public class CharacterMovementOnline : MonoBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (EstaActivoElScript && RolDelJugador == 0 && collision.gameObject.CompareTag("UvCoin"))
+        if (EstaActivoElScript && RolDelJugador == 0 && collision.gameObject.CompareTag("Coin"))
         {
             Destroy(collision.gameObject);
         }

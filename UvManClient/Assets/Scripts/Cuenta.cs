@@ -1,19 +1,24 @@
 ﻿using LogicaDelNegocio.Modelo;
 using UnityEngine;
 
+/// <summary>
+/// Se encarga de almacenar la cuenta logeada
+/// </summary>
 public class Cuenta : MonoBehaviour
 {
-    public static Cuenta cuentaLogeada;
-    public CuentaModel cuenta;
+    public static Cuenta CuentaLogeada;
+    public CuentaModel CuentaM;
 
-    //Se llama antes que estar
+    /// <summary>
+    /// Metodo de UNITY que se llama al momento de cargar una escane
+    /// </summary>
     private void Awake()
     {
-        if (cuentaLogeada == null)
+        if (CuentaLogeada == null)
         {
-            cuentaLogeada = this;
+            CuentaLogeada = this;
             DontDestroyOnLoad(gameObject);
-        }else if(cuentaLogeada != this)
+        }else if(CuentaLogeada != this)
         {
             Destroy(gameObject);
         }

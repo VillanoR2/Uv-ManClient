@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using GameService.Dominio.Enum;
+﻿using System.Collections.Generic;
 using LogicaDelNegocio.Modelo;
 using LogicaDelNegocio.Modelo.Enum;
 using UnityEngine;
@@ -25,6 +23,9 @@ public class CharacterManager : MonoBehaviour
     public Sprite sPCreeper;
     public GameObject PrefabPCreeper;
     
+    /// <summary>
+    /// Metodo de UNITY que se ejecuta al momento de cargar una escena
+    /// </summary>
     private void Awake()
     {
         if ( ManejadorDePersonajes == null)
@@ -38,6 +39,9 @@ public class CharacterManager : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Metodo de UNITY que se ejecuta en el primer cuadro de una escena
+    /// </summary>
     void Start()
     {
         CrearDiccionarioDeSprites();

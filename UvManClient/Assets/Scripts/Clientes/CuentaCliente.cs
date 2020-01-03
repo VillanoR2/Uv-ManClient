@@ -2,6 +2,9 @@
 using System.ServiceModel;
 using UnityEngine;
 
+/// <summary>
+/// Se encarga de manejar los servicios de la cuenta como el registro y la verificacion
+/// </summary>
 public class CuentaCliente : MonoBehaviour
 {
     public static CuentaCliente clienteDeCuenta;
@@ -26,6 +29,9 @@ public class CuentaCliente : MonoBehaviour
         direccionIpDelServidor = SessionCliente.clienteDeSesion.direccionIpDelServidor;
     }
 
+    /// <summary>
+    /// Metodo de UNITY que se ejecuta al cargar la escena
+    /// </summary>
     private void Awake()
     {
         if (clienteDeCuenta == null)
@@ -38,7 +44,10 @@ public class CuentaCliente : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
+    /// <summary>
+    /// Metodo de UNITY que se ejecuta en el primer cuadro de la escena 
+    /// </summary>
     void Start()
     {
         SessionCliente.clienteDeSesion.ModificacionDeLaDireccion += ActualizarIpDelServidor;

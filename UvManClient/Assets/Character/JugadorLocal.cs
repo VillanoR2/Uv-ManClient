@@ -62,7 +62,7 @@ public class JugadorLocal : MonoBehaviour
     /// </summary>
     void OnTriggerEnter2D(Collider2D Collider)
     {
-        if (Collider.gameObject.tag == "Enemy")
+        if (Collider.gameObject.CompareTag("Enemy"))
         {
             Animator.SetBool("Die", true);
             AudioSource.Play();
@@ -71,7 +71,7 @@ public class JugadorLocal : MonoBehaviour
             Speed = 0f;
             Invoke("Respawn", 4.0f);
         }
-        else if (Collider.gameObject.tag == "Coin")
+        else if (Collider.gameObject.CompareTag("Coin"))
         {
             TotalCoins -= 1;
             Debug.Log("UVCoin: " + TotalCoins);
