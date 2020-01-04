@@ -11,7 +11,8 @@ public class buttonsVerificationAccount : MonoBehaviour
 {
     public InputField IFCodigoVerificacion;
     private CuentaModel CuentaAVerificar;
-    
+    public GameObject PanelException;
+
     /// <summary>
     /// Recupera la información de la cuenta a verificar
     /// </summary>
@@ -38,14 +39,15 @@ public class buttonsVerificationAccount : MonoBehaviour
         if (codigoRecuperado.Length == 10)
         {
             CuentaCliente.clienteDeCuenta.ReiniciarServicio();
-            EnumEstadoVerificarCuenta SeVerificoCorrectamente = 
+            EnumEstadoVerificarCuenta SeVerificoCorrectamente =
                 CuentaCliente.clienteDeCuenta.servicioDeCuenta.VerificarCuenta(codigoRecuperado, CuentaAVerificar);
             //Mostrar enum de se verifico correctamente
         }
         else
         {
             Debug.LogWarning("Formato incorrecto");
-            //Mostrar mensaje de como debe de estar el formato
+            PanelException.SetActive(true);
+            PanelException.GetComponentInChildren<Text>().text = "Formato Incorrecto.\nDebe contener solo números.";
         }
     }
 
@@ -56,7 +58,8 @@ public class buttonsVerificationAccount : MonoBehaviour
     {
         if (CuentaAVerificar == null)
         {
-            //Mostrar mensaje de error al realizar el registro
+            PanelException.SetActive(true);
+            PanelException.GetComponentInChildren<Text>().text = "Regresando a la pantalla de login, Su cuenta es Invalida.";
             SceneManager.LoadScene("LoginScreen");
         }
     }
@@ -74,6 +77,6 @@ public class buttonsVerificationAccount : MonoBehaviour
     /// </summary>
     public void ReenviarCodigo()
     {
-       CuentaCliente.clienteDeCuenta.servicioDeCuenta.ReEnviarCorreoVerificacion(CuentaAVerificar);
+        CuentaCliente.clienteDeCuenta.servicioDeCuenta.ReEnviarCorreoVerificacion(CuentaAVerificar);
     }
 }

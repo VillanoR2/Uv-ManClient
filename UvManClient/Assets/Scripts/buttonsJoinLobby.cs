@@ -2,6 +2,7 @@
 using LogicaDelNegocio.Modelo;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// Se encarga de controlar los elementos de la escena JoinLobby
@@ -10,7 +11,8 @@ public class buttonsJoinLobby : MonoBehaviour
 {
     private JuegoCliente ClienteDelJuego;
     private CuentaModel CuentaLogeada;
-    
+    public GameObject PanelException;
+
     /// <summary>
     /// Recupera la información de la cuenta que se encuentra logeada
     /// </summary>
@@ -18,14 +20,14 @@ public class buttonsJoinLobby : MonoBehaviour
     {
         CuentaLogeada = Cuenta.CuentaLogeada.CuentaM;
     }
-    
+
     /// <summary>
     /// Le solicita al cliente del juego unirse a una sala aleatoria y al chat
     /// </summary>
     public void UnirseASala()
     {
         ObtenerRecursosParaUso();
-        if(CuentaLogeada != null)
+        if (CuentaLogeada != null)
         {
             Boolean seuniAlServicioDeJuego = UnirseAlServicioDeJuego();
             Boolean seUnioAlServicioDeChat = UnirseAlServicioDeChat();
@@ -33,19 +35,25 @@ public class buttonsJoinLobby : MonoBehaviour
             {
                 if (!seUnioAlServicioDeChat)
                 {
-                    //MostrarMensasjeErrorEnchat
+                    Debug.LogWarning("Error de chat");
+                    PanelException.SetActive(true);
+                    PanelException.GetComponentInChildren<Text>().text = "Error en chat.";
                 }
                 ClienteDelJuego.SolcitarDetallesSala();
                 SceneManager.LoadScene("Lobby");
             }
             else
             {
-                //MostrarMensajeErrorEnSala
+                Debug.LogWarning("Error de Sala");
+                PanelException.SetActive(true);
+                PanelException.GetComponentInChildren<Text>().text = "Error al unirse a la sala.";
             }
         }
         else
         {
-            //Aqui poner mensaje de no se puede acceder al servicio de chat
+            Debug.LogWarning("Error de chat");
+            PanelException.SetActive(true);
+            PanelException.GetComponentInChildren<Text>().text = "Error en chat. No es posible conectarse al servicio de chat, porfavor reinicie";
         }
     }
 
@@ -58,7 +66,7 @@ public class buttonsJoinLobby : MonoBehaviour
         Boolean SeUnioCorrectamenteAlChat;
         ChatCliente.clienteDeChat.ReiniciarServicio();
         ChatServiceClient clienteDeChat = ChatCliente.clienteDeChat.servicioDeChat;
-        SeUnioCorrectamenteAlChat = clienteDeChat.Conectar(CuentaLogeada); 
+        SeUnioCorrectamenteAlChat = clienteDeChat.Conectar(CuentaLogeada);
         return SeUnioCorrectamenteAlChat;
     }
 
@@ -71,7 +79,7 @@ public class buttonsJoinLobby : MonoBehaviour
         ClienteDelJuego.ReinciarClienteDeJuego();
         return ClienteDelJuego.ServicioDeJuego.UnirseASala(CuentaLogeada);
     }
-    
+
     /// <summary>
     /// Cambia a la escena de MainScreen
     /// </summary>
@@ -79,7 +87,7 @@ public class buttonsJoinLobby : MonoBehaviour
     {
         SceneManager.LoadScene("MainScreen");
     }
-    
+
     /// <summary>
     /// Inicializa el cliente del juego
     /// </summary>

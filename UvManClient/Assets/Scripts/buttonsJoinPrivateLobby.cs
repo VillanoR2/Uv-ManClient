@@ -13,7 +13,8 @@ public class buttonsJoinPrivateLobby : MonoBehaviour
     private JuegoCliente ClienteDelJuego;
     private CuentaModel CuentaLogeada;
     public InputField txtBoxIdSala;
-    
+    public GameObject PanelException;
+
     /// <summary>
     /// Inicializa el cliente del juego
     /// </summary>
@@ -32,9 +33,9 @@ public class buttonsJoinPrivateLobby : MonoBehaviour
         if (VerificarIdValido())
         {
             String IdDeLaSala = txtBoxIdSala.text;
-            Boolean SeUniServicioChat = UnirseAlServicioDeChat(); 
+            Boolean SeUniServicioChat = UnirseAlServicioDeChat();
             EnumEstadoDeUnirseASala EstadoUnirseASala = UnirseAlServicioDeJuego(IdDeLaSala);
-            switch (EstadoUnirseASala) 
+            switch (EstadoUnirseASala)
             {
                 case EnumEstadoDeUnirseASala.UnidoCorrectamente:
                     if (!SeUniServicioChat)
@@ -45,13 +46,19 @@ public class buttonsJoinPrivateLobby : MonoBehaviour
                     SceneManager.LoadScene("Lobby");
                     break;
                 case EnumEstadoDeUnirseASala.SalaInexistente:
-                    //Mostrar mensaje
+                    Debug.LogWarning("Error de Sala no Existente");
+                    PanelException.SetActive(true);
+                    PanelException.GetComponentInChildren<Text>().text = "Error. La sala a la que desea unirse no existe.";
                     break;
                 case EnumEstadoDeUnirseASala.SalaLlena:
-                    //Mostrar mensaje
+                    Debug.LogWarning("Error de Sala Llena");
+                    PanelException.SetActive(true);
+                    PanelException.GetComponentInChildren<Text>().text = "Error. La sala solicitada se encuentra llena";
                     break;
                 case EnumEstadoDeUnirseASala.NoSeEncuentraEnSesion:
-                    //Mostrar mensaje
+                    Debug.LogWarning("Error de conexion a sala");
+                    PanelException.SetActive(true);
+                    PanelException.GetComponentInChildren<Text>().text = "Error. No se encuentra la sesión";
                     break;
             }
         }
@@ -64,7 +71,7 @@ public class buttonsJoinPrivateLobby : MonoBehaviour
     {
         SceneManager.LoadScene("JoinLobby");
     }
-    
+
     /// <summary>
     /// Solicita al servicio de chat unirse al chat del juego
     /// </summary>
@@ -74,10 +81,10 @@ public class buttonsJoinPrivateLobby : MonoBehaviour
         Boolean SeUnioCorrectamenteAlChat;
         ChatServiceClient clienteDeChat = ChatCliente.clienteDeChat.servicioDeChat;
         ChatCliente.clienteDeChat.ReiniciarServicio();
-        SeUnioCorrectamenteAlChat = clienteDeChat.Conectar(CuentaLogeada); 
+        SeUnioCorrectamenteAlChat = clienteDeChat.Conectar(CuentaLogeada);
         return SeUnioCorrectamenteAlChat;
     }
-    
+
     /// <summary>
     /// Solicita al cliente del juego unirse a una sala privada
     /// </summary>
@@ -88,7 +95,7 @@ public class buttonsJoinPrivateLobby : MonoBehaviour
         ClienteDelJuego.ReinciarClienteDeJuego();
         return ClienteDelJuego.ServicioDeJuego.UnirseASalaPrivada(id, CuentaLogeada);
     }
-    
+
     /// <summary>
     /// Recupera la informacion de la cuenta que se encuentra logeada
     /// </summary>
@@ -96,7 +103,7 @@ public class buttonsJoinPrivateLobby : MonoBehaviour
     {
         CuentaLogeada = Cuenta.CuentaLogeada.CuentaM;
     }
-    
+
     /// <summary>
     /// Verifica que el id de la sala sea valido (no contenga espacios y no tenga mas de 10 caracteres)
     /// </summary>

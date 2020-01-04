@@ -13,7 +13,8 @@ public class buttonsLogin : MonoBehaviour
 
     public InputField Usuario;
     public InputField Contrasena;
-    
+    public GameObject PanelException;
+
     /// <summary>
     /// Recupera los datos de los campos
     /// </summary>
@@ -21,11 +22,11 @@ public class buttonsLogin : MonoBehaviour
     private CuentaModel RecuperarDatosDeLogin()
     {
         CuentaModel cuentaParaIniciarSesion = new CuentaModel();
-        String nombre = Usuario.text;
-        String password = Contrasena.text;
-        cuentaParaIniciarSesion.NombreUsuario = nombre;
-        cuentaParaIniciarSesion.Contrasena = password;
-        return cuentaParaIniciarSesion; 
+        String Nombre = Usuario.text;
+        String Password = Contrasena.text;
+        cuentaParaIniciarSesion.NombreUsuario = Nombre;
+        cuentaParaIniciarSesion.Contrasena = Password;
+        return cuentaParaIniciarSesion;
     }
 
     /// <summary>
@@ -40,21 +41,32 @@ public class buttonsLogin : MonoBehaviour
             {
                 SessionCliente.clienteDeSesion.ReiniciarServicio();
                 CuentaModel cuentaIniciarSesion = RecuperarDatosDeLogin();
-                EnumEstadoInicioSesion estadoDeInicioDeSesion = clienteSesion.IniciarSesion(cuentaIniciarSesion); 
+                EnumEstadoInicioSesion estadoDeInicioDeSesion = clienteSesion.IniciarSesion(cuentaIniciarSesion);
                 switch (estadoDeInicioDeSesion)
                 {
                     case EnumEstadoInicioSesion.Correcto:
+                        Debug.Log("Credenciales Validas, ingreso exitoso.");
                         InicioDeSesionCorrecto(cuentaIniciarSesion);
                         break;
                     case EnumEstadoInicioSesion.CredencialesInvalidas:
-                        //Mostrar mensaje credenciales invalidas
+                        Debug.Log("Credenciales Invalidas, ingrese una validas porfavor.");
+                        PanelException.SetActive(true);
+                        PanelException.GetComponentInChildren<Text>().text = "Credenciales Invalidas, ingrese una validas porfavor";
                         break;
                     case EnumEstadoInicioSesion.CuentaYaLogeada:
-                        //Mostrar mensaje cuenta ya logeada
+                        Debug.Log("La cuenta ya se encuentra logeada.");
+                        PanelException.SetActive(true);
+                        PanelException.GetComponentInChildren<Text>().text = "La cuenta ya se encuentra logeada.";
                         break;
                     case EnumEstadoInicioSesion.ErrorBD:
+                        Debug.Log("Error en Base de Datos.");
+                        PanelException.SetActive(true);
+                        PanelException.GetComponentInChildren<Text>().text = "Surgio un Error, porfavor intente más tarde";
                         break;
                     case EnumEstadoInicioSesion.CuentaNoVerificada:
+                        Debug.Log("Cuenta No Verificada.");
+                        PanelException.SetActive(true);
+                        PanelException.GetComponentInChildren<Text>().text = "Su cuenta no está verificada aun, porfavor verifiquela.";
                         CuentaNoVerificada(cuentaIniciarSesion);
                         break;
                 }
@@ -62,7 +74,7 @@ public class buttonsLogin : MonoBehaviour
         }
         catch (Exception) //Verificar el tipo de excepcion (creo que es SocketException)
         {
-            
+
         }
     }
 
@@ -81,7 +93,7 @@ public class buttonsLogin : MonoBehaviour
     {
         SceneManager.LoadScene("OptionScreen");
     }
-    
+
     /// <summary>
     /// Guarda la infomacion de la cuenta logeada y cambia a la escena de MainScreen
     /// </summary>
@@ -108,16 +120,19 @@ public class buttonsLogin : MonoBehaviour
     /// <returns>True si son validos o false si no</returns>
     private Boolean CamposDeLogeoValidos()
     {
-        Boolean CamposValidos = false;
+        bool CamposDeLogeoNoVacios = false;
         String Nombre = Usuario.text;
-        String Contraseña = Contrasena.text;
-        if (Nombre != "" && Contraseña != "")
+        String Password = Contrasena.text;
+        if (Nombre != String.Empty && Password != String.Empty)
         {
-            if (!Nombre.Contains(" ") && Nombre.Length < 50 && Contraseña.Length < 50)
-            {
-                CamposValidos = true;
-            }
+            CamposDeLogeoNoVacios = true;
         }
-        return CamposValidos;
+        else
+        {
+            Debug.Log("Error, campos vacios.");
+            PanelException.SetActive(true);
+            PanelException.GetComponentInChildren<Text>().text = "Los campos se encuentran vacios, favor de llenar los campos necesarios.";
+        }
+        return CamposDeLogeoNoVacios;
     }
 }

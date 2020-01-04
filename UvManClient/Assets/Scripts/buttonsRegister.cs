@@ -15,6 +15,7 @@ public class buttonsRegister : MonoBehaviour
     public InputField TFContrasena;
     public InputField TFCorreo;
     public InputField TFConfirmacionContrasena;
+    public GameObject PanelException;
 
     /// <summary>
     /// Valida que el texto no este vacio, que no contenga espacios y que contenga menos de 50 caracteres
@@ -47,7 +48,7 @@ public class buttonsRegister : MonoBehaviour
     private Boolean ValidarContrasenasConinciden(String Contraseña, String ConfirmacionContraseña)
     {
         Boolean CoincidenContraseñas = false;
-        if(ConfirmacionContraseña != String.Empty)
+        if (ConfirmacionContraseña != String.Empty)
         {
             CoincidenContraseñas = Contraseña == ConfirmacionContraseña;
         }
@@ -85,29 +86,35 @@ public class buttonsRegister : MonoBehaviour
         String CorreoElectronico)
     {
         Boolean todoValido = true;
+        string CadenaErrores = "";
         if (!ValidarCampoNombreDeUsuario(NombreDeUsuario))
         {
-            //PonerCamposEnRojo
             Debug.LogWarning("Usuario invalido");
             todoValido = false;
+            CadenaErrores += "Usuario Invalido\n";
         }
         if (!ValidarContrasena(Contrasena))
         {
-            //PonerCamposEnRojo
             Debug.LogWarning("Contraseña invalida");
             todoValido = false;
+            CadenaErrores += "Contraseña Invalido\n";
         }
         if (!ValidarContrasenasConinciden(Contrasena, ConfirmacionContraseña))
         {
-            //PonerCamposEnRojo
             Debug.LogWarning("Contraseñas no coinciden");
             todoValido = false;
+            CadenaErrores += "Contraseñas no coinciden\n";
         }
         if (!ValidarCorreoElectronico(CorreoElectronico))
         {
-            //PonerCamposEnRojo
             Debug.LogWarning("Correo invalido");
             todoValido = false;
+            CadenaErrores += "Correo Invalido\n";
+        }
+        if (todoValido != true)
+        {
+            PanelException.SetActive(true);
+            PanelException.GetComponentInChildren<Text>().text = CadenaErrores;
         }
         return todoValido;
     }
@@ -133,8 +140,16 @@ public class buttonsRegister : MonoBehaviour
                     RegistroExitoso(cuentaARegistrar);
                     break;
                 case EnumEstadoRegistro.UsuarioExistente:
+                    PanelException.SetActive(true);
+                    PanelException.GetComponentInChildren<Text>().text = "Usuario ya existe.";
                     break;
                 case EnumEstadoRegistro.ErrorEnBaseDatos:
+                    PanelException.SetActive(true);
+                    PanelException.GetComponentInChildren<Text>().text = "Imposible conectar a la base de datos, intente más tarde..";
+                    break;
+                default:
+                    PanelException.SetActive(true);
+                    PanelException.GetComponentInChildren<Text>().text = "Imposible conectar al servidor, intente más tarde..";
                     break;
             }
         }
