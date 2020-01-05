@@ -38,16 +38,18 @@ public class buttonsVerificationAccount : MonoBehaviour
         string codigoRecuperado = IFCodigoVerificacion.text;
         if (codigoRecuperado.Length == 10)
         {
+            Debug.LogWarning("Cuenta Verificada Correctamente");
+            PanelException.SetActive(true);
+            PanelException.GetComponentInChildren<Text>().text = "Se ha verificado correctamente la cuenta.";
             CuentaCliente.clienteDeCuenta.ReiniciarServicio();
             EnumEstadoVerificarCuenta SeVerificoCorrectamente =
                 CuentaCliente.clienteDeCuenta.servicioDeCuenta.VerificarCuenta(codigoRecuperado, CuentaAVerificar);
-            //Mostrar enum de se verifico correctamente
         }
         else
         {
             Debug.LogWarning("Formato incorrecto");
             PanelException.SetActive(true);
-            PanelException.GetComponentInChildren<Text>().text = "Formato Incorrecto.\nDebe contener solo números.";
+            PanelException.GetComponentInChildren<Text>().text = "Formato Incorrecto. Debe contener solo 10 números.";
         }
     }
 
@@ -77,6 +79,9 @@ public class buttonsVerificationAccount : MonoBehaviour
     /// </summary>
     public void ReenviarCodigo()
     {
+        Debug.LogWarning("Reenviando código...");
+        PanelException.SetActive(true);
+        PanelException.GetComponentInChildren<Text>().text = "Se ha reenviado el código de verificación, favor de revisar su correo.";
         CuentaCliente.clienteDeCuenta.servicioDeCuenta.ReEnviarCorreoVerificacion(CuentaAVerificar);
     }
 }
