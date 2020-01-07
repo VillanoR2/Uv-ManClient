@@ -40,7 +40,9 @@ public class buttonsJoinPrivateLobby : MonoBehaviour
                 case EnumEstadoDeUnirseASala.UnidoCorrectamente:
                     if (!SeUniServicioChat)
                     {
-                        //Mostrar mensaje de error
+                        Debug.LogWarning("Chat no disponible");
+                        PanelException.SetActive(true);
+                        PanelException.GetComponentInChildren<Text>().text = "El servicio de chat esta temporalmente inactivo.";
                     }
                     ClienteDelJuego.SolcitarDetallesSala();
                     SceneManager.LoadScene("Lobby");

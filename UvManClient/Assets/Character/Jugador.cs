@@ -8,7 +8,7 @@ using UnityEngine;
 public class Jugador : MonoBehaviour
 {
     public bool EstaActivoElScript;
-    private const int TOTAL_UVCOINS = 10;
+    private const int TOTAL_UVCOINS = 140;
     private const int UVCOINS_NECESARIAS_PARA_ACTIVARMATAR = 23;
     private bool VolverAPosicionInicial;
     public bool EsElJuegadorActual;

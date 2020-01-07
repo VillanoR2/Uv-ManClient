@@ -14,7 +14,8 @@ public class buttonsCreateLobby : MonoBehaviour
     private CuentaModel CuentaLogeada;
     public InputField txtBoxIdSala;
     public Toggle toggleEsSalaPrivada;
-    
+    public GameObject PanelException;
+
     /// <summary>
     /// Obtiene la cuenta logeada e inicializa el cliente del juego
     /// </summary>
@@ -36,21 +37,27 @@ public class buttonsCreateLobby : MonoBehaviour
             Boolean SeUniServicioChat = UnirseAlServicioDeChat();
             Boolean esSalaPrivada = toggleEsSalaPrivada.isOn;
             EnumEstadoCrearSalaConId estadoCrearSala = UnirseAlServicioDeJuego(IdDeLaSala, esSalaPrivada);
-            switch (estadoCrearSala) 
+            switch (estadoCrearSala)
             {
                 case EnumEstadoCrearSalaConId.CreadaCorrectamente:
                     if (!SeUniServicioChat)
                     {
-                        //Mostrar mensaje de error
+                        Debug.LogWarning("Chat no disponible");
+                        PanelException.SetActive(true);
+                        PanelException.GetComponentInChildren<Text>().text = "El servicio de chat esta temporalmente inactivo.";
                     }
                     ClienteDelJuego.SolcitarDetallesSala();
                     SceneManager.LoadScene("Lobby");
                     break;
                 case EnumEstadoCrearSalaConId.IdYaExistente:
-                    //Mostrar mensaje
+                    Debug.LogWarning("ID Lobby existente");
+                        PanelException.SetActive(true);
+                        PanelException.GetComponentInChildren<Text>().text = "El Id ingresado y se encuentra en uso..";
                     break;
                 case EnumEstadoCrearSalaConId.NoSeEncuentraEnSesion:
-                    //Mostrar mensaje
+                    Debug.LogWarning("Cuenta no en sesión");
+                        PanelException.SetActive(true);
+                        PanelException.GetComponentInChildren<Text>().text = "La cuenta no se encuentra en sesion, no se puede crear el lobby.";
                     break;
             }
         }
@@ -63,7 +70,7 @@ public class buttonsCreateLobby : MonoBehaviour
     {
         SceneManager.LoadScene("JoinLobby");
     }
-    
+
     /// <summary>
     /// Le solicita al cliente del chat unirse al chat
     /// </summary>
@@ -73,10 +80,10 @@ public class buttonsCreateLobby : MonoBehaviour
         Boolean SeUnioCorrectamenteAlChat;
         ChatCliente.clienteDeChat.ReiniciarServicio();
         ChatServiceClient clienteDeChat = ChatCliente.clienteDeChat.servicioDeChat;
-        SeUnioCorrectamenteAlChat = clienteDeChat.Conectar(CuentaLogeada); 
+        SeUnioCorrectamenteAlChat = clienteDeChat.Conectar(CuentaLogeada);
         return SeUnioCorrectamenteAlChat;
     }
-    
+
     /// <summary>
     /// Le solicita al cliente del juego crear una nueva sala
     /// </summary>
@@ -88,7 +95,7 @@ public class buttonsCreateLobby : MonoBehaviour
         ClienteDelJuego.ReinciarClienteDeJuego();
         return ClienteDelJuego.ServicioDeJuego.CrearSala(id, !esPrivada, CuentaLogeada);
     }
-    
+
     /// <summary>
     /// Recupera la informacion de la cuenta logeada
     /// </summary>
@@ -96,7 +103,7 @@ public class buttonsCreateLobby : MonoBehaviour
     {
         CuentaLogeada = Cuenta.CuentaLogeada.CuentaM;
     }
-    
+
     /// <summary>
     /// Verifica que el id de la sala introducido sea valido (no contenta espacios y no tenga mas de 10 caracteres)
     /// </summary>
