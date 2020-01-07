@@ -38,12 +38,26 @@ public class buttonsVerificationAccount : MonoBehaviour
         string codigoRecuperado = IFCodigoVerificacion.text;
         if (codigoRecuperado.Length == 10)
         {
-            Debug.LogWarning("Cuenta Verificada Correctamente");
-            PanelException.SetActive(true);
-            PanelException.GetComponentInChildren<Text>().text = "Se ha verificado correctamente la cuenta.";
             CuentaCliente.clienteDeCuenta.ReiniciarServicio();
-            EnumEstadoVerificarCuenta SeVerificoCorrectamente =
-                CuentaCliente.clienteDeCuenta.servicioDeCuenta.VerificarCuenta(codigoRecuperado, CuentaAVerificar);
+            EnumEstadoVerificarCuenta SeVerificoCorrectamente = CuentaCliente.clienteDeCuenta.servicioDeCuenta.VerificarCuenta(codigoRecuperado, CuentaAVerificar);
+            if (SeVerificoCorrectamente == EnumEstadoVerificarCuenta.VerificadaCorrectamente)
+            {
+                Debug.LogWarning("Cuenta Verificada Correctamente");
+                PanelException.SetActive(true);
+                PanelException.GetComponentInChildren<Text>().text = "Se ha verificado correctamente la cuenta.";
+            }
+            else if (SeVerificoCorrectamente == EnumEstadoVerificarCuenta.NoCoincideElCodigo)
+            {
+                Debug.LogWarning("El código no coincide");
+                PanelException.SetActive(true);
+                PanelException.GetComponentInChildren<Text>().text = "Lo sentimos, el código ingresado no coincide con el código de verificación.";
+            }
+            else
+            {
+                Debug.LogWarning("Cuenta No Verificada Correctamente");
+                PanelException.SetActive(true);
+                PanelException.GetComponentInChildren<Text>().text = "Se encontro un error en nuestra base de datos, porfavor intente más tarde y si el problema persiste reinicie el juego.";
+            }
         }
         else
         {

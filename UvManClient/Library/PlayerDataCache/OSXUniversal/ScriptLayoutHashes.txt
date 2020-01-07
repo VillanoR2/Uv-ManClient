@@ -1,6 +1,6 @@
 OSXUniversal
 PlayerPath?
-/Users/arturovilla/Documents/UvMan0.1.app
+/Users/arturovilla/Documents/UvMan0.9.1.app
 SceneListBegin?
 Assets/UI/TitleScreen.unity
 Assets/UI/LoginScreen.unity
