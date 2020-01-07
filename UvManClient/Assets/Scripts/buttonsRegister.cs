@@ -18,25 +18,52 @@ public class buttonsRegister : MonoBehaviour
     public GameObject PanelException;
 
     /// <summary>
-    /// Valida que el texto no este vacio, que no contenga espacios y que contenga menos de 50 caracteres
+    /// Metodo que valida que el segundo valor coincida con el primer valor
+    /// </summary>
+    /// <param name="CadenaValida">String</param>
+    /// <param name="CadenaIngresada">String</param>
+    /// <returns>True si las cadenas coinciden, false si no</returns>
+    public bool ValidarRegex(String CadenaValida, String CadenaIngresada)
+    {
+        bool Resultado;
+        Regex Regex = new Regex(CadenaValida);
+        if (Regex.IsMatch(CadenaIngresada))
+        {
+            Resultado = true;
+        }
+        else
+        {
+            Resultado = false;
+        }
+        return Resultado;
+    }
+
+
+    /// <summary>
+    /// Valida que el texto no este vacio, que no contenga espacios y que contenga menos de 21 caracteres
     /// </summary>
     /// <param name="TextoAValidar">String</param>
     /// <returns>True si el texto es valido o false si no</returns>
     private Boolean ValidarCampoNombreDeUsuario(string TextoAValidar)
     {
-        bool CamposValidos = TextoAValidar != String.Empty && !TextoAValidar.Contains(" ") && TextoAValidar.Length < 50;
-        return CamposValidos;
+        bool Resultado;
+        String FormatoTextoValido = @"^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)^([0-9]){1,20}$";
+        Resultado = ValidarRegex(FormatoTextoValido, TextoAValidar);
+        return Resultado;
+
     }
 
     /// <summary>
-    /// Valida que la contraseña sea valida (no este vacia, y contenga menos de 50 cararcteres)
+    /// Valida que la contraseña sea valida (no este vacia, y contenga menos de 18 cararcteres)
     /// </summary>
     /// <param name="Contraseña">String</param>
     /// <returns>True si la contraseña es valida o false si no</returns>
     private Boolean ValidarContrasena(String Contraseña)
     {
-        Boolean ContraseñaValida = Contraseña != String.Empty && Contraseña.Length < 50;
-        return ContraseñaValida;
+        bool Resultado;
+        String FormatoTextoValido = @"^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$";
+        Resultado = ValidarRegex(FormatoTextoValido, Contraseña);
+        return Resultado;
     }
 
     /// <summary>
@@ -48,9 +75,9 @@ public class buttonsRegister : MonoBehaviour
     private Boolean ValidarContrasenasConinciden(String Contraseña, String ConfirmacionContraseña)
     {
         Boolean CoincidenContraseñas = false;
-        if (ConfirmacionContraseña != String.Empty)
+        if (ConfirmacionContraseña == Contraseña)
         {
-            CoincidenContraseñas = Contraseña == ConfirmacionContraseña;
+            CoincidenContraseñas = true; 
         }
         return CoincidenContraseñas;
     }
@@ -62,16 +89,10 @@ public class buttonsRegister : MonoBehaviour
     /// <returns>True si el formato del correo es valido, false si no</returns>
     private Boolean ValidarCorreoElectronico(String CorreoElectronico)
     {
-        String Expresion;
-        Expresion = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
-        if (Regex.IsMatch(CorreoElectronico, Expresion))
-        {
-            if (Regex.Replace(CorreoElectronico, Expresion, String.Empty).Length == 0)
-            {
-                return true;
-            }
-        }
-        return false;
+        bool Resultado;
+        String FormatoTextoValido = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+        Resultado = ValidarRegex(FormatoTextoValido, CorreoElectronico);
+        return Resultado;
     }
 
     /// <summary>
@@ -162,6 +183,9 @@ public class buttonsRegister : MonoBehaviour
     private void RegistroExitoso(CuentaModel cuentaRegistrada)
     {
         CuentaCliente.clienteDeCuenta.cuentaAVerificar = cuentaRegistrada;
+        Debug.Log("Registro Exito.");
+        PanelException.SetActive(true);
+        PanelException.GetComponentInChildren<Text>().text = "Registro Exitoso";
         SceneManager.LoadScene("VerificacionScreen");
     }
 

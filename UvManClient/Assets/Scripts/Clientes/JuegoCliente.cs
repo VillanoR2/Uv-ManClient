@@ -113,8 +113,8 @@ public class JuegoCliente : MonoBehaviour, IGameServiceCallback
         }
         catch (Exception ex)
         {
-            //EnviarNotificacion
-        }        
+            Debug.Log("Error en CrearHiloDeEscucha" + ex);
+        }         
     }
     
     /// <summary>

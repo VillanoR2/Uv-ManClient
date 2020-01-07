@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using System;
 using LogicaDelNegocio.Modelo;
 using SessionService.Dominio.Enum;
+using System.Net.Sockets;
 
 /// <summary>
 /// Se encarga de controlar los elementos que se encuentran en la escena Login
@@ -71,10 +72,11 @@ public class buttonsLogin : MonoBehaviour
                         break;
                 }
             }
-        }
-        catch (Exception) //Verificar el tipo de excepcion (creo que es SocketException)
+        }catch (SocketException ex)
         {
-
+            Debug.Log("Conexion al servidor no valida." + ex);
+            PanelException.SetActive(true);
+            PanelException.GetComponentInChildren<Text>().text = "Conexion al servidor no valida";
         }
     }
 
