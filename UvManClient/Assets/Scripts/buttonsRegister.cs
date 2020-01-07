@@ -46,9 +46,21 @@ public class buttonsRegister : MonoBehaviour
     /// <returns>True si el texto es valido o false si no</returns>
     private Boolean ValidarCampoNombreDeUsuario(string TextoAValidar)
     {
-        bool Resultado;
-        String FormatoTextoValido = @"^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$";
-        Resultado = ValidarRegex(FormatoTextoValido, TextoAValidar);
+        bool Resultado= false;
+
+        if (TextoAValidar.Length <= 30)
+        {
+            Debug.Log("Nombre supera el limite.");
+            PanelException.SetActive(true);
+            PanelException.GetComponentInChildren<Text>().text = "El nombre de usuario debe tener como maximo 30 Carácteres";
+        }
+        else
+        {
+
+            String FormatoTextoValido = @"^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$";
+            Resultado = ValidarRegex(FormatoTextoValido, TextoAValidar);
+
+        }
         return Resultado;
 
     }
@@ -77,7 +89,7 @@ public class buttonsRegister : MonoBehaviour
         Boolean CoincidenContraseñas = false;
         if (ConfirmacionContraseña == Contraseña)
         {
-            CoincidenContraseñas = true; 
+            CoincidenContraseñas = true;
         }
         return CoincidenContraseñas;
     }
@@ -118,7 +130,7 @@ public class buttonsRegister : MonoBehaviour
         {
             Debug.LogWarning("Contraseña invalida");
             todoValido = false;
-            CadenaErrores += "Contraseña Invalido: la contraseña debe contener almenos una mayúscula un numero y tener de 8 a 16 caracteres\n";
+            CadenaErrores += "Contraseña Invalido: la contraseña debe contener almenos una mayúscula, una minuscula, un numero, un simbolo entre(! ? % $ &) y tener de 8 a 16 caracteres\n";
         }
         if (!ValidarContrasenasConinciden(Contrasena, ConfirmacionContraseña))
         {

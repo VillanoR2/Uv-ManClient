@@ -20,7 +20,7 @@ public class Warp : MonoBehaviour
     /// <paramref name="Collider">Es un parametro de tipo Collider2D <paramref/>
     /// </summary>
     void OnTriggerEnter2D(Collider2D other){
-        if(other.tag == "Player")
+        if((other.tag == "Player") || (other.tag == "Corredor") || (other.tag == "Perseguidor"))
         {
             other.transform.position = target.transform.GetChild(0).transform.position;
         }
