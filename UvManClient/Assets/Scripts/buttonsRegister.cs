@@ -40,14 +40,14 @@ public class buttonsRegister : MonoBehaviour
 
 
     /// <summary>
-    /// Valida que el texto no este vacio, que no contenga espacios y que contenga menos de 21 caracteres
+    /// Valida que el texto no este vacio, que no contenga espacios y que contenga menos de 20 caracteres
     /// </summary>
     /// <param name="TextoAValidar">String</param>
     /// <returns>True si el texto es valido o false si no</returns>
     private Boolean ValidarCampoNombreDeUsuario(string TextoAValidar)
     {
         bool Resultado;
-        String FormatoTextoValido = @"^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)^([0-9]){1,20}$";
+        String FormatoTextoValido = @"^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$";
         Resultado = ValidarRegex(FormatoTextoValido, TextoAValidar);
         return Resultado;
 
@@ -118,13 +118,13 @@ public class buttonsRegister : MonoBehaviour
         {
             Debug.LogWarning("Contraseña invalida");
             todoValido = false;
-            CadenaErrores += "Contraseña Invalido\n";
+            CadenaErrores += "Contraseña Invalido: la contraseña debe contener almenos una mayúscula un numero y tener de 8 a 16 caracteres\n";
         }
         if (!ValidarContrasenasConinciden(Contrasena, ConfirmacionContraseña))
         {
             Debug.LogWarning("Contraseñas no coinciden");
             todoValido = false;
-            CadenaErrores += "Contraseñas no coinciden\n";
+            CadenaErrores += "Contraseñas no coinciden: ambas contraseñas debe coincidir \n";
         }
         if (!ValidarCorreoElectronico(CorreoElectronico))
         {

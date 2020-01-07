@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/UI/TitleScreen.unity
+- path: Assets/UI/MultiplayerScreen.unity
   isLoaded: 1
   isActive: 1
